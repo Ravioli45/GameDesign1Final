@@ -11,14 +11,21 @@ config_version=5
 [application]
 
 config/name="DungeonBuster"
-config/features=PackedStringArray("4.5", "GL Compatibility")
+run/main_scene="uid://bbfquc3opfwrm"
+config/features=PackedStringArray("4.5", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [dotnet]
 
 project/assembly_name="DungeonBuster"
 
+[layer_names]
+
+2d_physics/layer_1="Walls"
+
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.0077714003, 0.01790977, 0.09823368, 1)
