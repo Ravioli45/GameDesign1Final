@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cbfd7l8g4in6v"]
+
+[node name="Mana particles" type="Node2D"]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+modulate = Color(0.19215687, 0.6627451, 1, 1)
+amount = 50
+lifetime = 1.29
+speed_scale = 0.1
+explosiveness = 0.1
+lifetime_randomness = 0.03
+emission_shape = 3
+emission_rect_extents = Vector2(100, 100)
+gravity = Vector2(0, -200)
