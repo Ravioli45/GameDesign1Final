@@ -16,6 +16,12 @@ public abstract partial class Player : Entity
     [Export] private int attackFrames = 60;
     private int attackCountdown = 0;
 
+    [Export] private int dashFrames = 60;
+    private int dashCountdown = 0;
+    private Vector2 dashDirection = new(0, 0);
+    [Export] private float dashSpeed = 10;
+    
+
     protected PlayerState state = PlayerState.Idle;
 
     public override void _PhysicsProcess(double delta)
@@ -25,7 +31,7 @@ public abstract partial class Player : Entity
         Vector2 direction = Input.GetVector("left", "right", "up", "down");
 
         // don't do this again if already attacking
-        if (Input.IsActionJustPressed("attack") && state != PlayerState.Attacking)
+        if (Input.IsActionJustPressed("attack") && state != PlayerState.Attacking && state != PlayerState.Dashing)
         {
             Vector2 mouse_pos = GetGlobalMousePosition();
             animator.Set("parameters/Attack/blend_position", (mouse_pos - GlobalPosition).Normalized());
@@ -36,8 +42,34 @@ public abstract partial class Player : Entity
             state = PlayerState.Attacking;
         }
 
+        if (Input.IsActionJustPressed("dash") && state != PlayerState.Dashing && state != PlayerState.Attacking)
+        {
+            Vector2 mouse_pos = GetGlobalMousePosition();
+
+            // set blend space parameter
+            dashCountdown = dashFrames;
+
+            dashDirection = (mouse_pos - GlobalPosition).Normalized();
+            animator.Set("parameters/Dash/blend_position", dashDirection);
+
+            state = PlayerState.Dashing;
+        }
+
         switch (state)
         {
+            case PlayerState.Dashing:
+                dashCountdown--;
+
+                if (dashCountdown <= 0)
+                {
+                    Velocity = new Vector2(0, 0);
+                    state = PlayerState.Idle;
+                }
+                else
+                {
+                    Velocity = dashDirection * dashSpeed;
+                }
+                break;
             case PlayerState.Attacking:
 
                 attackCountdown--;
@@ -59,7 +91,7 @@ public abstract partial class Player : Entity
                 }
                 else
                 {
-                    // set blend tree parameters
+                    // set blend space parameters
                     animator.Set("parameters/Idle/blend_position", direction);
                     animator.Set("parameters/Running/blend_position", direction);
                     state = PlayerState.Running;
@@ -70,16 +102,6 @@ public abstract partial class Player : Entity
 
                 break;
         }
-
-
-        /*
-        if (!direction.IsZeroApprox())
-        {
-            // set blend tree parameters
-            animator.Set("parameters/Idle/blend_position", direction);
-            animator.Set("parameters/Running/blend_position", direction);
-        }
-        */
 
         MoveAndSlide();
     }

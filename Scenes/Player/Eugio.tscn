@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://dkkmc7f6645jl"]
+[gd_scene load_steps=56 format=3 uid="uid://dkkmc7f6645jl"]
 
 [ext_resource type="Script" uid="uid://b2t86uwtbsyi2" path="res://Scripts/Eugio.cs" id="1_81l3x"]
 [ext_resource type="Texture2D" uid="uid://s0b4hi5khcac" path="res://Sprites/Player/EugioAnimationsSpriteSheet.png" id="1_d5ap3"]
@@ -530,12 +530,84 @@ tracks/0/keys = {
 "values": [4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
 }
 
+[sub_resource type="Animation" id="Animation_4isnw"]
+resource_name = "DashRight"
+length = 0.016668335
+step = 0.016666668
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EugioSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [31]
+}
+
+[sub_resource type="Animation" id="Animation_ety0t"]
+resource_name = "DashLeft"
+length = 0.016668335
+step = 0.016666668
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EugioSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [15]
+}
+
+[sub_resource type="Animation" id="Animation_60rb5"]
+resource_name = "DashUp"
+length = 0.016668335
+step = 0.016666668
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EugioSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+
+[sub_resource type="Animation" id="Animation_r4sdc"]
+resource_name = "DashDown"
+length = 0.016668335
+step = 0.016666668
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EugioSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [21]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_b4x1i"]
 _data = {
 &"AttackDown": SubResource("Animation_nhd7b"),
 &"AttackLeft": SubResource("Animation_5am64"),
 &"AttackRight": SubResource("Animation_lamgo"),
 &"AttackUp": SubResource("Animation_sumag"),
+&"DashDown": SubResource("Animation_r4sdc"),
+&"DashLeft": SubResource("Animation_ety0t"),
+&"DashRight": SubResource("Animation_4isnw"),
+&"DashUp": SubResource("Animation_60rb5"),
 &"IdleDown": SubResource("Animation_p21yd"),
 &"IdleLeft": SubResource("Animation_81l3x"),
 &"IdleRight": SubResource("Animation_31bpi"),
@@ -567,6 +639,31 @@ blend_point_1/pos = Vector2(-1.1, 0)
 blend_point_2/node = SubResource("AnimationNodeAnimation_lamgo")
 blend_point_2/pos = Vector2(0, -1.1)
 blend_point_3/node = SubResource("AnimationNodeAnimation_5am64")
+blend_point_3/pos = Vector2(0, 1.1)
+min_space = Vector2(-1.1, -1.1)
+max_space = Vector2(1.1, 1.1)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vgfpp"]
+animation = &"DashRight"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4isnw"]
+animation = &"DashLeft"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ety0t"]
+animation = &"DashUp"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_60rb5"]
+animation = &"DashDown"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_60rb5"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_vgfpp")
+blend_point_0/pos = Vector2(1.1, 0)
+blend_point_1/node = SubResource("AnimationNodeAnimation_4isnw")
+blend_point_1/pos = Vector2(-1.1, 0)
+blend_point_2/node = SubResource("AnimationNodeAnimation_ety0t")
+blend_point_2/pos = Vector2(0, -1.1)
+blend_point_3/node = SubResource("AnimationNodeAnimation_60rb5")
 blend_point_3/pos = Vector2(0, 1.1)
 min_space = Vector2(-1.1, -1.1)
 max_space = Vector2(1.1, 1.1)
@@ -649,15 +746,33 @@ advance_expression = "IsAttacking()"
 advance_mode = 2
 advance_expression = "IsWalking()"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_r4sdc"]
+advance_mode = 2
+advance_expression = "IsDashing()"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_41tmc"]
+advance_mode = 2
+advance_expression = "IsDashing()"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bl00m"]
+advance_mode = 2
+advance_expression = "IsIdle()"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_r633d"]
+advance_mode = 2
+advance_expression = "IsRunning()"
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_81l3x"]
 states/Attack/node = SubResource("AnimationNodeBlendSpace2D_s7fr4")
 states/Attack/position = Vector2(346, -68)
+states/Dash/node = SubResource("AnimationNodeBlendSpace2D_60rb5")
+states/Dash/position = Vector2(346, 234)
 states/Idle/node = SubResource("AnimationNodeBlendSpace2D_p21yd")
 states/Idle/position = Vector2(346, 100)
 states/Running/node = SubResource("AnimationNodeBlendSpace2D_vgfpp")
 states/Running/position = Vector2(569, 100)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_b4x1i"), "Idle", "Running", SubResource("AnimationNodeStateMachineTransition_sumag"), "Running", "Idle", SubResource("AnimationNodeStateMachineTransition_nhd7b"), "Idle", "Attack", SubResource("AnimationNodeStateMachineTransition_s7fr4"), "Attack", "Idle", SubResource("AnimationNodeStateMachineTransition_31bpi"), "Running", "Attack", SubResource("AnimationNodeStateMachineTransition_bot5f"), "Attack", "Running", SubResource("AnimationNodeStateMachineTransition_p21yd")]
-graph_offset = Vector2(-80, -275)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_b4x1i"), "Idle", "Running", SubResource("AnimationNodeStateMachineTransition_sumag"), "Running", "Idle", SubResource("AnimationNodeStateMachineTransition_nhd7b"), "Idle", "Attack", SubResource("AnimationNodeStateMachineTransition_s7fr4"), "Attack", "Idle", SubResource("AnimationNodeStateMachineTransition_31bpi"), "Running", "Attack", SubResource("AnimationNodeStateMachineTransition_bot5f"), "Attack", "Running", SubResource("AnimationNodeStateMachineTransition_p21yd"), "Idle", "Dash", SubResource("AnimationNodeStateMachineTransition_r4sdc"), "Running", "Dash", SubResource("AnimationNodeStateMachineTransition_41tmc"), "Dash", "Idle", SubResource("AnimationNodeStateMachineTransition_bl00m"), "Dash", "Running", SubResource("AnimationNodeStateMachineTransition_r633d")]
+graph_offset = Vector2(-129, -16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s7fr4"]
 size = Vector2(32, 15)
@@ -667,7 +782,9 @@ collision_layer = 2
 collision_mask = 5
 motion_mode = 1
 script = ExtResource("1_81l3x")
-attackFrames = 45
+attackFrames = 32
+dashFrames = 15
+dashSpeed = 500.0
 speed = 100.0
 animator = NodePath("AnimationTree")
 
@@ -693,6 +810,7 @@ tree_root = SubResource("AnimationNodeStateMachine_81l3x")
 advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Attack/blend_position = Vector2(0.9354013, 0.024663806)
+parameters/Dash/blend_position = Vector2(0.7487227, -0.06412554)
 parameters/Idle/blend_position = Vector2(0.82901454, -0.024663687)
 parameters/Running/blend_position = Vector2(0.8611314, -0.014798164)
 
@@ -705,6 +823,7 @@ position = Vector2(-20, -20)
 texture = ExtResource("3_s7fr4")
 
 [node name="WeapnHitbox" type="Area2D" parent="."]
+collision_layer = 8
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WeapnHitbox"]
