@@ -10,7 +10,7 @@ public enum PlayerState
 }
 
 [GlobalClass]
-public abstract partial class Player : Entity
+public partial class Player : Entity
 {
 
     [Export] private int attackFrames = 60;
@@ -51,6 +51,8 @@ public abstract partial class Player : Entity
 
             dashDirection = (mouse_pos - GlobalPosition).Normalized();
             animator.Set("parameters/Dash/blend_position", dashDirection);
+            animator.Set("parameters/Idle/blend_position", dashDirection);
+            animator.Set("parameters/Running/blend_position", dashDirection);
 
             state = PlayerState.Dashing;
         }
@@ -104,11 +106,6 @@ public abstract partial class Player : Entity
         }
 
         MoveAndSlide();
-    }
-
-    protected virtual void Attack()
-    {
-        GD.Print("Attack!!!");
     }
 
     public bool IsIdle()
