@@ -1,17 +1,22 @@
 using Godot;
 using System;
 
-enum PlayerState
+public enum PlayerState
 {
     Idle,
-    Running,   
+    Running,
+    Dashing,
+    Attacking,
 }
 
 [GlobalClass]
 public abstract partial class Player : Entity
 {
 
-    private PlayerState state = PlayerState.Idle;
+    [Export] private int attackFrames = 60;
+    private int attackCountdown = 0;
+
+    protected PlayerState state = PlayerState.Idle;
 
     public override void _PhysicsProcess(double delta)
     {
@@ -19,13 +24,31 @@ public abstract partial class Player : Entity
 
         Vector2 direction = Input.GetVector("left", "right", "up", "down");
 
-        if (Input.IsActionJustPressed("attack"))
+        // don't do this again if already attacking
+        if (Input.IsActionJustPressed("attack") && state != PlayerState.Attacking)
         {
-            Attack();
+            Vector2 mouse_pos = GetGlobalMousePosition();
+            animator.Set("parameters/Attack/blend_position", (mouse_pos - GlobalPosition).Normalized());
+            //GD.Print(mouse_pos);
+            attackCountdown = attackFrames;
+            //direction = new Vector2(0, 0);
+            Velocity = new Vector2(0, 0);
+            state = PlayerState.Attacking;
         }
 
         switch (state)
         {
+            case PlayerState.Attacking:
+
+                attackCountdown--;
+
+                if (attackCountdown <= 0)
+                {
+                    state = PlayerState.Idle;
+                }
+
+                break;
+
             case PlayerState.Idle:
 
             case PlayerState.Running:
@@ -36,6 +59,9 @@ public abstract partial class Player : Entity
                 }
                 else
                 {
+                    // set blend tree parameters
+                    animator.Set("parameters/Idle/blend_position", direction);
+                    animator.Set("parameters/Running/blend_position", direction);
                     state = PlayerState.Running;
                 }
 
@@ -46,13 +72,14 @@ public abstract partial class Player : Entity
         }
 
 
-
+        /*
         if (!direction.IsZeroApprox())
         {
             // set blend tree parameters
             animator.Set("parameters/Idle/blend_position", direction);
             animator.Set("parameters/Running/blend_position", direction);
         }
+        */
 
         MoveAndSlide();
     }
@@ -70,5 +97,13 @@ public abstract partial class Player : Entity
     public bool IsRunning()
     {
         return state == PlayerState.Running;
+    }
+    public bool IsDashing()
+    {
+        return state == PlayerState.Dashing;
+    }
+    public bool IsAttacking()
+    {
+        return state == PlayerState.Attacking;
     }
 }
