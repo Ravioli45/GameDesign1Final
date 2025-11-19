@@ -475,7 +475,7 @@ collision_layer = 4
 collision_mask = 7
 motion_mode = 1
 script = ExtResource("1_vghw6")
-speed = 10.0
+speed = 30.0
 animator = NodePath("AnimationTree")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

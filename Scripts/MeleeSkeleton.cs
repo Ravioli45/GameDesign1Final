@@ -51,16 +51,8 @@ public partial class MeleeSkeleton : Enemy
 
 	public void on_attack_exit(Node2D body)
     {
-		GD.Print("EXIT");	
-        if(body is Player p && to_hit_lag <= 0)
-        {
-			
-            State = EnemyState.Chase;
-        }
-        else
-        {
-            player_got_away = true;
-        }
+		GD.Print("EXIT");
+	  player_got_away = true;
     }
 	public void when_player_exits(Node2D body)
 	{
@@ -91,6 +83,10 @@ public partial class MeleeSkeleton : Enemy
 		else if (State == EnemyState.Idle)
 		{
 			Velocity = new Vector2(0, 0);
+            if (hit_timer > 0)
+            {
+                State = EnemyState.Attack;
+            }
 			
 		}
 		else if (State == EnemyState.Attack)
@@ -105,7 +101,7 @@ public partial class MeleeSkeleton : Enemy
             {
 				//Swing and Hits
 				GD.Print("Swing and Hit");
-				player.TakeDamage(attack,false,direction);
+				player.TakeDamage(attack,false);
 				hit_timer = 30;
 				has_attacked = true;
                 //Proc Damage and add hitlag has_attacked = true
@@ -123,15 +119,14 @@ public partial class MeleeSkeleton : Enemy
 				GD.Print("CHASE HE GOT AWAY");
 				//Default Chase Player after missing attack
                 State = EnemyState.Chase;
-            }
-            else if(hit_timer<=0 && to_hit_lag<=0)
+            }else if(hit_timer<=10 && to_hit_lag<=0 && !player_got_away)
             {
 				GD.Print("ATTACK AGAIN");
 				//Edge Case for when the player re enters during hit lag
                 to_hit_lag = 30;
 				has_attacked = false;
 				player_got_away = false;
-				State = EnemyState.Attack;
+				State = EnemyState.Idle;
 				
             }
 
