@@ -1,0 +1,246 @@
+[gd_scene load_steps=23 format=3 uid="uid://barvle7hdybcv"]
+
+[ext_resource type="Script" uid="uid://csmot8ge6mpmx" path="res://Scripts/WizardSkeleton.cs" id="1_5o0dk"]
+[ext_resource type="Texture2D" uid="uid://s6kk764d86o6" path="res://Sprites/Enemy/WizardSkeleton/WizardSkeletonSpriteSheet.png" id="1_k65nq"]
+[ext_resource type="PackedScene" uid="uid://bgxtvtocvd6np" path="res://Scenes/Enemies/fireball.tscn" id="2_5o0dk"]
+
+[sub_resource type="Animation" id="Animation_sb5ky"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [18]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_5o0dk"]
+resource_name = "Teleport"
+loop_mode = 1
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.44444448, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.44, 1.44), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.44444448, 0.9992398),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 3.12763, 6.2831855]
+}
+
+[sub_resource type="Animation" id="Animation_oxe42"]
+resource_name = "Idle"
+loop_mode = 1
+step = 0.07692308
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.30769232, 0.61538464, 0.9230769),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [14, 15, 16, 17]
+}
+
+[sub_resource type="Animation" id="Animation_y4be6"]
+resource_name = "Attack"
+loop_mode = 1
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oxe42"]
+_data = {
+&"Attack": SubResource("Animation_y4be6"),
+&"Idle": SubResource("Animation_oxe42"),
+&"RESET": SubResource("Animation_sb5ky"),
+&"Teleport": SubResource("Animation_5o0dk")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y4be6"]
+size = Vector2(14, 29)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r725t"]
+radius = 172.02615
+
+[sub_resource type="Gradient" id="Gradient_5o0dk"]
+colors = PackedColorArray(0, 0.49803922, 0.9137255, 1, 0.49019608, 1, 1, 1)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_r725t"]
+animation = &"Attack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7bmd7"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_l6u0e"]
+animation = &"Teleport"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pypd8"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qkx5x"]
+advance_mode = 2
+advance_expression = "IsAttacking()"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_57hop"]
+advance_mode = 2
+advance_expression = "IsIdle()"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6lo4h"]
+advance_mode = 2
+advance_expression = "IsIdle()"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_p0ypy"]
+advance_mode = 2
+advance_expression = "IsTeleporting()"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7l2ch"]
+advance_mode = 2
+advance_expression = "IsAttacking()"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_r3mks"]
+advance_mode = 2
+advance_expression = "IsTeleporting()"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_34c0a"]
+states/Attack/node = SubResource("AnimationNodeAnimation_r725t")
+states/Attack/position = Vector2(501, 147)
+states/Idle/node = SubResource("AnimationNodeAnimation_7bmd7")
+states/Idle/position = Vector2(405, 30)
+states/Teleport/node = SubResource("AnimationNodeAnimation_l6u0e")
+states/Teleport/position = Vector2(318, 147)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_pypd8"), "Idle", "Attack", SubResource("AnimationNodeStateMachineTransition_qkx5x"), "Attack", "Idle", SubResource("AnimationNodeStateMachineTransition_57hop"), "Teleport", "Idle", SubResource("AnimationNodeStateMachineTransition_6lo4h"), "Idle", "Teleport", SubResource("AnimationNodeStateMachineTransition_p0ypy"), "Teleport", "Attack", SubResource("AnimationNodeStateMachineTransition_7l2ch"), "Attack", "Teleport", SubResource("AnimationNodeStateMachineTransition_r3mks")]
+
+[node name="WizardSkeleton" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("1_5o0dk")
+Fireball = ExtResource("2_5o0dk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_k65nq")
+hframes = 3
+vframes = 8
+frame = 18
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+libraries = {
+&"": SubResource("AnimationLibrary_oxe42")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_y4be6")
+
+[node name="AttackArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+shape = SubResource("CircleShape2D_r725t")
+
+[node name="Teleportparticles" type="CPUParticles2D" parent="."]
+visible = false
+position = Vector2(0, 16.255)
+skew = 1.4538592
+amount = 100
+lifetime = 0.25
+speed_scale = 3.97
+randomness = 0.59
+emission_shape = 2
+emission_sphere_radius = 10.0
+spread = 0.0
+gravity = Vector2(0, -980)
+radial_accel_max = 22.39
+damping_max = 8.72
+angle_max = 720.0
+scale_amount_min = 0.0
+scale_amount_max = 3.0
+color = Color(0.4392157, 0.79607844, 1, 1)
+hue_variation_min = 0.73
+hue_variation_max = 0.73
+
+[node name="Attack Particles" type="CPUParticles2D" parent="."]
+visible = false
+amount = 50
+lifetime = 0.25
+speed_scale = 0.15
+explosiveness = 0.23
+randomness = 0.2
+local_coords = true
+emission_shape = 1
+emission_sphere_radius = 9.02
+gravity = Vector2(0, -800)
+angular_velocity_min = -122.32
+angular_velocity_max = 122.32
+orbit_velocity_min = 20.0
+orbit_velocity_max = 20.0
+color_ramp = SubResource("Gradient_5o0dk")
+hue_variation_min = 0.45
+hue_variation_max = 1.0
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+root_node = NodePath("../Sprite2D")
+tree_root = SubResource("AnimationNodeStateMachine_34c0a")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../Sprite2D/AnimationPlayer")
+
+[connection signal="body_entered" from="AttackArea" to="." method="OnPlayerEntered"]
+[connection signal="body_exited" from="AttackArea" to="." method="OnPlayerExited"]

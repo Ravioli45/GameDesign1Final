@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dh3kcmurdgds5"
-path="res://.godot/imported/skeleton5_idle.png-02e11b6fe10579a9606c00b690f0b578.ctex"
+uid="uid://s6kk764d86o6"
+path="res://.godot/imported/WizardSkeletonSpriteSheet.png-b3d1b27bc06937bb889d6337a533b75c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Enemy/WizardSkeleton/skeleton5_idle.png"
-dest_files=["res://.godot/imported/skeleton5_idle.png-02e11b6fe10579a9606c00b690f0b578.ctex"]
+source_file="res://Sprites/Enemy/WizardSkeleton/WizardSkeletonSpriteSheet.png"
+dest_files=["res://.godot/imported/WizardSkeletonSpriteSheet.png-b3d1b27bc06937bb889d6337a533b75c.ctex"]
 
 [params]
 

@@ -7,6 +7,7 @@ enum EnemyState
 	Idle,
 	Chase,
 	Attack,
+	Teleport,
 }
 
 public partial class MeleeSkeleton : Enemy
