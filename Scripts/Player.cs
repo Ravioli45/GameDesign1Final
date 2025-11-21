@@ -108,6 +108,15 @@ public partial class Player : Entity
         MoveAndSlide();
     }
 
+    // OnBodyEnter from weapon hitbox
+    public void OnEnemyHit(Node2D body)
+    {
+        if (body is Entity enemy)
+        {
+            enemy.TakeDamage(attack, false);
+        }
+    }
+
     public bool IsIdle()
     {
         return state == PlayerState.Idle;

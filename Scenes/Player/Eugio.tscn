@@ -782,7 +782,7 @@ collision_layer = 2
 collision_mask = 5
 motion_mode = 1
 script = ExtResource("1_s7fr4")
-attackFrames = 32
+attackFrames = 24
 dashFrames = 15
 dashSpeed = 500.0
 speed = 200.0
@@ -830,3 +830,5 @@ collision_mask = 4
 position = Vector2(0, -26.5)
 shape = SubResource("RectangleShape2D_s7fr4")
 disabled = true
+
+[connection signal="body_entered" from="WeapnHitbox" to="." method="OnEnemyHit"]
