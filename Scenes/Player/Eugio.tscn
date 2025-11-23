@@ -1,7 +1,8 @@
-[gd_scene load_steps=56 format=3 uid="uid://dkkmc7f6645jl"]
+[gd_scene load_steps=57 format=3 uid="uid://dkkmc7f6645jl"]
 
 [ext_resource type="Texture2D" uid="uid://s0b4hi5khcac" path="res://Sprites/Player/EugioAnimationsSpriteSheet.png" id="1_d5ap3"]
 [ext_resource type="Script" uid="uid://bnf1o6r6l4xpl" path="res://Scripts/Player.cs" id="1_s7fr4"]
+[ext_resource type="Resource" uid="uid://b6v377en6ncvd" path="res://Stats/player.tres" id="2_31bpi"]
 [ext_resource type="Texture2D" uid="uid://btw76x4kjh7lx" path="res://Sprites/Weapons/Electrosword.png" id="3_s7fr4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_81l3x"]
@@ -785,6 +786,7 @@ script = ExtResource("1_s7fr4")
 attackFrames = 24
 dashFrames = 15
 dashSpeed = 500.0
+stats = ExtResource("2_31bpi")
 speed = 200.0
 animator = NodePath("AnimationTree")
 

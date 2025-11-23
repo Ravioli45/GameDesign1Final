@@ -85,7 +85,7 @@ public partial class WizardSkeleton : Enemy
 
 		if (instance is Fireball f)
                 {
-                    f.damage = attack;
+                    f.damage = stats.attack;
                 }
 		
 		

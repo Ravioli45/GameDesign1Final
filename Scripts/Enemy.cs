@@ -9,18 +9,37 @@ public abstract partial class Enemy : Entity
 	[Export] PackedScene gold;
 	[Export] public bool is_element_applied;
 	[Export] public int amount_gold_drop;
+
+	protected int currentHealth = -1;
+
+	[Export] protected EnemyStats stats;
+
+	public override void _Ready()
+	{
+		base._Ready();
+		currentHealth = stats.maxHealth;
+		GD.Print(currentHealth);
+    }
+
+
 	public override void TakeDamage(int base_damage, bool Element)
 	{
 		if (Element && is_element_applied)
 		{
 			base_damage *= 2;
-		}else if(Element && !is_element_applied)
-        {
+		}
+		else if (Element && !is_element_applied)
+		{
 			this.is_element_applied = true;
-        }
-		
-		health -= base_damage;
-    }
+		}
+
+		currentHealth -= base_damage;
+
+		if (currentHealth <= 0)
+		{
+			GD.Print("enemy died: " + base_damage);
+		}
+	}
 	public void Die()
     {
 		

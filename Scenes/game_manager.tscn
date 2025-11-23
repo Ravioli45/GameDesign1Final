@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsmk24u2p5xf3"]
+
+[ext_resource type="Script" uid="uid://d3vk47jc8up4h" path="res://Scripts/GameManager.cs" id="1_oj352"]
+[ext_resource type="Resource" uid="uid://b6v377en6ncvd" path="res://Stats/player.tres" id="2_e5fcp"]
+
+[node name="GameManager" type="Node"]
+script = ExtResource("1_oj352")
+playerStats = ExtResource("2_e5fcp")

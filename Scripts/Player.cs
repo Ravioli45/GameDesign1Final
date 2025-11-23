@@ -20,8 +20,8 @@ public partial class Player : Entity
     private int dashCountdown = 0;
     private Vector2 dashDirection = new(0, 0);
     [Export] private float dashSpeed = 10;
-    
 
+    [Export] protected PlayerStats stats;
     protected PlayerState state = PlayerState.Idle;
 
     public override void _PhysicsProcess(double delta)
@@ -100,7 +100,7 @@ public partial class Player : Entity
                 }
 
                 // speed from Entity.cs
-                Velocity = direction * speed;
+                Velocity = direction * stats.speed;
 
                 break;
         }
@@ -113,9 +113,16 @@ public partial class Player : Entity
     {
         if (body is Entity enemy)
         {
-            enemy.TakeDamage(attack, false);
+            enemy.TakeDamage(stats.attack, false);
         }
     }
+
+    public override void TakeDamage(int base_damage, bool Element)
+    {
+        //base.TakeDamage(base_damage, Element);
+        stats.health -= base_damage;
+    }
+
 
     public bool IsIdle()
     {

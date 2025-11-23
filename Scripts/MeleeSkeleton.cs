@@ -64,6 +64,7 @@ public partial class MeleeSkeleton : Enemy
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		base._Ready();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -72,7 +73,7 @@ public partial class MeleeSkeleton : Enemy
 		if (State == EnemyState.Chase)
 		{
 			direction = (player.GlobalPosition - this.GlobalPosition).Normalized();
-			Velocity = speed * direction;
+			Velocity = stats.speed * direction;
 			animator.Set("parameters/Walk/blend_position", direction);
 			has_attacked = false;
 			
@@ -98,7 +99,7 @@ public partial class MeleeSkeleton : Enemy
 			if(to_hit_lag <= 0 && !player_got_away && !has_attacked)
             {
 				//Swing and Hits
-				player.TakeDamage(attack,false);
+				player.TakeDamage(stats.attack,false);
 				hit_timer = 30;
 				has_attacked = true;
                 //Proc Damage and add hitlag has_attacked = true

@@ -41,7 +41,7 @@ public partial class Slimothy : Enemy
     public async void CollideHit(Player target)
     {
         GD.Print("ATTACK");
-        target.TakeDamage(attack, false);
+        target.TakeDamage(stats.attack, false);
         // Knockback stuff could go here
         // Here we prevent multi-hit by making the Attack CD 1 second
         inAttackCD = true;
@@ -50,7 +50,8 @@ public partial class Slimothy : Enemy
     }
 
     public override void _Ready()
-	{
+    {
+        base._Ready();
 	}
 
     public override void _PhysicsProcess(double delta)
@@ -64,7 +65,7 @@ public partial class Slimothy : Enemy
                 animator.Set("parameters/Chasing/blend_position", Direction);
                 Lunge();
             }
-            else if (!inLungeCD) Velocity = speed * Direction;
+            else if (!inLungeCD) Velocity = stats.speed * Direction;
             else Velocity = new Vector2(0,0);
         }
         else if (State == EnemyState.Idle)
