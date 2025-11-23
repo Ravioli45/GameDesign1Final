@@ -29,6 +29,10 @@ public partial class Alistar : CharacterBody2D
 
     private bool InMeleeRange = false;
     private bool MeleeAttacking = false;
+
+    private bool MeleeCooldown = false;
+
+    private bool endAttack = false;
    
 
 	public void PlayerEntersFight(Node2D body)
@@ -88,13 +92,17 @@ public partial class Alistar : CharacterBody2D
 			
         } else if(AttackSelection == 1)
         {
+            
 			//Begins his walking/melee attack cycle
 			State = BossState.Walking;
-            //Walks for 5 seconds before changing states CURRENTLY NON FUNCTIONAL
+            MeleeCooldown = true;
+            await ToSignal(GetTree().CreateTimer(0.5f), "timeout");
+            MeleeCooldown = false;
             await ToSignal(GetTree().CreateTimer(5f), "timeout");
             
-            State = BossState.Idle;
-            InAttack = false;
+            endAttack = true;
+            
+           
             
         } else if(AttackSelection == 2)
         {
@@ -161,18 +169,22 @@ public partial class Alistar : CharacterBody2D
 
     public async void MeleeAttack()
     {
+        
         //Not Functional Await functions bug out the timer in the vulnerable function
-            MeleeAttacking = true;
             State = BossState.Attacking;
+            MeleeAttacking = true;
+           
             //Stall to hit ground first
-            await ToSignal(GetTree().CreateTimer(0.5f), "timeout");
-            if (InMeleeRange)
-            {
-                PlayerNode.TakeDamage(Damage,false);
-            }
             await ToSignal(GetTree().CreateTimer(1f), "timeout");
             MeleeAttacking = false;
+
+            MeleeCooldown = true;
+            
+            await ToSignal(GetTree().CreateTimer(0.5f), "timeout");
             State = BossState.Walking;
+            await ToSignal(GetTree().CreateTimer(0.5f), "timeout");
+            MeleeCooldown = false;
+            
         
     }
 
@@ -196,7 +208,7 @@ public partial class Alistar : CharacterBody2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-        GD.Print(State);
+        
         
         if(fightStarted){
 
@@ -207,6 +219,7 @@ public partial class Alistar : CharacterBody2D
             if(!InAttack ){
             InAttack = true;
             AttackSelection++;
+            endAttack = false;
             Vulnerable();
             }
         }
@@ -228,11 +241,27 @@ public partial class Alistar : CharacterBody2D
 
         else if (State == BossState.Walking)
         {
-            //Actual Melee Attacks not implemented yet
-            Direction = (PlayerNode.GlobalPosition - this.GlobalPosition).Normalized();
-			Velocity = 70 * Direction;
-			Animator.Set("parameters/Walking/blend_position", Direction);
-            MoveAndSlide();
+            
+            
+            if(!MeleeCooldown && !MeleeAttacking && endAttack )
+                {
+                 
+                     InAttack = false;
+                    State = BossState.Idle;
+                }
+
+            if (!MeleeAttacking && !MeleeCooldown) {
+                Direction = (PlayerNode.GlobalPosition - this.GlobalPosition).Normalized();
+                Animator.Set("parameters/Chasing/blend_position", Direction);
+                Velocity = 75 * Direction;
+                if(InMeleeRange){
+                MeleeAttack();
+                }
+                MoveAndSlide();
+            }
+            
+
+            
              
         }
 
@@ -243,7 +272,7 @@ public partial class Alistar : CharacterBody2D
 
         else if(State == BossState.Attacking)
         {
-                
+               
         }
 
         }
