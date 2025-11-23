@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://blmyfd7soojvd"]
+
+[sub_resource type="Curve" id="Curve_qqw07"]
+_limits = [0.0, 1.0, -0.4, 1.0]
+_data = [Vector2(-0.34929574, 0.95601505), 0.0, 0.0, 0, 0, Vector2(0.036619753, 0.4135338), 0.0, 0.0, 0, 0, Vector2(0.51830983, 0.6676692), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_evldm"]
+offsets = PackedFloat32Array(0.38004246, 1)
+colors = PackedColorArray(1, 1, 0.2509804, 1, 0.03137255, 0.9137255, 0.9372549, 0.3137255)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="GPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(0, -10.465)
+skew = 1.4538592
+amount = 100
+lifetime = 0.66
+preprocess = 1.31
+speed_scale = 2.0
+explosiveness = 0.3
+randomness = 0.34
+emission_shape = 2
+emission_sphere_radius = 0.01
+spread = 0.0
+gravity = Vector2(0, -500)
+angular_velocity_min = -150.11
+angular_velocity_max = -150.11
+orbit_velocity_min = -872.58
+orbit_velocity_max = 520.27
+radial_accel_max = 22.39
+damping_max = 4.633
+angle_max = 720.0
+scale_amount_min = 0.0
+scale_amount_max = 5.34
+scale_amount_curve = SubResource("Curve_qqw07")
+color_ramp = SubResource("Gradient_evldm")
+hue_variation_min = 0.73
+hue_variation_max = 0.73

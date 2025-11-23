@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dh3kcmurdgds5"
-path="res://.godot/imported/skeleton5_idle.png-02e11b6fe10579a9606c00b690f0b578.ctex"
+uid="uid://cbdjnonrohfsb"
+path="res://.godot/imported/Slimothy.png-0f848150842aa57097da1c0714a36f91.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Enemy/WizardSkeleton/skeleton5_idle.png"
-dest_files=["res://.godot/imported/skeleton5_idle.png-02e11b6fe10579a9606c00b690f0b578.ctex"]
+source_file="res://Sprites/Enemy/Slimothy/Slimothy.png"
+dest_files=["res://.godot/imported/Slimothy.png-0f848150842aa57097da1c0714a36f91.ctex"]
 
 [params]
 

@@ -1,0 +1,84 @@
+[gd_scene load_steps=13 format=3 uid="uid://bgxtvtocvd6np"]
+
+[ext_resource type="Script" uid="uid://bcnxmiqx05mns" path="res://Scripts/Fireball.cs" id="1_vvw1v"]
+[ext_resource type="Texture2D" uid="uid://jmsgsmcjdpva" path="res://Sprites/Projectiles/BlueFireball.png" id="2_6t5ui"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vrmbb"]
+radius = 6.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vvw1v"]
+atlas = ExtResource("2_6t5ui")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6t5ui"]
+atlas = ExtResource("2_6t5ui")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ts2yt"]
+atlas = ExtResource("2_6t5ui")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2tlxu"]
+atlas = ExtResource("2_6t5ui")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wm3rh"]
+atlas = ExtResource("2_6t5ui")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4dsbb"]
+atlas = ExtResource("2_6t5ui")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_axhyu"]
+atlas = ExtResource("2_6t5ui")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_05frq"]
+atlas = ExtResource("2_6t5ui")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qa4sg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vvw1v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6t5ui")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ts2yt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2tlxu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wm3rh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4dsbb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_axhyu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_05frq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="Fireball" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
+collision_layer = 0
+collision_mask = 3
+script = ExtResource("1_vvw1v")
+sprite = NodePath("AnimatedSprite2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_vrmbb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_qa4sg")
+frame_progress = 0.17969203
