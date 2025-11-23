@@ -1,7 +1,7 @@
 [gd_scene load_steps=60 format=3 uid="uid://bgylqq3g0ykho"]
 
 [ext_resource type="Script" uid="uid://ct8ge78nwg8io" path="res://Scripts/Alistar.cs" id="1_x1gx5"]
-[ext_resource type="PackedScene" uid="uid://bgxtvtocvd6np" path="res://Scenes/Enemies/EnemyProjectiles/fireball.tscn" id="2_bouab"]
+[ext_resource type="PackedScene" uid="uid://dtb2ch8y0mxxm" path="res://Scenes/Enemies/EnemyProjectiles/Rock.tscn" id="2_bouab"]
 [ext_resource type="Texture2D" uid="uid://duii4uevof26m" path="res://Sprites/Bosses/AlistarAnimations.png" id="2_ln3ea"]
 
 [sub_resource type="Animation" id="Animation_4sp58"]
@@ -417,7 +417,7 @@ collision_mask = 7
 motion_mode = 1
 script = ExtResource("1_x1gx5")
 Animator = NodePath("AnimationTree")
-Fireball = ExtResource("2_bouab")
+Rock = ExtResource("2_bouab")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_ln3ea")

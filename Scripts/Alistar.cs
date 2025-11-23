@@ -14,7 +14,7 @@ enum BossState
 public partial class Alistar : CharacterBody2D
 {
     [Export] AnimationTree Animator;
-    [Export] PackedScene Fireball;
+    [Export] PackedScene Rock;
 
 	private Player PlayerNode;
 	private Vector2 Direction = new Vector2(0,0);
@@ -192,7 +192,7 @@ public partial class Alistar : CharacterBody2D
     {
         //Spawns Projectiles
         
-        CharacterBody2D instance = Fireball.Instantiate<CharacterBody2D>();
+        CharacterBody2D instance = Rock.Instantiate<CharacterBody2D>();
         instance.Position = this.Position;
         instance.Rotation = Mathf.Atan2(StaticDirection.Y , StaticDirection.X);
 		instance.Velocity = StaticDirection *200;
