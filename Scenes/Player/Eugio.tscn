@@ -787,7 +787,6 @@ attackFrames = 24
 dashFrames = 15
 dashSpeed = 500.0
 stats = ExtResource("2_31bpi")
-speed = 200.0
 animator = NodePath("AnimationTree")
 
 [node name="EugioSprite" type="Sprite2D" parent="."]

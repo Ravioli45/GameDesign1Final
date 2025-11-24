@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://n07yq52n2wcl"]
+
+[ext_resource type="Script" uid="uid://1bk7h8atlmjo" path="res://Scripts/Item.cs" id="1_76mu4"]
+[ext_resource type="Texture2D" uid="uid://va3quycgboix" path="res://Sprites/Item/HPUP.png" id="1_ys0gr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_76mu4"]
+size = Vector2(16, 16)
+
+[node name="Item" type="Sprite2D"]
+texture = ExtResource("1_ys0gr")
+script = ExtResource("1_76mu4")
+
+[node name="Sprite2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D"]
+shape = SubResource("RectangleShape2D_76mu4")
+
+[connection signal="input_event" from="Sprite2D" to="." method="OnItemClick"]

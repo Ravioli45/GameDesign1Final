@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="ItemStats" load_steps=5 format=3 uid="uid://cr8r1pjqx330h"]
+
+[ext_resource type="Script" uid="uid://ctjppo767ltfu" path="res://Scripts/Resources/ItemStats.cs" id="1_lr4rw"]
+[ext_resource type="Texture2D" uid="uid://g0kvx88k3onx" path="res://Sprites/Item/CritDamageUp.png" id="2_cyyss"]
+[ext_resource type="Script" uid="uid://bytwjck2p8wpm" path="res://Scripts/Resources/PlayerStats.cs" id="3_tmdu1"]
+
+[sub_resource type="Resource" id="Resource_rtpv3"]
+script = ExtResource("3_tmdu1")
+health = 0
+maxHealth = 0
+attack = 0
+speed = 0
+expToNextLevel = 0
+critDamage = 0.1
+maxMeter = 0
+metadata/_custom_type_script = "uid://bytwjck2p8wpm"
+
+[resource]
+script = ExtResource("1_lr4rw")
+itemName = "Crit Damage Earrings"
+goldCost = 10
+sprite = ExtResource("2_cyyss")
+statChanges = SubResource("Resource_rtpv3")
+metadata/_custom_type_script = "uid://ctjppo767ltfu"

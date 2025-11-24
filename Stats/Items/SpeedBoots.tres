@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="ItemStats" load_steps=5 format=3 uid="uid://dap0gdaxncjv2"]
+
+[ext_resource type="Script" uid="uid://ctjppo767ltfu" path="res://Scripts/Resources/ItemStats.cs" id="1_gj33e"]
+[ext_resource type="Texture2D" uid="uid://cdtlqbed7amgt" path="res://Sprites/Item/SpeedUp.png" id="2_cns2y"]
+[ext_resource type="Script" uid="uid://bytwjck2p8wpm" path="res://Scripts/Resources/PlayerStats.cs" id="3_hvlpb"]
+
+[sub_resource type="Resource" id="Resource_vainm"]
+script = ExtResource("3_hvlpb")
+health = 0
+maxHealth = 0
+attack = 0
+speed = 50
+expToNextLevel = 0
+maxMeter = 0
+metadata/_custom_type_script = "uid://bytwjck2p8wpm"
+
+[resource]
+script = ExtResource("1_gj33e")
+itemName = "Boots of Running Fast"
+goldCost = 5
+sprite = ExtResource("2_cns2y")
+statChanges = SubResource("Resource_vainm")
+metadata/_custom_type_script = "uid://ctjppo767ltfu"

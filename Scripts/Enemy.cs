@@ -18,7 +18,6 @@ public abstract partial class Enemy : Entity
 	{
 		base._Ready();
 		currentHealth = stats.maxHealth;
-		GD.Print(currentHealth);
     }
 
 
@@ -37,7 +36,7 @@ public abstract partial class Enemy : Entity
 
 		if (currentHealth <= 0)
 		{
-			GD.Print("enemy died: " + base_damage);
+			//GD.Print("enemy died: " + base_damage);
 		}
 	}
 	public void Die()

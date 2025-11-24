@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="ItemStats" load_steps=5 format=3 uid="uid://bixjxgnhf0law"]
+
+[ext_resource type="Script" uid="uid://ctjppo767ltfu" path="res://Scripts/Resources/ItemStats.cs" id="1_i6ii5"]
+[ext_resource type="Texture2D" uid="uid://va3quycgboix" path="res://Sprites/Item/HPUP.png" id="2_61pcm"]
+[ext_resource type="Script" uid="uid://bytwjck2p8wpm" path="res://Scripts/Resources/PlayerStats.cs" id="3_71dis"]
+
+[sub_resource type="Resource" id="Resource_3i40a"]
+script = ExtResource("3_71dis")
+health = 10
+maxHealth = 0
+attack = 0
+speed = 0
+expToNextLevel = 0
+maxMeter = 0
+metadata/_custom_type_script = "uid://bytwjck2p8wpm"
+
+[resource]
+script = ExtResource("1_i6ii5")
+itemName = "Healthy Burger"
+goldCost = 5
+sprite = ExtResource("2_61pcm")
+statChanges = SubResource("Resource_3i40a")
+metadata/_custom_type_script = "uid://ctjppo767ltfu"
