@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://dkkmc7f6645jl"]
+[gd_scene load_steps=58 format=3 uid="uid://dkkmc7f6645jl"]
 
 [ext_resource type="Texture2D" uid="uid://s0b4hi5khcac" path="res://Sprites/Player/EugioAnimationsSpriteSheet.png" id="1_d5ap3"]
 [ext_resource type="Script" uid="uid://bnf1o6r6l4xpl" path="res://Scripts/Player.cs" id="1_s7fr4"]
@@ -778,7 +778,10 @@ graph_offset = Vector2(-153, -61)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s7fr4"]
 size = Vector2(32, 15)
 
-[node name="Eugio" type="CharacterBody2D" node_paths=PackedStringArray("animator")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_31bpi"]
+radius = 34.0
+
+[node name="Eugio" type="CharacterBody2D" node_paths=PackedStringArray("ultHitbox", "animator")]
 collision_layer = 2
 collision_mask = 5
 motion_mode = 1
@@ -787,7 +790,7 @@ attackFrames = 24
 dashFrames = 15
 dashSpeed = 500.0
 stats = ExtResource("2_31bpi")
-speed = 200.0
+ultHitbox = NodePath("UltHitbox")
 animator = NodePath("AnimationTree")
 
 [node name="EugioSprite" type="Sprite2D" parent="."]
@@ -833,4 +836,14 @@ position = Vector2(0, -26.5)
 shape = SubResource("RectangleShape2D_s7fr4")
 disabled = true
 
+[node name="UltHitbox" type="Area2D" parent="."]
+visible = false
+collision_layer = 8
+collision_mask = 4
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UltHitbox"]
+shape = SubResource("CircleShape2D_31bpi")
+
 [connection signal="body_entered" from="WeapnHitbox" to="." method="OnEnemyHit"]
+[connection signal="body_entered" from="UltHitbox" to="." method="OnUltHit"]
