@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://dtb2ch8y0mxxm"]
+
+[ext_resource type="Script" uid="uid://bcnxmiqx05mns" path="res://Scripts/Fireball.cs" id="1_l8iwe"]
+[ext_resource type="Texture2D" uid="uid://d3g82d37gnlvm" path="res://Sprites/Projectiles/RockProjectilepng.png" id="2_32sdh"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l8iwe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_32sdh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Curve" id="Curve_q43u8"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.9537223, 0.23270673), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0s3lk"]
+radius = 9.0
+
+[node name="CharacterBody2D" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
+collision_layer = 0
+collision_mask = 3
+script = ExtResource("1_l8iwe")
+sprite = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_l8iwe")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emission_shape = 3
+emission_rect_extents = Vector2(7.84, 1)
+scale_amount_max = 4.0
+scale_amount_curve = SubResource("Curve_q43u8")
+color = Color(0.5411765, 0.4392157, 0.39215687, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0s3lk")
