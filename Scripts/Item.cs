@@ -15,11 +15,27 @@ public partial class Item : Sprite2D
     {
         base._Ready();
 
-        Texture = itemInfo.sprite;
-        itemText.Clear();
-        itemText.AppendText($"{itemInfo.itemName}\n{itemInfo.goldCost} ");
-        itemText.AddImage(goldSprite);
+        UpdateStats(itemInfo);
         itemText.Visible = false;
+    }
+
+    // now this can be called at runtime (probably when populatin)
+    public void UpdateStats(ItemStats newStats)
+    {
+        itemInfo = newStats;
+
+        if (itemInfo != null)
+        {
+            Texture = itemInfo.sprite;
+            itemText.Clear();
+            itemText.AppendText($"{itemInfo.itemName}\n{itemInfo.goldCost} ");
+            itemText.AddImage(goldSprite);
+        }
+        else
+        {
+            itemText.Clear();
+            itemText.AppendText("No item resource on this item :(");
+        }
     }
 
     // InputEvent from Area2D
@@ -36,6 +52,7 @@ public partial class Item : Sprite2D
         }
     }
 
+    // both of these from Control node
     public void OnMouseEntered()
     {
         itemText.Visible = true;
