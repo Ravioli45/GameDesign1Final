@@ -23,6 +23,10 @@ GameManager="*res://Scenes/game_manager.tscn"
 
 project/assembly_name="DungeonBuster"
 
+[global_group]
+
+Boss=""
+
 [input]
 
 left={

@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=4 uid="uid://dnns8xqfoiqws"]
+
+[ext_resource type="Script" uid="uid://cqxhach16yju0" path="res://BossDoor.cs" id="1_3yph4"]
+[ext_resource type="TileSet" uid="uid://bh2eiv84e3mqs" path="res://TileSets/Dungeon3TileSet.tres" id="2_j52aj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4c1x2"]
+size = Vector2(127, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lb2ws"]
+size = Vector2(3038, 2993)
+
+[node name="Boss Door" type="Node2D" node_paths=PackedStringArray("BossDetection", "Bars")]
+script = ExtResource("1_3yph4")
+BossDetection = NodePath("BossLocater/CollisionShape2D")
+Bars = NodePath("Door")
+
+[node name="Door" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD+/wEAAAAEAAsAAAD+/wIAAAAEAAwAAAD//wEAAAAFAAsAAAD//wIAAAAFAAwAAAAAAAEAAAAEAAsAAAAAAAIAAAAEAAwAAAABAAEAAAAFAAsAAAABAAIAAAAFAAwAAAA=")
+enabled = false
+tile_set = ExtResource("2_j52aj")
+
+[node name="PlayerEntrance" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerEntrance"]
+position = Vector2(0.5, -11)
+shape = SubResource("RectangleShape2D_4c1x2")
+
+[node name="BossLocater" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BossLocater"]
+position = Vector2(3, 23.5)
+shape = SubResource("RectangleShape2D_lb2ws")
+
+[connection signal="body_entered" from="PlayerEntrance" to="." method="OnPlayerEnter"]
+[connection signal="body_entered" from="BossLocater" to="." method="OnBossAlive"]
+[connection signal="body_exited" from="BossLocater" to="." method="OnBossDies"]

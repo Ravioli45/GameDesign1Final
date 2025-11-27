@@ -11,7 +11,7 @@ enum BossState
 	Charging,
 	Tackle,
 }
-public partial class Alistar : CharacterBody2D
+public partial class Alistar : Entity
 {
     [Export] AnimationTree Animator;
     [Export] PackedScene Rock;
@@ -27,6 +27,7 @@ public partial class Alistar : CharacterBody2D
     private int ChargeDamage = 2;
     public bool fightStarted = false;
 
+    private int HP = 10;
     private bool InMeleeRange = false;
     private bool MeleeAttacking = false;
 
@@ -34,7 +35,11 @@ public partial class Alistar : CharacterBody2D
 
     private bool endAttack = false;
    
-
+    public override void TakeDamage(int base_damage, bool Element)
+    {
+        GD.Print("Ouch");
+        HP-=base_damage;
+    }
 	public void PlayerEntersFight(Node2D body)
     {
        

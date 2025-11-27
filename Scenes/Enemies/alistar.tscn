@@ -1,7 +1,7 @@
-[gd_scene load_steps=60 format=3 uid="uid://bgylqq3g0ykho"]
+[gd_scene load_steps=60 format=3 uid="uid://bq6q7nnadhnwp"]
 
 [ext_resource type="Script" uid="uid://ct8ge78nwg8io" path="res://Scripts/Alistar.cs" id="1_x1gx5"]
-[ext_resource type="PackedScene" uid="uid://dtb2ch8y0mxxm" path="res://Scenes/Enemies/EnemyProjectiles/Rock.tscn" id="2_bouab"]
+[ext_resource type="PackedScene" path="res://Scenes/Enemies/EnemyProjectiles/Rock.tscn" id="2_bouab"]
 [ext_resource type="Texture2D" uid="uid://duii4uevof26m" path="res://Sprites/Bosses/AlistarAnimations.png" id="2_ln3ea"]
 
 [sub_resource type="Animation" id="Animation_4sp58"]
@@ -463,7 +463,6 @@ scale_amount_curve = SubResource("Curve_k13fg")
 color = Color(0.34389707, 0.2534183, 0.22704473, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, 3)
 shape = SubResource("CircleShape2D_bouab")
 
@@ -479,8 +478,7 @@ disabled = true
 collision_layer = 4
 collision_mask = 7
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Begin Fight"]
-visible = false
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Begin Fight" groups=["Boss"]]
 shape = SubResource("CircleShape2D_ln3ea")
 
 [node name="Melee Area" type="Area2D" parent="."]
