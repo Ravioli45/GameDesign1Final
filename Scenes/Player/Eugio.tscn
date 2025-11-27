@@ -1,9 +1,15 @@
-[gd_scene load_steps=58 format=3 uid="uid://dkkmc7f6645jl"]
+[gd_scene load_steps=71 format=3 uid="uid://dkkmc7f6645jl"]
 
 [ext_resource type="Texture2D" uid="uid://s0b4hi5khcac" path="res://Sprites/Player/EugioAnimationsSpriteSheet.png" id="1_d5ap3"]
 [ext_resource type="Script" uid="uid://bnf1o6r6l4xpl" path="res://Scripts/Player.cs" id="1_s7fr4"]
 [ext_resource type="Resource" uid="uid://b6v377en6ncvd" path="res://Stats/player.tres" id="2_31bpi"]
 [ext_resource type="Texture2D" uid="uid://btw76x4kjh7lx" path="res://Sprites/Weapons/Electrosword.png" id="3_s7fr4"]
+[ext_resource type="Script" uid="uid://bek1nkgohw6sj" path="res://Scripts/PlayerHUD.cs" id="5_bot5f"]
+[ext_resource type="Texture2D" uid="uid://c3bb7l6rivefs" path="res://Sprites/UI/HealthAndMeterUI.png" id="6_b4x1i"]
+[ext_resource type="Texture2D" uid="uid://w36y4f1h856v" path="res://Sprites/UI/HUDbackgroundpng.png" id="6_vgfpp"]
+[ext_resource type="FontFile" uid="uid://cbi7tso5e4xbl" path="res://Sprites/UI/DigitalJots.ttf" id="6_w2hfu"]
+[ext_resource type="Texture2D" uid="uid://cwv8pfb2avsme" path="res://Sprites/UI/GoldUI.png" id="8_ajo84"]
+[ext_resource type="Texture2D" uid="uid://lmoahbv26mbs" path="res://Sprites/UI/TimerUI.png" id="9_ajo84"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_81l3x"]
 size = Vector2(18, 26)
@@ -778,10 +784,36 @@ graph_offset = Vector2(-153, -61)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s7fr4"]
 size = Vector2(32, 15)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_31bpi"]
-radius = 34.0
+[sub_resource type="Gradient" id="Gradient_vgfpp"]
+colors = PackedColorArray(0.3, 0.3, 0.3, 1, 0.54, 0.54, 0.54, 1)
+metadata/_snap_enabled = true
 
-[node name="Eugio" type="CharacterBody2D" node_paths=PackedStringArray("ultHitbox", "animator")]
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_sumag"]
+gradient = SubResource("Gradient_vgfpp")
+height = 16
+fill_from = Vector2(1, 1)
+fill_to = Vector2(0, 0.148423)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ajo84"]
+bg_color = Color(0.2702219, 0.27022195, 0.27022177, 1)
+
+[sub_resource type="Gradient" id="Gradient_w2hfu"]
+colors = PackedColorArray(0.3100018, 0.5225565, 0.8748169, 1, 0.07999998, 0.9386665, 1, 1)
+metadata/_snap_count = 12
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ajo84"]
+gradient = SubResource("Gradient_w2hfu")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vgfpp"]
+texture = SubResource("GradientTexture1D_ajo84")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sumag"]
+bg_color = Color(0.27058825, 0.27058825, 0.27058825, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nhd7b"]
+bg_color = Color(0.9098039, 0.09411765, 0.101960786, 1)
+
+[node name="Eugio" type="CharacterBody2D" node_paths=PackedStringArray("animator")]
 collision_layer = 2
 collision_mask = 5
 motion_mode = 1
@@ -790,7 +822,6 @@ attackFrames = 24
 dashFrames = 15
 dashSpeed = 500.0
 stats = ExtResource("2_31bpi")
-ultHitbox = NodePath("UltHitbox")
 animator = NodePath("AnimationTree")
 
 [node name="EugioSprite" type="Sprite2D" parent="."]
@@ -836,14 +867,128 @@ position = Vector2(0, -26.5)
 shape = SubResource("RectangleShape2D_s7fr4")
 disabled = true
 
-[node name="UltHitbox" type="Area2D" parent="."]
-visible = false
-collision_layer = 8
-collision_mask = 4
-monitoring = false
+[node name="CanvasLayer" type="CanvasLayer" parent="." node_paths=PackedStringArray("Gold", "meter", "HP")]
+script = ExtResource("5_bot5f")
+Gold = NodePath("Control/Gold")
+meter = NodePath("Control/Meter")
+HP = NodePath("Control/HP")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="UltHitbox"]
-shape = SubResource("CircleShape2D_31bpi")
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect2" type="TextureRect" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 1.0
+offset_right = 1153.0
+offset_bottom = 41.0
+texture = SubResource("GradientTexture2D_sumag")
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/Control"]
+visible = false
+layout_mode = 0
+offset_right = 1153.0
+offset_bottom = 53.0
+texture = ExtResource("6_vgfpp")
+
+[node name="Gold" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 1026.0
+offset_top = -2.0
+offset_right = 1087.0
+offset_bottom = 42.0
+theme_override_fonts/font = ExtResource("6_w2hfu")
+theme_override_font_sizes/font_size = 51
+text = "1"
+
+[node name="Meter" type="ProgressBar" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 67.0
+offset_top = 38.0
+offset_right = 287.0
+offset_bottom = 78.0
+theme_override_styles/background = SubResource("StyleBoxFlat_ajo84")
+theme_override_styles/fill = SubResource("StyleBoxTexture_vgfpp")
+max_value = 10.0
+value = 9.08
+show_percentage = false
+
+[node name="HP" type="ProgressBar" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 67.0
+offset_top = 5.0
+offset_right = 304.0
+offset_bottom = 39.0
+theme_override_styles/background = SubResource("StyleBoxFlat_sumag")
+theme_override_styles/fill = SubResource("StyleBoxFlat_nhd7b")
+max_value = 20.0
+value = 11.01
+show_percentage = false
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 8.0
+offset_right = 65.0
+offset_bottom = 60.0
+color = Color(0.27058825, 0.27058825, 0.27058825, 1)
+
+[node name="HP_MeterFrame" type="TextureRect" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_right = 320.0
+offset_bottom = 94.0
+texture = ExtResource("6_b4x1i")
+
+[node name="Level" type="Label" parent="CanvasLayer/Control"]
+modulate = Color(0.73300546, 0.7330054, 0.7330054, 1)
+layout_mode = 0
+offset_left = 15.0
+offset_top = -19.0
+offset_right = 58.0
+offset_bottom = 81.0
+theme_override_fonts/font = ExtResource("6_w2hfu")
+theme_override_font_sizes/font_size = 66
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GoldPicture" type="TextureRect" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 987.0
+offset_top = 6.0
+offset_right = 1024.0
+offset_bottom = 38.0
+texture = ExtResource("8_ajo84")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -82.0
+offset_right = 78.0
+offset_bottom = 45.0
+grow_horizontal = 2
+texture = ExtResource("9_ajo84")
+
+[node name="Timer" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -47.0
+offset_top = -8.0
+offset_right = 39.0
+offset_bottom = 32.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("6_w2hfu")
+theme_override_font_sizes/font_size = 46
+text = "10:00"
 
 [connection signal="body_entered" from="WeapnHitbox" to="." method="OnEnemyHit"]
 [connection signal="body_entered" from="UltHitbox" to="." method="OnUltHit"]
