@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://qtrmx47ad36s"]
+
+[ext_resource type="Script" uid="uid://cckpnp3qjx80f" path="res://Scripts/Breakable.cs" id="1_1ofwc"]
+[ext_resource type="Texture2D" uid="uid://cl5en1rehqn0x" path="res://Sprites/Breakables/Barrel.png" id="2_1u5h1"]
+[ext_resource type="PackedScene" uid="uid://c08l6sf5mmga4" path="res://Scenes/Environment/gold.tscn" id="2_mkatg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mkatg"]
+size = Vector2(10, 15)
+
+[node name="Barrel" type="StaticBody2D"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_1ofwc")
+gold = ExtResource("2_mkatg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_1u5h1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_mkatg")
