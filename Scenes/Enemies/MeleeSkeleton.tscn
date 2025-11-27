@@ -1,7 +1,17 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=37 format=3 uid="uid://rwy0bqvjc2y6"]
 
 [ext_resource type="Texture2D" uid="uid://dstemgqnhs4qq" path="res://Sprites/Enemy/SwordSkeleton/SwordSkeletonSpritesheet.png" id="1_kkyfk"]
 [ext_resource type="Script" uid="uid://5qplh0ro2xd4" path="res://Scripts/MeleeSkeleton.cs" id="1_vghw6"]
+=======
+[gd_scene load_steps=40 format=3 uid="uid://rwy0bqvjc2y6"]
+
+[ext_resource type="Texture2D" uid="uid://dstemgqnhs4qq" path="res://Sprites/Enemy/SwordSkeleton/SwordSkeletonSpritesheet.png" id="1_kkyfk"]
+[ext_resource type="Script" uid="uid://5qplh0ro2xd4" path="res://Scripts/MeleeSkeleton.cs" id="1_vghw6"]
+[ext_resource type="PackedScene" uid="uid://bb754k3dffdh3" path="res://Scenes/Environment/EXP.tscn" id="2_erl3l"]
+[ext_resource type="Resource" uid="uid://bts3nmua1qxh3" path="res://Stats/MeleeSkeleton.tres" id="2_x1yov"]
+[ext_resource type="PackedScene" uid="uid://c08l6sf5mmga4" path="res://Scenes/Environment/gold.tscn" id="3_qfvbq"]
+>>>>>>> Stashed changes
 
 [sub_resource type="Animation" id="Animation_030b0"]
 resource_name = "AttackDown"
@@ -475,7 +485,14 @@ collision_layer = 4
 collision_mask = 7
 motion_mode = 1
 script = ExtResource("1_vghw6")
+<<<<<<< Updated upstream
 speed = 30.0
+=======
+exp = ExtResource("2_erl3l")
+gold = ExtResource("3_qfvbq")
+amount_gold_drop = 2
+stats = ExtResource("2_x1yov")
+>>>>>>> Stashed changes
 animator = NodePath("AnimationTree")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

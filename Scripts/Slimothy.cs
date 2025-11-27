@@ -55,6 +55,10 @@ public partial class Slimothy : Enemy
 
     public override void _PhysicsProcess(double delta)
     {
+        if(this.currentHealth <= 0)
+        {
+            this.Die();
+        }
         base._PhysicsProcess(delta);
         if (State == EnemyState.Chase)
         {
@@ -85,6 +89,8 @@ public partial class Slimothy : Enemy
                 }
             }
         }
+
+
         
     }
 

@@ -1,7 +1,88 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=20 format=3 uid="uid://tksauj558360"]
 
 [ext_resource type="Script" uid="uid://le3x4kvq38iy" path="res://Scripts/Slimothy.cs" id="1_5d0k5"]
 [ext_resource type="Texture2D" uid="uid://cbdjnonrohfsb" path="res://Sprites/Enemy/Slimothy/Slimothy.png" id="2_5d0k5"]
+=======
+[gd_scene load_steps=23 format=3 uid="uid://tksauj558360"]
+
+[ext_resource type="Script" uid="uid://le3x4kvq38iy" path="res://Scripts/Slimothy.cs" id="1_5d0k5"]
+[ext_resource type="Texture2D" uid="uid://cbdjnonrohfsb" path="res://Sprites/Enemy/Slimothy/Slimothy.png" id="2_5d0k5"]
+[ext_resource type="Resource" uid="uid://lg2mjc1prkbl" path="res://Stats/Slimothy.tres" id="2_7m1v5"]
+[ext_resource type="PackedScene" uid="uid://bb754k3dffdh3" path="res://Scenes/Environment/EXP.tscn" id="2_baw47"]
+[ext_resource type="PackedScene" uid="uid://c08l6sf5mmga4" path="res://Scenes/Environment/gold.tscn" id="3_cg531"]
+
+[sub_resource type="Animation" id="Animation_cg531"]
+resource_name = "Idle"
+loop_mode = 1
+step = 0.05882353
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4708672, 0.9411765),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.3, 1.3), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_baw47"]
+resource_name = "MoveLeft"
+length = 1.0000033
+loop_mode = 1
+step = 0.027027028
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1081081, 0.2162162, 0.3243243, 0.43243244, 0.5405405, 0.6486486, 0.7567568, 0.8648649, 0.972973),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+>>>>>>> Stashed changes
 
 [sub_resource type="Animation" id="Animation_7m1v5"]
 resource_name = "MoveRight"
@@ -219,7 +300,14 @@ collision_layer = 4
 collision_mask = 7
 motion_mode = 1
 script = ExtResource("1_5d0k5")
+<<<<<<< Updated upstream
 speed = 80.0
+=======
+exp = ExtResource("2_baw47")
+gold = ExtResource("3_cg531")
+amount_gold_drop = 3
+stats = ExtResource("2_7m1v5")
+>>>>>>> Stashed changes
 animator = NodePath("AnimationTree")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

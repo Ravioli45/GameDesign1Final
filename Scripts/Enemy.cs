@@ -9,6 +9,25 @@ public abstract partial class Enemy : Entity
 	[Export] PackedScene gold;
 	[Export] public bool is_element_applied;
 	[Export] public int amount_gold_drop;
+<<<<<<< Updated upstream
+=======
+
+	protected int currentHealth = -1;
+
+	[Export] protected EnemyStats stats;
+
+	public override void _Ready()
+	{
+		base._Ready();
+		currentHealth = stats.maxHealth;
+		GD.Print(currentHealth);
+    }
+
+	
+    
+
+
+>>>>>>> Stashed changes
 	public override void TakeDamage(int base_damage, bool Element)
 	{
 		if (Element && is_element_applied)
@@ -17,10 +36,24 @@ public abstract partial class Enemy : Entity
 		}else if(Element && !is_element_applied)
         {
 			this.is_element_applied = true;
+<<<<<<< Updated upstream
         }
 		
 		health -= base_damage;
     }
+=======
+		}
+
+		currentHealth -= base_damage;
+
+		if (currentHealth <= 0)
+		{
+			GD.Print("enemy died: " + base_damage);
+            this.Die();
+        
+		}
+	}
+>>>>>>> Stashed changes
 	public void Die()
     {
 		
@@ -29,14 +62,17 @@ public abstract partial class Enemy : Entity
 		{
 			Node2D Instance = exp.Instantiate<Node2D>();
 			Instance.Position = new Vector2(this.Position.X + GD.RandRange(-5, 5), this.Position.Y + GD.RandRange(-5, 5));
+			GetTree().Root.CallDeferred("add_child",Instance);
 		}
 
 		for (int i = 0; i < amount_gold_drop; i++)
 		{
 			Node2D Instance = gold.Instantiate<Node2D>();
 			Instance.Position = new Vector2(this.Position.X + GD.RandRange(-5, 5), this.Position.Y + GD.RandRange(-5, 5));
+			GetTree().Root.CallDeferred("add_child",Instance);
 		}
 
 		//ADD DIE SOUND EFFECT HERE
-    }
+		this.CallDeferred("queue_free");
+    }	
 }
