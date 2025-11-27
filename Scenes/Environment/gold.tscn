@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://c08l6sf5mmga4"]
+
+[ext_resource type="Script" uid="uid://d3cdid1m35jow" path="res://Scripts/Gold.cs" id="1_ey27p"]
+[ext_resource type="Texture2D" uid="uid://c8geiky0luaog" path="res://Sprites/Drops/GoldCoin.png" id="2_h4n5y"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0rup6"]
+radius = 3.1622777
+
+[node name="Gold" type="Node2D"]
+script = ExtResource("1_ey27p")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_h4n5y")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_0rup6")
+
+[connection signal="body_entered" from="Area2D" to="." method="OnPickup"]
