@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="ItemStats" load_steps=5 format=3 uid="uid://cgnb7fcnda77r"]
+
+[ext_resource type="Script" uid="uid://ctjppo767ltfu" path="res://Scripts/Resources/ItemStats.cs" id="1_4mplt"]
+[ext_resource type="Texture2D" uid="uid://bh2re0npdv8gy" path="res://Sprites/Item/CritRateUp.png" id="2_chhqg"]
+[ext_resource type="Script" uid="uid://bytwjck2p8wpm" path="res://Scripts/Resources/PlayerStats.cs" id="3_msusv"]
+
+[sub_resource type="Resource" id="Resource_digt7"]
+script = ExtResource("3_msusv")
+health = 0
+maxHealth = 0
+attack = 0
+speed = 0
+expToNextLevel = 0
+critRate = 0.05
+maxMeter = 0
+metadata/_custom_type_script = "uid://bytwjck2p8wpm"
+
+[resource]
+script = ExtResource("1_4mplt")
+itemName = "Crit Rate Ring"
+goldCost = 10
+sprite = ExtResource("2_chhqg")
+statChanges = SubResource("Resource_digt7")
+metadata/_custom_type_script = "uid://ctjppo767ltfu"

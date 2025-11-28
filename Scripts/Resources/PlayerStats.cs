@@ -35,4 +35,20 @@ public partial class PlayerStats : Resource
         meterCharge = _meterCharge;
         maxMeter = _maxMeter;
     }
+
+    public static PlayerStats operator +(PlayerStats lhs, PlayerStats rhs)
+    {
+        lhs.health = Mathf.Min(lhs.health + rhs.health, lhs.maxHealth);
+        lhs.maxHealth += rhs.maxHealth;
+        lhs.attack += rhs.attack;
+        lhs.speed += rhs.speed;
+        lhs.exp += rhs.exp;
+        lhs.expToNextLevel += rhs.expToNextLevel;
+        lhs.gold += rhs.gold;
+        lhs.critRate += rhs.critRate;
+        lhs.critDamage += rhs.critDamage;
+        lhs.meterCharge += rhs.meterCharge;
+        lhs.maxMeter += rhs.maxMeter;
+        return lhs;
+    }
 }

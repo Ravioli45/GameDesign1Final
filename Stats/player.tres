@@ -1,9 +1,10 @@
 [gd_resource type="Resource" script_class="PlayerStats" load_steps=2 format=3 uid="uid://b6v377en6ncvd"]
 
-[ext_resource type="Script" uid="uid://bytwjck2p8wpm" path="res://Scripts/PlayerStats.cs" id="1_t1bpi"]
+[ext_resource type="Script" uid="uid://bytwjck2p8wpm" path="res://Scripts/Resources/PlayerStats.cs" id="1_t1bpi"]
 
 [resource]
 script = ExtResource("1_t1bpi")
 attack = 5
 speed = 200
+gold = 5
 metadata/_custom_type_script = "uid://bytwjck2p8wpm"

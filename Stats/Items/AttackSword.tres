@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="ItemStats" load_steps=5 format=3 uid="uid://bed12agnmc4xk"]
+
+[ext_resource type="Script" uid="uid://ctjppo767ltfu" path="res://Scripts/Resources/ItemStats.cs" id="1_556vg"]
+[ext_resource type="Texture2D" uid="uid://daukyvx7ewp75" path="res://Sprites/Item/AttackUp.png" id="2_m4okk"]
+[ext_resource type="Script" uid="uid://bytwjck2p8wpm" path="res://Scripts/Resources/PlayerStats.cs" id="3_e1y1t"]
+
+[sub_resource type="Resource" id="Resource_ybq26"]
+script = ExtResource("3_e1y1t")
+health = 0
+maxHealth = 0
+attack = 5
+speed = 0
+expToNextLevel = 0
+maxMeter = 0
+metadata/_custom_type_script = "uid://bytwjck2p8wpm"
+
+[resource]
+script = ExtResource("1_556vg")
+itemName = "Attack Sword"
+goldCost = 10
+sprite = ExtResource("2_m4okk")
+statChanges = SubResource("Resource_ybq26")
+metadata/_custom_type_script = "uid://ctjppo767ltfu"
