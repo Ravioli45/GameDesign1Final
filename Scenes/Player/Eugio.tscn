@@ -1005,3 +1005,4 @@ theme_override_font_sizes/font_size = 46
 text = "10:00"
 
 [connection signal="body_entered" from="WeapnHitbox" to="." method="OnEnemyHit"]
+[connection signal="body_entered" from="UltHitbox" to="." method="OnUltHit"]

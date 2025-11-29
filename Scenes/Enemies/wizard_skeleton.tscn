@@ -1,9 +1,10 @@
-[gd_scene load_steps=27 format=3 uid="uid://barvle7hdybcv"]
+[gd_scene load_steps=28 format=3 uid="uid://barvle7hdybcv"]
 
 [ext_resource type="Script" uid="uid://csmot8ge6mpmx" path="res://Scripts/WizardSkeleton.cs" id="1_5o0dk"]
 [ext_resource type="Texture2D" uid="uid://s6kk764d86o6" path="res://Sprites/Enemy/WizardSkeleton/WizardSkeletonSpriteSheet.png" id="1_k65nq"]
 [ext_resource type="PackedScene" uid="uid://bgxtvtocvd6np" path="res://Scenes/Enemies/EnemyProjectiles/fireball.tscn" id="2_5o0dk"]
 [ext_resource type="Resource" uid="uid://bl3pyr20m2baq" path="res://Stats/WizardSkeleton.tres" id="3_oxe42"]
+[ext_resource type="PackedScene" uid="uid://bipqesl0k0ahl" path="res://Scenes/damage_numbers.tscn" id="3_y4be6"]
 
 [sub_resource type="Animation" id="Animation_y4be6"]
 resource_name = "Attack"
@@ -187,6 +188,7 @@ collision_layer = 4
 collision_mask = 7
 script = ExtResource("1_5o0dk")
 Fireball = ExtResource("2_5o0dk")
+damageNumbers = ExtResource("3_y4be6")
 stats = ExtResource("3_oxe42")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

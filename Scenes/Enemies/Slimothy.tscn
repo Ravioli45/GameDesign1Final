@@ -1,8 +1,9 @@
-[gd_scene load_steps=21 format=3 uid="uid://tksauj558360"]
+[gd_scene load_steps=22 format=3 uid="uid://tksauj558360"]
 
 [ext_resource type="Script" uid="uid://le3x4kvq38iy" path="res://Scripts/Slimothy.cs" id="1_5d0k5"]
 [ext_resource type="Texture2D" uid="uid://cbdjnonrohfsb" path="res://Sprites/Enemy/Slimothy/Slimothy.png" id="2_5d0k5"]
 [ext_resource type="Resource" uid="uid://lg2mjc1prkbl" path="res://Stats/Slimothy.tres" id="2_7m1v5"]
+[ext_resource type="PackedScene" uid="uid://bipqesl0k0ahl" path="res://Scenes/damage_numbers.tscn" id="2_i4t41"]
 
 [sub_resource type="Animation" id="Animation_cg531"]
 resource_name = "Idle"
@@ -220,9 +221,8 @@ collision_layer = 4
 collision_mask = 7
 motion_mode = 1
 script = ExtResource("1_5d0k5")
+damageNumbers = ExtResource("2_i4t41")
 stats = ExtResource("2_7m1v5")
-speed = 80.0
-attack = null
 animator = NodePath("AnimationTree")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

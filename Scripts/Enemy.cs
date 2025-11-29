@@ -9,6 +9,7 @@ public abstract partial class Enemy : Entity
 	[Export] PackedScene gold;
 	[Export] public bool is_element_applied;
 	[Export] public int amount_gold_drop;
+	[Export] PackedScene damageNumbers;
 
 	protected int currentHealth = -1;
 
@@ -23,6 +24,10 @@ public abstract partial class Enemy : Entity
 
 	public override void TakeDamage(int base_damage, bool Element)
 	{
+		DamageNumbers Instance = damageNumbers.Instantiate<DamageNumbers>();
+		Instance.GlobalPosition = this.GlobalPosition;
+		Instance.elementAttack = Element;
+		
 		if (Element && is_element_applied)
 		{
 			base_damage *= 2;
@@ -33,6 +38,8 @@ public abstract partial class Enemy : Entity
 		}
 
 		currentHealth -= base_damage;
+		Instance.Text = base_damage.ToString();
+		GetTree().Root.AddChild(Instance);
 
 		if (currentHealth <= 0)
 		{

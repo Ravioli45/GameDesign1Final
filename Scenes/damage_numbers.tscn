@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://bipqesl0k0ahl"]
+
+[ext_resource type="Script" uid="uid://ccy7l1crmdg6x" path="res://Scripts/DamageNumbers.cs" id="1_2jiao"]
+[ext_resource type="FontFile" uid="uid://cbi7tso5e4xbl" path="res://Sprites/UI/DigitalJots.ttf" id="1_tsnct"]
+
+[node name="Text" type="RichTextLabel"]
+z_index = 50
+anchors_preset = -1
+anchor_left = -0.006
+anchor_right = 0.060000002
+anchor_bottom = 0.048
+offset_left = -0.08799982
+offset_right = -0.120010376
+offset_bottom = -0.10400009
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = ExtResource("1_tsnct")
+theme_override_fonts/bold_font = ExtResource("1_tsnct")
+theme_override_fonts/bold_italics_font = ExtResource("1_tsnct")
+theme_override_fonts/italics_font = ExtResource("1_tsnct")
+theme_override_fonts/mono_font = ExtResource("1_tsnct")
+theme_override_font_sizes/normal_font_size = 30
+theme_override_font_sizes/bold_font_size = 30
+theme_override_font_sizes/bold_italics_font_size = 30
+theme_override_font_sizes/italics_font_size = 30
+theme_override_font_sizes/mono_font_size = 30
+bbcode_enabled = true
+text = " 42"
+vertical_alignment = 2
+script = ExtResource("1_2jiao")
+metadata/_edit_use_anchors_ = true
