@@ -10,6 +10,9 @@ enum BossState
 	Attacking,
 	Charging,
 	Tackle,
+    Die,
+    SwordAttacking,
+    FireAttacking,
 }
 public partial class Alistar : Entity
 {

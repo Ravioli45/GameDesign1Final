@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cc8qxqdq6lple"]
+
+[ext_resource type="Script" uid="uid://dd8tsovdg4cuu" path="res://Scripts/SlimeSword.cs" id="1_0n7un"]
+[ext_resource type="Texture2D" uid="uid://ddgq0pujpu3nj" path="res://Sprites/Projectiles/SlimeSword.png" id="1_miyxn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0n7un"]
+size = Vector2(4, 34)
+
+[node name="SlimeSword" type="CharacterBody2D"]
+rotation = 1.829105
+collision_layer = 0
+collision_mask = 3
+script = ExtResource("1_0n7un")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -5)
+shape = SubResource("RectangleShape2D_0n7un")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -5)
+scale = Vector2(1, 1.4166666)
+texture = ExtResource("1_miyxn")
