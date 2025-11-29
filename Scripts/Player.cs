@@ -49,6 +49,7 @@ public partial class Player : Entity
             //direction = new Vector2(0, 0);
             Velocity = new Vector2(0, 0);
             state = PlayerState.Attacking;
+            AudioManager.Instance.PlaySFX("player_attack");
         }
 
         if (Input.IsActionJustPressed("dash") && state != PlayerState.Dashing && state != PlayerState.Attacking && state != PlayerState.Ulting)
@@ -64,6 +65,7 @@ public partial class Player : Entity
             animator.Set("parameters/Running/blend_position", dashDirection);
 
             state = PlayerState.Dashing;
+            AudioManager.Instance.PlaySFX("player_dash");
         }
 
         if (Input.IsActionJustPressed("meter") && state != PlayerState.Attacking && state != PlayerState.Dashing && state != PlayerState.Ulting)
