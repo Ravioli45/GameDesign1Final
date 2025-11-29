@@ -87,8 +87,6 @@ public partial class Player : Entity
                     SetCollisionMaskValue(3, false);
                     state = PlayerState.Ulting;
                     GD.Print("Ultimate Activated");
-                    // Move this stuff to the end of the Ult implementation
-                    
                 }
 
                 else
@@ -192,6 +190,7 @@ public partial class Player : Entity
             enemy.TakeDamage(stats.attack, enhancedState);
             ChargeMeter();
         }
+        else if (body is Breakable breakable) breakable.Break();
     }
 
     public void OnUltHit(Node2D body)
@@ -202,6 +201,7 @@ public partial class Player : Entity
             //GD.Print($"Ult hit for {stats.attack*4} Damage");
             enemy.TakeDamage(stats.attack * 2, true);
         }
+        else if (body is Breakable breakable) breakable.Break();
     }
 
     public override void TakeDamage(int base_damage, bool Element)
