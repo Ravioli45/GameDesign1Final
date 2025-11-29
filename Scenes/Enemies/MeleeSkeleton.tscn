@@ -120,6 +120,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_hkl1f"]
 resource_name = "Die"
+length = 0.80000335
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -135,7 +136,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_hitna"]
 resource_name = "Idle"
-length = 0.43333668
+length = 0.5333367
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -191,7 +192,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_y7e6a"]
 resource_name = "WalkingDownFacing"
-length = 0.43333668
+length = 0.5333367
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -232,7 +233,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_vghw6"]
 resource_name = "WalkingLeftFacing"
-length = 0.43333668
+length = 0.5333367
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -273,7 +274,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_7cw1n"]
 resource_name = "WalkingRightFacing"
-length = 0.43333668
+length = 0.5333367
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -314,7 +315,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_hy667"]
 resource_name = "WalkingUpFacing"
-length = 0.43333668
+length = 0.5333367
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false

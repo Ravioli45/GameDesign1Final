@@ -169,7 +169,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_hptei"]
 resource_name = "WalkDown"
-length = 0.80000335
+length = 0.93333673
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -186,7 +186,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_cbdws"]
 resource_name = "WalkUp"
-length = 0.76667005
+length = 0.93333673
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -388,7 +388,7 @@ states/Tackle/position = Vector2(598, 322)
 states/Walking/node = SubResource("AnimationNodeBlendSpace2D_631xs")
 states/Walking/position = Vector2(565, 100)
 transitions = ["Charging", "Tackle", SubResource("AnimationNodeStateMachineTransition_xf73b"), "Tackle", "Idle", SubResource("AnimationNodeStateMachineTransition_xcbdb"), "Idle", "Charging", SubResource("AnimationNodeStateMachineTransition_l3mij"), "Idle", "Walking", SubResource("AnimationNodeStateMachineTransition_ks38j"), "Walking", "Idle", SubResource("AnimationNodeStateMachineTransition_7i6xl"), "Walking", "Attacking", SubResource("AnimationNodeStateMachineTransition_k4udt"), "Attacking", "Walking", SubResource("AnimationNodeStateMachineTransition_rlc6n"), "Idle", "ProjectileDown", SubResource("AnimationNodeStateMachineTransition_2r7b2"), "ProjectileDown", "Idle", SubResource("AnimationNodeStateMachineTransition_0ham3"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_1d7n3")]
-graph_offset = Vector2(-549, -99)
+graph_offset = Vector2(-89, 46)
 
 [sub_resource type="Curve" id="Curve_godks"]
 _limits = [-360.0, 360.0, 0.0, 1.0]

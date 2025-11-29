@@ -9,6 +9,7 @@
 
 [sub_resource type="Animation" id="Animation_y4be6"]
 resource_name = "Attack"
+length = 1.5000125
 loop_mode = 1
 step = 0.125
 tracks/0/type = "value"

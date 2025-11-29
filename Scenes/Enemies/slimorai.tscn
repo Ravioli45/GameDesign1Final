@@ -42,7 +42,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_luxn6"]
 resource_name = "FireAttackEntrance"
-length = 0.36667
+length = 0.46667004
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -90,7 +90,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_uxyj0"]
 resource_name = "SwordAttackEntrance"
-length = 0.43333668
+length = 0.46667004
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -106,7 +106,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_7ui0j"]
 resource_name = "WalkDown"
-length = 0.7000034
+length = 0.80000335
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
