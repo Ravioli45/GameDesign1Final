@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="DungeonBuster"
-run/main_scene="uid://bbfquc3opfwrm"
+run/main_scene="uid://u1pkt67q28yy"
 config/features=PackedStringArray("4.5", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
 

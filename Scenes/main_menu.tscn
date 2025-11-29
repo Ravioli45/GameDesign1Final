@@ -1,0 +1,118 @@
+[gd_scene load_steps=5 format=3 uid="uid://u1pkt67q28yy"]
+
+[ext_resource type="Script" uid="uid://b5lgxwo3a8q1m" path="res://Scripts/MainMenu.cs" id="1_1ehe0"]
+[ext_resource type="Texture2D" uid="uid://dfwis3xfayjhh" path="res://Sprites/UI/DungeonBustersTitle.png" id="1_28flt"]
+[ext_resource type="FontFile" uid="uid://cbi7tso5e4xbl" path="res://Sprites/UI/DigitalJots.ttf" id="2_48xlc"]
+[ext_resource type="PackedScene" uid="uid://bbfquc3opfwrm" path="res://Scenes/Levels/dungeon_1.tscn" id="2_ce3w2"]
+
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("mainButtons", "options")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1ehe0")
+firstLevel = ExtResource("2_ce3w2")
+mainButtons = NodePath("MainButtons")
+options = NodePath("Options")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_28flt")
+
+[node name="MainButtons" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="PlayButton" type="Button" parent="MainButtons"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.30729166
+anchor_top = 0.66400003
+anchor_right = 0.509
+anchor_bottom = 0.84000003
+offset_top = -0.2720337
+offset_right = -0.36798096
+offset_bottom = -0.32000732
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_48xlc")
+theme_override_font_sizes/font_size = 96
+text = "Play"
+metadata/_edit_use_anchors_ = true
+
+[node name="OptionsButton" type="Button" parent="MainButtons"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5338542
+anchor_top = 0.66400003
+anchor_right = 0.79300004
+anchor_bottom = 0.84900004
+offset_top = -0.2720337
+offset_right = 0.46392822
+offset_bottom = -0.15203857
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_48xlc")
+theme_override_font_sizes/font_size = 96
+text = "Options"
+metadata/_edit_use_anchors_ = true
+
+[node name="QuitButton" type="Button" parent="MainButtons"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.8185764
+anchor_top = 0.66400003
+anchor_right = 0.96900004
+anchor_bottom = 0.84900004
+offset_top = -0.2720337
+offset_right = -0.28808594
+offset_bottom = -0.15203857
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_48xlc")
+theme_override_font_sizes/font_size = 96
+text = "Quit"
+metadata/_edit_use_anchors_ = true
+
+[node name="Options" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="BackButton" type="Button" parent="Options"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.7629306
+anchor_top = 0.8412222
+anchor_right = 0.97979176
+anchor_bottom = 0.98025936
+offset_left = 0.10399628
+offset_top = -0.11199951
+offset_right = 0.27990723
+offset_bottom = -0.20806885
+theme_override_fonts/font = ExtResource("2_48xlc")
+theme_override_font_sizes/font_size = 96
+text = "Back"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="MainButtons/PlayButton" to="." method="OnPlayButtonPress"]
+[connection signal="pressed" from="MainButtons/OptionsButton" to="." method="OnOptionButtonPress"]
+[connection signal="pressed" from="MainButtons/QuitButton" to="." method="OnPressQuitButton"]
+[connection signal="pressed" from="Options/BackButton" to="." method="OnOptionBackButtonPress"]
