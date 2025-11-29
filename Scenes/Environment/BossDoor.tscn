@@ -9,9 +9,10 @@ size = Vector2(127, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lb2ws"]
 size = Vector2(3038, 2993)
 
-[node name="Boss Door" type="Node2D" node_paths=PackedStringArray("BossDetection", "Bars")]
+[node name="Boss Door" type="Node2D" node_paths=PackedStringArray("BossDetection", "PlayerDetection", "Bars")]
 script = ExtResource("1_3yph4")
 BossDetection = NodePath("BossLocater/CollisionShape2D")
+PlayerDetection = NodePath("PlayerEntrance/CollisionShape2D")
 Bars = NodePath("Door")
 
 [node name="Door" type="TileMapLayer" parent="."]

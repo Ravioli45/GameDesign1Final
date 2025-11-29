@@ -147,6 +147,13 @@ public partial class Alistar : Entity
         }
     }
 
+    public async void Die()
+    {
+		State = BossState.Die;
+		await ToSignal(GetTree().CreateTimer(1.2), "timeout");
+		this.CallDeferred("queue_free");
+    }
+
 	public async void Tackle(Vector2 StaticDirection)
     {
             //Charges in a set direction, stops when hits player or anything else
@@ -219,6 +226,10 @@ public partial class Alistar : Entity
         
         
         if(fightStarted){
+            if (HP <= 0)
+            {
+                Die();
+            }
 
 		if(State == BossState.Idle)
         {

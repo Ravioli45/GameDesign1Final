@@ -21,6 +21,7 @@ public partial class Slimorai : Entity
 	private bool InAttack = false;
 	private bool  usedVuln =  false;
 	private  int AttackType = 0;
+	public bool fightStarted = false;
 	// Called when the node enters the scene tree for the first time.
 
 	public void OnPlayerEnter(Node2D body)
@@ -31,6 +32,18 @@ public partial class Slimorai : Entity
 			State = BossState.Walking;
 			
             
+        }
+    }
+	public void PlayerEntersFight(Node2D body)
+    {
+       
+        if(body is Player p){
+		GD.Print("Ben");
+        CollisionShape2D BossPlayerDetection = GetNode<CollisionShape2D>("PlayerFinder/PlayerDetection");
+        BossPlayerDetection.SetDeferred("disabled",false);
+        
+        fightStarted = true;
+        
         }
     }
 
@@ -165,6 +178,7 @@ public partial class Slimorai : Entity
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		if(fightStarted){
 		if (HP <= 0)
 		{
 			Die();
@@ -247,8 +261,9 @@ public partial class Slimorai : Entity
 			}
 		}
 
-		GD.Print(State);
+		
     }
+	}
 
 	public bool IsWalking()
     {

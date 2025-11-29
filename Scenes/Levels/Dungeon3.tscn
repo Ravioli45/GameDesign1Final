@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=4 uid="uid://fysi7xnrtgnv"]
+[gd_scene load_steps=9 format=4 uid="uid://fysi7xnrtgnv"]
 
 [ext_resource type="TileSet" uid="uid://bh2eiv84e3mqs" path="res://TileSets/Dungeon3TileSet.tres" id="1_hs2wt"]
-[ext_resource type="PackedScene" uid="uid://bfm3ndhs6vyap" path="res://Scenes/follow_camera.tscn" id="2_ye5mx"]
-[ext_resource type="PackedScene" uid="uid://dkkmc7f6645jl" path="res://Scenes/Player/Eugio.tscn" id="3_p5gbr"]
+[ext_resource type="PackedScene" uid="uid://barvle7hdybcv" path="res://Scenes/Enemies/wizard_skeleton.tscn" id="3_kq3e0"]
+[ext_resource type="PackedScene" uid="uid://dh1o8ckpk1tg3" path="res://Scenes/Enemies/slimorai.tscn" id="4_p5gbr"]
+[ext_resource type="PackedScene" uid="uid://rwy0bqvjc2y6" path="res://Scenes/Enemies/MeleeSkeleton.tscn" id="4_t8omr"]
+[ext_resource type="PackedScene" uid="uid://tksauj558360" path="res://Scenes/Enemies/Slimothy.tscn" id="5_7aca5"]
+[ext_resource type="PackedScene" uid="uid://qtrmx47ad36s" path="res://Scenes/Environment/barrel.tscn" id="6_4kifu"]
+[ext_resource type="PackedScene" uid="uid://dhfwjohlbb0qf" path="res://Scenes/Environment/chest.tscn" id="7_7jfg0"]
+[ext_resource type="PackedScene" uid="uid://bq6ffjs6l54m0" path="res://Scenes/Environment/crate.tscn" id="8_i3efh"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -18,9 +23,188 @@ tile_set = ExtResource("1_hs2wt")
 tile_map_data = PackedByteArray("AADm/7L/AAAWAAsAAADm/7P/AAAWAAwAAAD8/7L/AAAWAAsAAAD8/7P/AAAWAAwAAADM/7n/AAAWAAsAAADM/7r/AAAWAAwAAAD6/9r/AAAWAAsAAAD6/9v/AAAWAAwAAADh/+v/AAAWAAsAAADh/+z/AAAWAAwAAADs/+v/AAAWAAsAAADs/+z/AAAWAAwAAAD0//v/AAAWAAsAAAD0//z/AAAWAAwAAAAQAPv/AAAWAAsAAAAQAPz/AAAWAAwAAAALACAAAAAWAAsAAAALACEAAAAWAAwAAAAXACAAAAAWAAsAAAAXACEAAAAWAAwAAAAnACcAAAAWAAsAAAAnACgAAAAWAAwAAAA5ACcAAAAWAAsAAAA5ACgAAAAWAAwAAAA0ADoAAAAWAAsAAAA0ADsAAAAWAAwAAAAbADoAAAAWAAsAAAAbADsAAAAWAAwAAAALAEoAAAAWAAsAAAALAEsAAAAWAAwAAAARAEoAAAAWAAsAAAARAEsAAAAWAAwAAAAcAEoAAAAWAAsAAAAcAEsAAAAWAAwAAAAkAEoAAAAWAAsAAAAkAEsAAAAWAAwAAAAsAEYAAAAWAAsAAAAsAEcAAAAWAAwAAADc/1YAAAAWAAsAAADc/1cAAAAWAAwAAADp/1YAAAAWAAsAAADp/1cAAAAWAAwAAADC/0kAAAAWAAsAAADC/0oAAAAWAAwAAADS/0kAAAAWAAsAAADS/0oAAAAWAAwAAADJ/2cAAAAVAAsAAADJ/2gAAAAVAAwAAADO/2cAAAAVAAsAAADO/2gAAAAVAAwAAADZ/1YAAAANABMAAADt/1YAAAANABMAAAC//0kAAAANABMAAADY/0kAAAANABMAAADI/2cAAAANABMAAADP/2cAAAANABMAAADy/1IAAAANABMAAAD3/1IAAAANABMAAAAJAEoAAAANABMAAAATAEoAAAANABMAAAAYAEoAAAANABMAAAAmAEoAAAANABMAAAAnAEYAAAANABMAAAAyAEYAAAANABMAAAAIAEIAAAANABMAAAD//0IAAAANABMAAADr/zkAAAANABMAAADs/zkAAAANABMAAAD6/zkAAAANABMAAAD7/ygAAAANABMAAAAIACgAAAANABMAAAAbACcAAAANABMAAABAACcAAAANABMAAAAyADoAAAANABMAAAAzADoAAAANABMAAAA2ADoAAAANABMAAAA1ADoAAAANABMAAAA3ADYAAAANABMAAAA6ADYAAAANABMAAAA7ADIAAAANABMAAABCADIAAAANABMAAABDADoAAAANABMAAABGADoAAAANABMAAAAYADoAAAANABMAAAAtADoAAAANABMAAAA9AGAAAAANABMAAABIAGAAAAANABMAAAA4AGAAAAANABMAAAA5AGAAAAANABMAAABCAGAAAAANABMAAAA9AHQAAAANABMAAAA5AHQAAAANABMAAAA6AHQAAAANABMAAABCAHQAAAANABMAAABHAHQAAAANABMAAABIAHcAAAANABMAAABeAHcAAAANABMAAABkAGwAAAANABMAAAB9AGcAAAANABMAAABlAGcAAAANABMAAABfAGwAAAANABMAAAB+AGwAAAANABMAAACDAGwAAAANABMAAABkAHsAAAAHAA8AAAB5AH0AAAAHAA8AAAB6AHEAAAAHAA8AAABkAHAAAAAHAA8AAABzAH8AAAAHAA8AAABoAIIAAAAIAA8AAAB6AHIAAAAIAA8AAABoAGsAAAAIAA8AAAA5AH4AAAAHAA8AAABHAHYAAAAHAA8AAAA6AGYAAAAHAA8AAAA7AGYAAAAHAA8AAADv/0AAAAAHAA8AAADJ/1kAAAAHAA8AAADU/08AAAAHAA8AAADK/24AAAAHAA8AAACx/wwAAAAHAA8AAADV/yIAAAAHAA8AAADi/xUAAAAHAA8AAAAFAPj/AAAHAA8AAADm/+//AAAHAA8AAAASAAkAAAAHAA8AAADl/8X/AAAHAA8AAAADALb/AAAHAA8AAAADAM3/AAAHAA8AAAD1/8P/AAAGAA8AAADM/8D/AAAGAA8AAAAAAOf/AAAGAA8AAADr//D/AAAGAA8AAADT//n/AAAGAA8AAADE/wkAAAAGAA8AAAC1/x0AAAAGAA8AAADX/yIAAAAGAA8AAADm/x8AAAAGAA8AAAD9/xsAAAAGAA8AAAAQADAAAAAGAA8AAAD3/0MAAAAGAA8AAADL/1IAAAAGAA8AAADQ/20AAAAGAA8AAAAoAE4AAAAGAA8AAAA+AEQAAAAGAA8AAABAAGcAAAAGAA8AAABsAHcAAAAGAA8AAABAAHoAAAAGAA8AAAAUADQAAAALAAsAAAAUADUAAAALAAwAAAAUADYAAAALAA0AAAAXADQAAAAMAAsAAAAXADUAAAAMAAwAAAAXADYAAAAMAA0AAAAxADkAAAAMAAsAAAAxADoAAAAMAAwAAAAxADsAAAAMAA0AAAAuADkAAAALAAsAAAAuADoAAAALAAwAAAAuADsAAAALAA0AAAAUAEkAAAALAAsAAAAUAEoAAAALAAwAAAAUAEsAAAALAA0AAAAXAEkAAAAMAAsAAAAXAEoAAAAMAAwAAAAXAEsAAAAMAA0AAAA+AEkAAAALAAsAAAA+AEoAAAALAAwAAAA+AEsAAAALAA0AAABBAEkAAAAMAAsAAABBAEoAAAAMAAwAAABBAEsAAAAMAA0AAAA+AF8AAAALAAsAAAA+AGAAAAALAAwAAAA+AGEAAAALAA0AAABBAF8AAAAMAAsAAABBAGAAAAAMAAwAAABBAGEAAAAMAA0AAAA+AG0AAAALAAsAAAA+AG4AAAALAAwAAAA+AG8AAAALAA0AAABBAG0AAAAMAAsAAABBAG4AAAAMAAwAAABBAG8AAAAMAA0AAADu/1EAAAALAAsAAADu/1IAAAALAAwAAADu/1MAAAALAA0AAADx/1EAAAAMAAsAAADx/1IAAAAMAAwAAADx/1MAAAAMAA0AAADK/2UAAAALAAsAAADK/2YAAAALAAwAAADK/2cAAAALAA0AAADN/2UAAAAMAAsAAADN/2YAAAAMAAwAAADN/2cAAAAMAA0AAAD7/zgAAAALAAsAAAD7/zkAAAALAAwAAAD7/zoAAAALAA0AAAD+/zgAAAAMAAsAAAD+/zkAAAAMAAwAAAD+/zoAAAAMAA0AAAAQAB8AAAALAAsAAAAQACAAAAALAAwAAAAQACEAAAALAA0AAAATAB8AAAAMAAsAAAATACAAAAAMAAwAAAATACEAAAAMAA0AAAAQAAIAAAALAAsAAAAQAAMAAAALAAwAAAAQAAQAAAALAA0AAAATAAIAAAAMAAsAAAATAAMAAAAMAAwAAAATAAQAAAAMAA0AAAD+//X/AAALAAsAAAD+//b/AAALAAwAAAABAPX/AAAMAAsAAAABAPb/AAAMAAwAAADE/wYAAAALAAsAAADE/wcAAAALAAwAAADE/wgAAAALAA0AAADH/wYAAAAMAAsAAADH/wcAAAAMAAwAAADH/wgAAAAMAA0AAAA=")
 tile_set = ExtResource("1_hs2wt")
 
-[node name="FollowCamera" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_ye5mx")]
-position = Vector2(-43, -48)
-target = NodePath("../Eugio")
+[node name="Slimorai" parent="." instance=ExtResource("4_p5gbr")]
+position = Vector2(1805, 1955)
 
-[node name="Eugio" parent="." instance=ExtResource("3_p5gbr")]
-position = Vector2(7, -16)
+[node name="WizardSkeleton" parent="." instance=ExtResource("3_kq3e0")]
+position = Vector2(-811, 1443)
+
+[node name="WizardSkeleton2" parent="." instance=ExtResource("3_kq3e0")]
+position = Vector2(-808, 1320)
+
+[node name="MeleeSkeleton" parent="." instance=ExtResource("4_t8omr")]
+position = Vector2(-651, 1429)
+
+[node name="MeleeSkeleton2" parent="." instance=ExtResource("4_t8omr")]
+position = Vector2(-171, 1372)
+
+[node name="MeleeSkeleton3" parent="." instance=ExtResource("4_t8omr")]
+position = Vector2(-72, 1006)
+
+[node name="MeleeSkeleton4" parent="." instance=ExtResource("4_t8omr")]
+position = Vector2(88, 1240)
+
+[node name="MeleeSkeleton5" parent="." instance=ExtResource("4_t8omr")]
+position = Vector2(-265, 1150)
+
+[node name="MeleeSkeleton6" parent="." instance=ExtResource("4_t8omr")]
+position = Vector2(645, 1244)
+
+[node name="MeleeSkeleton7" parent="." instance=ExtResource("4_t8omr")]
+position = Vector2(785, 1170)
+
+[node name="MeleeSkeleton8" parent="." instance=ExtResource("4_t8omr")]
+position = Vector2(776, 1296)
+
+[node name="Slimothy" parent="." instance=ExtResource("5_7aca5")]
+position = Vector2(904, 990)
+
+[node name="Slimothy2" parent="." instance=ExtResource("5_7aca5")]
+position = Vector2(961, 940)
+
+[node name="Slimothy3" parent="." instance=ExtResource("5_7aca5")]
+position = Vector2(996, 1022)
+
+[node name="Slimothy4" parent="." instance=ExtResource("5_7aca5")]
+position = Vector2(-466, 357)
+
+[node name="Slimothy5" parent="." instance=ExtResource("5_7aca5")]
+position = Vector2(-647, 562)
+
+[node name="MeleeSkeleton9" parent="." instance=ExtResource("4_t8omr")]
+position = Vector2(-555, 515)
+
+[node name="MeleeSkeleton10" parent="." instance=ExtResource("4_t8omr")]
+position = Vector2(-538, 402)
+
+[node name="WizardSkeleton3" parent="." instance=ExtResource("3_kq3e0")]
+position = Vector2(-1076, 199)
+
+[node name="WizardSkeleton4" parent="." instance=ExtResource("3_kq3e0")]
+position = Vector2(-1228, 264)
+
+[node name="Slimothy6" parent="." instance=ExtResource("5_7aca5")]
+position = Vector2(-540, -142)
+
+[node name="Slimothy7" parent="." instance=ExtResource("5_7aca5")]
+position = Vector2(-427, -233)
+
+[node name="Slimothy8" parent="." instance=ExtResource("5_7aca5")]
+position = Vector2(-333, -237)
+
+[node name="Slimothy9" parent="." instance=ExtResource("5_7aca5")]
+position = Vector2(-257, -128)
+
+[node name="WizardSkeleton5" parent="." instance=ExtResource("3_kq3e0")]
+position = Vector2(-288, -1030)
+
+[node name="WizardSkeleton6" parent="." instance=ExtResource("3_kq3e0")]
+position = Vector2(-183, -1023)
+
+[node name="WizardSkeleton7" parent="." instance=ExtResource("3_kq3e0")]
+position = Vector2(-292, -956)
+
+[node name="WizardSkeleton8" parent="." instance=ExtResource("3_kq3e0")]
+position = Vector2(-162, -933)
+
+[node name="WizardSkeleton9" parent="." instance=ExtResource("3_kq3e0")]
+position = Vector2(-435, -841)
+
+[node name="WizardSkeleton10" parent="." instance=ExtResource("3_kq3e0")]
+position = Vector2(-425, -1159)
+
+[node name="WizardSkeleton11" parent="." instance=ExtResource("3_kq3e0")]
+position = Vector2(21, -1175)
+
+[node name="WizardSkeleton12" parent="." instance=ExtResource("3_kq3e0")]
+position = Vector2(-6, -845)
+
+[node name="Slimothy10" parent="." instance=ExtResource("5_7aca5")]
+position = Vector2(-826, -1070)
+
+[node name="MeleeSkeleton11" parent="." instance=ExtResource("4_t8omr")]
+position = Vector2(-708, -964)
+
+[node name="WizardSkeleton13" parent="." instance=ExtResource("3_kq3e0")]
+position = Vector2(-724, -1072)
+
+[node name="Slimothy11" parent="." instance=ExtResource("5_7aca5")]
+position = Vector2(-172, -1315)
+
+[node name="Barrel" parent="." instance=ExtResource("6_4kifu")]
+position = Vector2(231, 1224)
+
+[node name="Barrel2" parent="." instance=ExtResource("6_4kifu")]
+position = Vector2(504, 1226)
+
+[node name="Barrel3" parent="." instance=ExtResource("6_4kifu")]
+position = Vector2(-309, 973)
+
+[node name="Chest" parent="." instance=ExtResource("7_7jfg0")]
+position = Vector2(-85, 1172)
+
+[node name="Crate" parent="." instance=ExtResource("8_i3efh")]
+position = Vector2(116, 1384)
+
+[node name="Crate2" parent="." instance=ExtResource("8_i3efh")]
+position = Vector2(-266, 1474)
+
+[node name="Crate3" parent="." instance=ExtResource("8_i3efh")]
+position = Vector2(-1008, 1359)
+
+[node name="Crate4" parent="." instance=ExtResource("8_i3efh")]
+position = Vector2(697, 663)
+
+[node name="Crate5" parent="." instance=ExtResource("8_i3efh")]
+position = Vector2(523, 665)
+
+[node name="Chest2" parent="." instance=ExtResource("7_7jfg0")]
+position = Vector2(-400, 577)
+
+[node name="Crate6" parent="." instance=ExtResource("8_i3efh")]
+position = Vector2(-704, 338)
+
+[node name="Crate7" parent="." instance=ExtResource("8_i3efh")]
+position = Vector2(-755, 501)
+
+[node name="Crate8" parent="." instance=ExtResource("8_i3efh")]
+position = Vector2(-757, 476)
+
+[node name="Crate9" parent="." instance=ExtResource("8_i3efh")]
+position = Vector2(-757, 455)
+
+[node name="Chest3" parent="." instance=ExtResource("7_7jfg0")]
+position = Vector2(-225, -1007)
+
+[node name="Chest4" parent="." instance=ExtResource("7_7jfg0")]
+position = Vector2(-233, -970)
+
+[node name="Barrel4" parent="." instance=ExtResource("6_4kifu")]
+position = Vector2(253, -1079)
+
+[node name="Barrel5" parent="." instance=ExtResource("6_4kifu")]
+position = Vector2(-127, -1321)
+
+[node name="Barrel6" parent="." instance=ExtResource("6_4kifu")]
+position = Vector2(-850, -941)
+
+[node name="Crate10" parent="." instance=ExtResource("8_i3efh")]
+position = Vector2(-73, 686)
+
+[node name="Crate11" parent="." instance=ExtResource("8_i3efh")]
+position = Vector2(557, 967)
+
+[node name="Crate12" parent="." instance=ExtResource("8_i3efh")]
+position = Vector2(910, 1727)
+
+[node name="Barrel7" parent="." instance=ExtResource("6_4kifu")]
+position = Vector2(1142, 1583)
+
+[node name="Barrel8" parent="." instance=ExtResource("6_4kifu")]
+position = Vector2(932, 1902)
+
+[node name="Barrel9" parent="." instance=ExtResource("6_4kifu")]
+position = Vector2(1125, 1064)
+
+[node name="Crate13" parent="." instance=ExtResource("8_i3efh")]
+position = Vector2(1121, 977)

@@ -1,8 +1,17 @@
-[gd_scene load_steps=4 format=4 uid="uid://bbfquc3opfwrm"]
+[gd_scene load_steps=13 format=4 uid="uid://bbfquc3opfwrm"]
 
 [ext_resource type="TileSet" uid="uid://b1lna3ersxwte" path="res://TileSets/Dungeon1TileSet.tres" id="1_wa5o0"]
 [ext_resource type="PackedScene" uid="uid://cbfd7l8g4in6v" path="res://Scenes/Environment/mana_particles.tscn" id="2_rfu0i"]
+[ext_resource type="PackedScene" uid="uid://tksauj558360" path="res://Scenes/Enemies/Slimothy.tscn" id="3_1mnrh"]
 [ext_resource type="PackedScene" uid="uid://dkkmc7f6645jl" path="res://Scenes/Player/Eugio.tscn" id="3_rfu0i"]
+[ext_resource type="PackedScene" uid="uid://bfm3ndhs6vyap" path="res://Scenes/follow_camera.tscn" id="4_1mnrh"]
+[ext_resource type="PackedScene" uid="uid://rwy0bqvjc2y6" path="res://Scenes/Enemies/MeleeSkeleton.tscn" id="4_jkjt0"]
+[ext_resource type="PackedScene" uid="uid://barvle7hdybcv" path="res://Scenes/Enemies/wizard_skeleton.tscn" id="5_goqx4"]
+[ext_resource type="PackedScene" uid="uid://bq6q7nnadhnwp" path="res://Scenes/Enemies/alistar.tscn" id="6_2wgyj"]
+[ext_resource type="PackedScene" uid="uid://qtrmx47ad36s" path="res://Scenes/Environment/barrel.tscn" id="6_kfaa5"]
+[ext_resource type="PackedScene" uid="uid://dnns8xqfoiqws" path="res://Scenes/Environment/BossDoor.tscn" id="7_6c2ei"]
+[ext_resource type="PackedScene" uid="uid://dhfwjohlbb0qf" path="res://Scenes/Environment/chest.tscn" id="11_bc562"]
+[ext_resource type="PackedScene" uid="uid://bq6ffjs6l54m0" path="res://Scenes/Environment/crate.tscn" id="12_21mms"]
 
 [node name="Dungeon1" type="Node2D"]
 
@@ -42,5 +51,243 @@ position = Vector2(1174, -1930)
 [node name="Mana particles8" parent="." instance=ExtResource("2_rfu0i")]
 position = Vector2(989, -1814)
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("3_rfu0i")]
-position = Vector2(48, 45)
+[node name="Slimothy" parent="." instance=ExtResource("3_1mnrh")]
+position = Vector2(-556, -207)
+
+[node name="Slimothy2" parent="." instance=ExtResource("3_1mnrh")]
+position = Vector2(-397, -205)
+
+[node name="Slimothy3" parent="." instance=ExtResource("3_1mnrh")]
+position = Vector2(-566, -366)
+
+[node name="Slimothy4" parent="." instance=ExtResource("3_1mnrh")]
+position = Vector2(-412, -365)
+
+[node name="Slimothy5" parent="." instance=ExtResource("3_1mnrh")]
+position = Vector2(625, -92)
+
+[node name="MeleeSkeleton" parent="." instance=ExtResource("4_jkjt0")]
+position = Vector2(345, -209)
+
+[node name="MeleeSkeleton2" parent="." instance=ExtResource("4_jkjt0")]
+position = Vector2(484, -347)
+
+[node name="MeleeSkeleton3" parent="." instance=ExtResource("4_jkjt0")]
+position = Vector2(340, -378)
+
+[node name="MeleeSkeleton4" parent="." instance=ExtResource("4_jkjt0")]
+position = Vector2(476, -228)
+
+[node name="WizardSkeleton" parent="." instance=ExtResource("5_goqx4")]
+position = Vector2(764, -506)
+
+[node name="WizardSkeleton2" parent="." instance=ExtResource("5_goqx4")]
+position = Vector2(-551, -728)
+
+[node name="WizardSkeleton3" parent="." instance=ExtResource("5_goqx4")]
+position = Vector2(-406, -878)
+
+[node name="WizardSkeleton4" parent="." instance=ExtResource("5_goqx4")]
+position = Vector2(-255, -743)
+
+[node name="WizardSkeleton5" parent="." instance=ExtResource("5_goqx4")]
+position = Vector2(-115, -879)
+
+[node name="Slimothy6" parent="." instance=ExtResource("3_1mnrh")]
+position = Vector2(497, -737)
+
+[node name="Slimothy7" parent="." instance=ExtResource("3_1mnrh")]
+position = Vector2(497, -835)
+
+[node name="MeleeSkeleton5" parent="." instance=ExtResource("4_jkjt0")]
+position = Vector2(336, -859)
+
+[node name="MeleeSkeleton6" parent="." instance=ExtResource("4_jkjt0")]
+position = Vector2(327, -746)
+
+[node name="WizardSkeleton6" parent="." instance=ExtResource("5_goqx4")]
+position = Vector2(409, -801)
+
+[node name="WizardSkeleton7" parent="." instance=ExtResource("5_goqx4")]
+position = Vector2(-527, -1191)
+
+[node name="WizardSkeleton8" parent="." instance=ExtResource("5_goqx4")]
+position = Vector2(-384, -1199)
+
+[node name="WizardSkeleton9" parent="." instance=ExtResource("5_goqx4")]
+position = Vector2(-525, -1307)
+
+[node name="WizardSkeleton10" parent="." instance=ExtResource("5_goqx4")]
+position = Vector2(-377, -1287)
+
+[node name="MeleeSkeleton7" parent="." instance=ExtResource("4_jkjt0")]
+position = Vector2(-987, -1276)
+
+[node name="MeleeSkeleton8" parent="." instance=ExtResource("4_jkjt0")]
+position = Vector2(-987, -1195)
+
+[node name="MeleeSkeleton9" parent="." instance=ExtResource("4_jkjt0")]
+position = Vector2(-991, -1133)
+
+[node name="MeleeSkeleton10" parent="." instance=ExtResource("4_jkjt0")]
+position = Vector2(-884, -1263)
+
+[node name="MeleeSkeleton11" parent="." instance=ExtResource("4_jkjt0")]
+position = Vector2(-883, -1168)
+
+[node name="MeleeSkeleton12" parent="." instance=ExtResource("4_jkjt0")]
+position = Vector2(382, -1229)
+
+[node name="WizardSkeleton11" parent="." instance=ExtResource("5_goqx4")]
+position = Vector2(509, -1221)
+
+[node name="WizardSkeleton12" parent="." instance=ExtResource("5_goqx4")]
+position = Vector2(589, -1220)
+
+[node name="MeleeSkeleton13" parent="." instance=ExtResource("4_jkjt0")]
+position = Vector2(712, -1236)
+
+[node name="MeleeSkeleton14" parent="." instance=ExtResource("4_jkjt0")]
+position = Vector2(534, -1416)
+
+[node name="MeleeSkeleton15" parent="." instance=ExtResource("4_jkjt0")]
+position = Vector2(877, -1436)
+
+[node name="MeleeSkeleton16" parent="." instance=ExtResource("4_jkjt0")]
+position = Vector2(1121, -1439)
+
+[node name="WizardSkeleton13" parent="." instance=ExtResource("5_goqx4")]
+position = Vector2(1004, -1440)
+
+[node name="Slimothy8" parent="." instance=ExtResource("3_1mnrh")]
+position = Vector2(945, -1716)
+
+[node name="Slimothy9" parent="." instance=ExtResource("3_1mnrh")]
+position = Vector2(1076, -1930)
+
+[node name="Slimothy10" parent="." instance=ExtResource("3_1mnrh")]
+position = Vector2(1045, -1719)
+
+[node name="Slimothy11" parent="." instance=ExtResource("3_1mnrh")]
+position = Vector2(955, -1941)
+
+[node name="Slimothy12" parent="." instance=ExtResource("3_1mnrh")]
+position = Vector2(792, -2077)
+
+[node name="Slimothy13" parent="." instance=ExtResource("3_1mnrh")]
+position = Vector2(1162, -2288)
+
+[node name="Slimothy14" parent="." instance=ExtResource("3_1mnrh")]
+position = Vector2(664, -2276)
+
+[node name="Alistar" parent="." instance=ExtResource("6_2wgyj")]
+position = Vector2(29, -3188)
+
+[node name="Boss Door" parent="." instance=ExtResource("7_6c2ei")]
+position = Vector2(37, -2906)
+
+[node name="Eugio" parent="." instance=ExtResource("3_rfu0i")]
+position = Vector2(37, -22)
+
+[node name="FollowCamera" parent="." node_paths=PackedStringArray("target") instance=ExtResource("4_1mnrh")]
+position = Vector2(32, -33)
+target = NodePath("../Eugio")
+
+[node name="Barrel" parent="." instance=ExtResource("6_kfaa5")]
+position = Vector2(-40, -334)
+
+[node name="Barrel2" parent="." instance=ExtResource("6_kfaa5")]
+position = Vector2(116, -252)
+
+[node name="Chest" parent="." instance=ExtResource("11_bc562")]
+position = Vector2(645, -492)
+
+[node name="Crate" parent="." instance=ExtResource("12_21mms")]
+position = Vector2(670, -185)
+
+[node name="Crate2" parent="." instance=ExtResource("12_21mms")]
+position = Vector2(576, -25)
+
+[node name="Crate3" parent="." instance=ExtResource("12_21mms")]
+position = Vector2(99, -671)
+
+[node name="Barrel3" parent="." instance=ExtResource("6_kfaa5")]
+position = Vector2(-18, -669)
+
+[node name="Barrel4" parent="." instance=ExtResource("6_kfaa5")]
+position = Vector2(-109, -735)
+
+[node name="Crate4" parent="." instance=ExtResource("12_21mms")]
+position = Vector2(-259, -877)
+
+[node name="Chest2" parent="." instance=ExtResource("11_bc562")]
+position = Vector2(-618, -810)
+
+[node name="Barrel5" parent="." instance=ExtResource("6_kfaa5")]
+position = Vector2(-544, -883)
+
+[node name="Crate5" parent="." instance=ExtResource("12_21mms")]
+position = Vector2(-404, -744)
+
+[node name="Barrel6" parent="." instance=ExtResource("6_kfaa5")]
+position = Vector2(991, -1121)
+
+[node name="Barrel7" parent="." instance=ExtResource("6_kfaa5")]
+position = Vector2(817, -1089)
+
+[node name="Crate6" parent="." instance=ExtResource("12_21mms")]
+position = Vector2(351, -903)
+
+[node name="Crate7" parent="." instance=ExtResource("12_21mms")]
+position = Vector2(515, -717)
+
+[node name="Crate8" parent="." instance=ExtResource("12_21mms")]
+position = Vector2(-21, -987)
+
+[node name="Crate9" parent="." instance=ExtResource("12_21mms")]
+position = Vector2(100, -1165)
+
+[node name="Crate10" parent="." instance=ExtResource("12_21mms")]
+position = Vector2(-183, -1198)
+
+[node name="Barrel8" parent="." instance=ExtResource("6_kfaa5")]
+position = Vector2(-532, -1100)
+
+[node name="Barrel9" parent="." instance=ExtResource("6_kfaa5")]
+position = Vector2(-598, -1292)
+
+[node name="Chest3" parent="." instance=ExtResource("11_bc562")]
+position = Vector2(-946, -1219)
+
+[node name="Chest4" parent="." instance=ExtResource("11_bc562")]
+position = Vector2(-923, -1200)
+
+[node name="Chest5" parent="." instance=ExtResource("11_bc562")]
+position = Vector2(-955, -1188)
+
+[node name="Barrel10" parent="." instance=ExtResource("6_kfaa5")]
+position = Vector2(-446, -1549)
+
+[node name="Barrel11" parent="." instance=ExtResource("6_kfaa5")]
+position = Vector2(-142, -1663)
+
+[node name="Barrel12" parent="." instance=ExtResource("6_kfaa5")]
+position = Vector2(319, -1236)
+
+[node name="Crate11" parent="." instance=ExtResource("12_21mms")]
+position = Vector2(984, -2007)
+
+[node name="Crate12" parent="." instance=ExtResource("12_21mms")]
+position = Vector2(1009, -2007)
+
+[node name="Crate13" parent="." instance=ExtResource("12_21mms")]
+position = Vector2(1029, -2007)
+
+[node name="Crate14" parent="." instance=ExtResource("12_21mms")]
+position = Vector2(985, -2136)
+
+[node name="Crate15" parent="." instance=ExtResource("12_21mms")]
+position = Vector2(1007, -2136)
+
+[node name="Crate16" parent="." instance=ExtResource("12_21mms")]
+position = Vector2(1029, -2136)

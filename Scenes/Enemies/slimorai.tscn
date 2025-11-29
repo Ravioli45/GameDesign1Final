@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://dh1o8ckpk1tg3"]
+[gd_scene load_steps=38 format=3 uid="uid://dh1o8ckpk1tg3"]
 
 [ext_resource type="Script" uid="uid://ds4723k0hlkp6" path="res://Scripts/Slimorai.cs" id="1_1dcf5"]
 [ext_resource type="Texture2D" uid="uid://bcvl0oa6sdkek" path="res://Sprites/Bosses/Slimeurai.png" id="1_f4j44"]
@@ -239,6 +239,9 @@ radius = 1095.263
 [sub_resource type="CircleShape2D" id="CircleShape2D_7ui0j"]
 radius = 27.730848
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_4b7fl"]
+radius = 265.1886
+
 [node name="Slimorai" type="CharacterBody2D" node_paths=PackedStringArray("Animator")]
 collision_layer = 4
 collision_mask = 7
@@ -269,11 +272,20 @@ anim_player = NodePath("../Sprite2D/AnimationPlayer")
 collision_layer = 4
 collision_mask = 7
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerFinder"]
+[node name="PlayerDetection" type="CollisionShape2D" parent="PlayerFinder"]
 shape = SubResource("CircleShape2D_1dcf5")
+disabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 7)
 shape = SubResource("CircleShape2D_7ui0j")
 
+[node name="BeginFight" type="Area2D" parent="." groups=["Boss"]]
+collision_layer = 4
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BeginFight"]
+shape = SubResource("CircleShape2D_4b7fl")
+
 [connection signal="body_entered" from="PlayerFinder" to="." method="OnPlayerEnter"]
+[connection signal="body_entered" from="BeginFight" to="." method="PlayerEntersFight"]
