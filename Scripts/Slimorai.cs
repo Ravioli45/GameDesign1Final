@@ -164,79 +164,90 @@ public partial class Slimorai : Entity
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
-    {
-        if (HP <= 0)
-        {
-            Die();
-        }
-        if(State == BossState.Walking)
-        {
-			if (!MeleeAttacking && !MeleeCooldown) {
-			Direction = (PlayerNode.GlobalPosition - this.GlobalPosition).Normalized();
-			Animator.Set("parameters/Chasing/blend_position", Direction);
-			Velocity = Direction*50;
-			MoveAndSlide();
-			for (int i = 0; i < GetSlideCollisionCount(); i++)
-            {
-                var collision = GetSlideCollision(i);
-                if (collision.GetCollider() is Player p)
-                {
-					
-                    CollideHit(p);
-					
-                    break;
-                }
-            }
+	{
+		if (HP <= 0)
+		{
+			Die();
+		}
+		if (State == BossState.Walking)
+		{
+			if (!MeleeAttacking && !MeleeCooldown)
+			{
+				Direction = (PlayerNode.GlobalPosition - this.GlobalPosition).Normalized();
+				Animator.Set("parameters/Chasing/blend_position", Direction);
+				Velocity = Direction * 50;
+				MoveAndSlide();
+				for (int i = 0; i < GetSlideCollisionCount(); i++)
+				{
+					var collision = GetSlideCollision(i);
+					if (collision.GetCollider() is Player p)
+					{
+
+						CollideHit(p);
+
+						break;
+					}
+				}
 			}
-            if (!MeleeCooldown && !MeleeAttacking && EndAttack)
-            {
+			if (!MeleeCooldown && !MeleeAttacking && EndAttack)
+			{
 				InAttack = false;
 				EndAttack = false;
 				usedVuln = false;
-            	State = BossState.Attacking;
-            }
-           	else if (!usedVuln)
-            {
-			Vulnerable();
-            }
+				State = BossState.Attacking;
+			}
+			else if (!usedVuln)
+			{
+				Vulnerable();
+			}
 
-        }else if(State == BossState.Attacking)
-        {
-			
-			if(AttackType == 0)
-            {
-                State = BossState.SwordAttacking;
-            }else if(AttackType == 1)
-            {
-                State = BossState.FireAttacking;
-            }
-			
-        }else if(State == BossState.SwordAttacking)
+		}
+		else if (State == BossState.Attacking)
+		{
+
+			if (AttackType == 0)
+			{
+				State = BossState.SwordAttacking;
+			}
+			else if (AttackType == 1)
+			{
+				State = BossState.FireAttacking;
+			}
+
+		}
+		else if (State == BossState.SwordAttacking)
 		{
 			GD.Print("SWORD");
 			Direction = (PlayerNode.GlobalPosition - this.GlobalPosition).Normalized();
-			if(EndAttack)
-            {
+			if (EndAttack)
+			{
 				EndAttack = false;
-                State = BossState.Walking;
-            }else if(!InAttack){
-			Attack(AttackType);
+				State = BossState.Walking;
 			}
-		
-        
-            
-        }else if(State == BossState.FireAttacking)
-        {
-           GD.Print("FIRRE");
+			else if (!InAttack)
+			{
+				Attack(AttackType);
+			}
+
+
+
+		}
+		else if (State == BossState.FireAttacking)
+		{
+			GD.Print("FIRRE");
 			Direction = (PlayerNode.GlobalPosition - this.GlobalPosition).Normalized();
-			if(EndAttack)
-            {
+			if (EndAttack)
+			{
 				EndAttack = false;
-                State = BossState.Walking;
-            }else if(!InAttack){
-			Attack(AttackType);
+				State = BossState.Walking;
 			}
-        }
+			else if (!InAttack)
+			{
+				Attack(AttackType);
+			}
+		}
+
+		GD.Print(State);
     }
 
 	public bool IsWalking()
@@ -246,12 +257,12 @@ public partial class Slimorai : Entity
 
 	public bool IsSwordAttacking()
     {
-        return State == BossState.Attacking;
+        return State == BossState.SwordAttacking;
     }
 
 	public bool IsFireAttacking()
     {
-        return State == BossState.Attacking;
+        return State == BossState.FireAttacking;
     }
 
 	public bool IsDie()
