@@ -9,7 +9,7 @@ public partial class SwordSlime : Entity
 	[Export] AnimationTree Animator;
     [Export] PackedScene SlimeSword;
 
-	private int HP = 1;
+	private int HP = 75;
 	private Player PlayerNode;
 	private Vector2 Direction = new Vector2(0,0);
 	private BossState State = BossState.Idle;
@@ -21,6 +21,8 @@ public partial class SwordSlime : Entity
 	private bool  usedVuln =  false;
 
 	// Called when the node enters the scene tree for the first time.
+	public bool is_element_applied = false;
+    public int elementGauge = 0;
 
 	public void OnPlayerEnter(Node2D body)
     {
@@ -35,8 +37,24 @@ public partial class SwordSlime : Entity
 
 	public override void TakeDamage(int base_damage, bool Element)
     {
-        
-        HP-=base_damage;
+        if (Element && is_element_applied)
+		{
+			base_damage *= 2;
+			elementGauge = Math.Min(elementGauge + 500, 1000);
+		}
+		else if (Element && !is_element_applied)
+		{
+			this.is_element_applied = true;
+			elementGauge = Math.Min(elementGauge + 500, 1000);
+		}
+
+		HP -= base_damage;
+
+		if (HP <= 0)
+		{
+			//GD.Print("SwordSlime died: " + base_damage);
+			//Die();
+		}
     }
 
 	public void ShootSwords(Vector2 direction)
@@ -51,7 +69,7 @@ public partial class SwordSlime : Entity
 
 		if(instance is SlimeSword S)
         {
-            S.damage = 1;
+            S.damage = 16;
         }
 		GetTree().Root.AddChild(instance);
     }
@@ -152,7 +170,7 @@ public partial class SwordSlime : Entity
 
         }else if(State == BossState.Attacking)
         {
-			GD.Print("ATTACK");
+			//GD.Print("ATTACK");
 			Direction = (PlayerNode.GlobalPosition - this.GlobalPosition).Normalized();
 			if(EndAttack)
             {
@@ -162,6 +180,12 @@ public partial class SwordSlime : Entity
 			Attack();
 			}
         }
+		if (is_element_applied) elementGauge = Math.Max(elementGauge-1, 0);
+		if (elementGauge <= 0) {
+			is_element_applied = false;
+			//GD.Print(is_element_applied);
+		}
+		//else if(elementGauge % 10 == 0) GD.Print($"{elementGauge}, {is_element_applied}");
     }
 
 	public bool IsWalking()

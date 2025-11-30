@@ -8,6 +8,7 @@ public abstract partial class Enemy : Entity
 	[Export] PackedScene exp;
 	[Export] PackedScene gold;
 	[Export] public bool is_element_applied;
+	public int elementGauge = 0;
 	[Export] public int amount_gold_drop;
 
 	protected int currentHealth = -1;
@@ -27,10 +28,12 @@ public abstract partial class Enemy : Entity
 		if (Element && is_element_applied)
 		{
 			base_damage *= 2;
+			elementGauge = Math.Min(elementGauge + 500, 1000);
 		}
 		else if (Element && !is_element_applied)
 		{
 			this.is_element_applied = true;
+			elementGauge = Math.Min(elementGauge + 500, 1000);
 		}
 
 		currentHealth -= base_damage;
@@ -38,6 +41,7 @@ public abstract partial class Enemy : Entity
 		if (currentHealth <= 0)
 		{
 			GD.Print("enemy died: " + base_damage);
+			
 			Die();
 		}
 	}

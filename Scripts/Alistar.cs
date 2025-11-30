@@ -26,22 +26,40 @@ public partial class Alistar : Entity
 	private int AttackSelection = -1;
 	private BossState State = BossState.Idle;
     private bool InAttack = false;
-    private int Damage = 1;
-    private int ChargeDamage = 2;
+    private int Damage = 20;
+    private int ChargeDamage = 50;
     public bool fightStarted = false;
 
-    private int HP = 10;
+    private int HP = 150;
     private bool InMeleeRange = false;
     private bool MeleeAttacking = false;
 
     private bool MeleeCooldown = false;
 
     private bool endAttack = false;
+    public bool is_element_applied = false;
+    public int elementGauge = 0;
    
     public override void TakeDamage(int base_damage, bool Element)
     {
-        GD.Print("Ouch");
-        HP-=base_damage;
+        if (Element && is_element_applied)
+		{
+			base_damage *= 2;
+			elementGauge = Math.Min(elementGauge + 500, 1000);
+		}
+		else if (Element && !is_element_applied)
+		{
+			this.is_element_applied = true;
+			elementGauge = Math.Min(elementGauge + 500, 1000);
+		}
+
+		HP -= base_damage;
+
+		if (HP <= 0)
+		{
+			//GD.Print("Alistar died: " + base_damage);
+			//Die();
+		}
     }
 	public void PlayerEntersFight(Node2D body)
     {
@@ -211,6 +229,7 @@ public partial class Alistar : Entity
         instance.Position = this.Position;
         instance.Rotation = Mathf.Atan2(StaticDirection.Y , StaticDirection.X);
 		instance.Velocity = StaticDirection *200;
+        if (instance is Fireball rock) rock.damage = 14;
         GetTree().Root.AddChild(instance);
     }
 
@@ -295,6 +314,12 @@ public partial class Alistar : Entity
         }
 
         }
+        if (is_element_applied) elementGauge = Math.Max(elementGauge-1, 0);
+		if (elementGauge <= 0) {
+			is_element_applied = false;
+			//GD.Print(is_element_applied);
+		}
+		//else if(elementGauge % 10 == 0) GD.Print($"{elementGauge}, {is_element_applied}");
 	}
 
 

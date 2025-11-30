@@ -900,12 +900,12 @@ monitoring = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="UltHitbox"]
 shape = SubResource("CircleShape2D_vgfpp")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." node_paths=PackedStringArray("Gold", "meter", "HP", "HPLabel")]
-visible = false
+[node name="CanvasLayer" type="CanvasLayer" parent="." node_paths=PackedStringArray("Gold", "meter", "HP", "Level", "HPLabel")]
 script = ExtResource("5_bot5f")
 Gold = NodePath("Control/Gold")
 meter = NodePath("Control/Meter")
 HP = NodePath("Control/HP")
+Level = NodePath("Control/Level")
 HPLabel = NodePath("Control/HP Label")
 
 [node name="Control" type="Control" parent="CanvasLayer"]
