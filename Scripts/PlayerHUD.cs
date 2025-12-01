@@ -8,7 +8,7 @@ public partial class PlayerHUD : CanvasLayer
 	[Export] ProgressBar HP;
 	[Export] Label Level;
 
-
+	[Export] Label HPLabel;
 	
 	public override void _Process(double delta)
     {
@@ -16,6 +16,7 @@ public partial class PlayerHUD : CanvasLayer
 
 		HP.Value = GameManager.Instance.playerStats.health;
 		HP.MaxValue = GameManager.Instance.playerStats.maxHealth;
+		HPLabel.Text=GameManager.Instance.playerStats.health.ToString()+"/"+GameManager.Instance.playerStats.maxHealth.ToString();;
 		meter.Value = GameManager.Instance.playerStats.meterCharge;
 		
     }

@@ -7,7 +7,7 @@
 size = Vector2(127, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lb2ws"]
-size = Vector2(3038, 2993)
+size = Vector2(3038, 1521)
 
 [node name="Boss Door" type="Node2D" node_paths=PackedStringArray("BossDetection", "Bars")]
 script = ExtResource("1_3yph4")
@@ -32,7 +32,7 @@ collision_layer = 0
 collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BossLocater"]
-position = Vector2(3, 23.5)
+position = Vector2(3, -712.5)
 shape = SubResource("RectangleShape2D_lb2ws")
 
 [connection signal="body_entered" from="PlayerEntrance" to="." method="OnPlayerEnter"]

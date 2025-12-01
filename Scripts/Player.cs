@@ -33,9 +33,14 @@ public partial class Player : Entity
     [Export] private bool enhancedState = false;
     [Export] private Area2D ultHitbox;
 
+    
+
     public override void _PhysicsProcess(double delta)
     {
         base._PhysicsProcess(delta);
+
+        CpuParticles2D Enhancedparticles = GetNode<CpuParticles2D>("Enhanced Form");
+        CpuParticles2D particles = GetNode<CpuParticles2D>("Ult Particles");
 
         Vector2 direction = Input.GetVector("left", "right", "up", "down");
 
@@ -72,8 +77,10 @@ public partial class Player : Entity
         {
             if (stats.meterCharge == stats.maxMeter)
             {
+                
                 if (enhancedState)
                 {
+                    
                     Vector2 mouse_pos = GetGlobalMousePosition();
 
                     // set blend space parameter
@@ -89,8 +96,6 @@ public partial class Player : Entity
                     SetCollisionMaskValue(3, false);
                     state = PlayerState.Ulting;
                     GD.Print("Ultimate Activated");
-                    // Move this stuff to the end of the Ult implementation
-                    
                 }
 
                 else
@@ -99,6 +104,10 @@ public partial class Player : Entity
                     stats.meterCharge = 0;
                     GD.Print("Enhanced Form Activated");
                     // Turn on particle effects and maybe SFX here
+                    
+                    Enhancedparticles.Emitting = true;
+		            Enhancedparticles.Visible = true;
+		            Enhancedparticles.Restart();
                 }
             }
         }
@@ -153,9 +162,11 @@ public partial class Player : Entity
             case PlayerState.Ulting:
                 // This Ult implementation is a glorified dash for Eugio
                 ultCountdown--;
+                
 
                 if (ultCountdown <= 0)
                 {
+                   
                     Velocity = new Vector2(0, 0);
                     SetCollisionLayerValue(2, true);
                     SetCollisionMaskValue(3, true);
@@ -164,10 +175,19 @@ public partial class Player : Entity
                     stats.meterCharge = 0;
                     // Turn off particle effects here
                     GD.Print("Ult over");
+                    particles.Visible = false;
+		            particles.Emitting = false;
+                    Enhancedparticles.Visible = false;
+		            Enhancedparticles.Emitting = false;
                 }
                 // Startup lag and endlag
                 else if (ultCountdown > 30 || ultCountdown < 10)
                 {
+                    
+		            particles.Emitting = true;
+		            particles.Visible = true;
+		            particles.Restart();
+
                     Velocity = new Vector2(0, 0);
                     ultHitbox.Monitoring = false;
                     ultHitbox.Visible = false; // For debug purposes
@@ -194,6 +214,7 @@ public partial class Player : Entity
             enemy.TakeDamage(stats.attack, enhancedState);
             ChargeMeter();
         }
+        else if (body is Breakable breakable) breakable.Break();
     }
 
     public void OnUltHit(Node2D body)
@@ -204,6 +225,7 @@ public partial class Player : Entity
             //GD.Print($"Ult hit for {stats.attack*4} Damage");
             enemy.TakeDamage(stats.attack * 2, true);
         }
+        else if (body is Breakable breakable) breakable.Break();
     }
 
     public override void TakeDamage(int base_damage, bool Element)

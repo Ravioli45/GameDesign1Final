@@ -1,0 +1,291 @@
+[gd_scene load_steps=38 format=3 uid="uid://dh1o8ckpk1tg3"]
+
+[ext_resource type="Script" uid="uid://ds4723k0hlkp6" path="res://Scripts/Slimorai.cs" id="1_1dcf5"]
+[ext_resource type="Texture2D" uid="uid://bcvl0oa6sdkek" path="res://Sprites/Bosses/Slimeurai.png" id="1_f4j44"]
+[ext_resource type="PackedScene" uid="uid://cc8qxqdq6lple" path="res://Scenes/Enemies/EnemyProjectiles/slime_sword.tscn" id="2_cg21a"]
+[ext_resource type="PackedScene" uid="uid://bgxtvtocvd6np" path="res://Scenes/Enemies/EnemyProjectiles/fireball.tscn" id="3_uxyj0"]
+[ext_resource type="PackedScene" uid="uid://t5jk8qp8imqm" path="res://Scenes/Enemies/sword_slime.tscn" id="4_4b7fl"]
+[ext_resource type="PackedScene" uid="uid://drjj5mvp37hrc" path="res://Scenes/Enemies/fire_slime.tscn" id="5_luxn6"]
+
+[sub_resource type="Animation" id="Animation_ln1ax"]
+resource_name = "Die(First Phase)"
+length = 1.4000034
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.26666668, 0.40000004, 0.53333336, 0.6666667, 0.8, 0.93333334, 1.0666667, 1.2, 1.2666667, 1.3666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+}
+
+[sub_resource type="Animation" id="Animation_jidq5"]
+resource_name = "FireAttack"
+length = 0.26667002
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666669),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [18, 19]
+}
+
+[sub_resource type="Animation" id="Animation_luxn6"]
+resource_name = "FireAttackEntrance"
+length = 0.46667004
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.33333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [16, 17, 18]
+}
+
+[sub_resource type="Animation" id="Animation_1dcf5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_4b7fl"]
+resource_name = "SwordAttack"
+length = 0.30000335
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [14, 15]
+}
+
+[sub_resource type="Animation" id="Animation_uxyj0"]
+resource_name = "SwordAttackEntrance"
+length = 0.46667004
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.033333335, 0.13333334, 0.26666668, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [12, 13, 14, 15]
+}
+
+[sub_resource type="Animation" id="Animation_7ui0j"]
+resource_name = "WalkDown"
+length = 0.80000335
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.26666668, 0.4, 0.53333336, 0.6680237),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_cg21a"]
+resource_name = "WalkUp"
+length = 0.7000034
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.26666668, 0.4, 0.53333336, 0.6666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [6, 7, 8, 9, 10, 11]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fpgmj"]
+_data = {
+&"Die(First Phase)": SubResource("Animation_ln1ax"),
+&"FireAttack": SubResource("Animation_jidq5"),
+&"FireAttackEntrance": SubResource("Animation_luxn6"),
+&"RESET": SubResource("Animation_1dcf5"),
+&"SwordAttack": SubResource("Animation_4b7fl"),
+&"SwordAttackEntrance": SubResource("Animation_uxyj0"),
+&"WalkDown": SubResource("Animation_7ui0j"),
+&"WalkUp": SubResource("Animation_cg21a")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7ui0j"]
+animation = &"Die(First Phase)"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bp3as"]
+animation = &"FireAttack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0x60p"]
+animation = &"FireAttackEntrance"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jsjex"]
+animation = &"SwordAttack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7iunl"]
+animation = &"SwordAttackEntrance"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4b7fl"]
+animation = &"WalkDown"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xbno6"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_uhxhj"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4b7fl"]
+advance_mode = 2
+advance_expression = "IsDie()"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_luxn6"]
+advance_mode = 2
+advance_expression = "IsDie()"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jidq5"]
+advance_mode = 2
+advance_expression = "IsDie()"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ln1ax"]
+advance_mode = 2
+advance_expression = "IsDie()"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fpgmj"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bp3as"]
+advance_mode = 2
+advance_expression = "IsFireAttacking()"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0x60p"]
+advance_mode = 2
+advance_expression = "IsSwordAttacking()"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jsjex"]
+advance_mode = 2
+advance_expression = "IsDie()"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7iunl"]
+advance_mode = 2
+advance_expression = "IsWalking()"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4k4fd"]
+advance_mode = 2
+advance_expression = "IsWalking()"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_cb4ml"]
+"states/Die(First Phase)/node" = SubResource("AnimationNodeAnimation_7ui0j")
+"states/Die(First Phase)/position" = Vector2(855, 87)
+states/End/position = Vector2(1122, 87)
+states/FireAttack/node = SubResource("AnimationNodeAnimation_bp3as")
+states/FireAttack/position = Vector2(745, 16)
+states/FireAttackEntrance/node = SubResource("AnimationNodeAnimation_0x60p")
+states/FireAttackEntrance/position = Vector2(552, 16)
+states/Start/position = Vector2(202, 100)
+states/SwordAttack/node = SubResource("AnimationNodeAnimation_jsjex")
+states/SwordAttack/position = Vector2(745, 167)
+states/SwordAttackEntrance/node = SubResource("AnimationNodeAnimation_7iunl")
+states/SwordAttackEntrance/position = Vector2(552, 167)
+states/WalkDown/node = SubResource("AnimationNodeAnimation_4b7fl")
+states/WalkDown/position = Vector2(321, 92)
+transitions = ["FireAttackEntrance", "FireAttack", SubResource("AnimationNodeStateMachineTransition_xbno6"), "SwordAttackEntrance", "SwordAttack", SubResource("AnimationNodeStateMachineTransition_uhxhj"), "FireAttackEntrance", "Die(First Phase)", SubResource("AnimationNodeStateMachineTransition_4b7fl"), "SwordAttackEntrance", "Die(First Phase)", SubResource("AnimationNodeStateMachineTransition_luxn6"), "FireAttack", "Die(First Phase)", SubResource("AnimationNodeStateMachineTransition_jidq5"), "SwordAttack", "Die(First Phase)", SubResource("AnimationNodeStateMachineTransition_ln1ax"), "Start", "WalkDown", SubResource("AnimationNodeStateMachineTransition_fpgmj"), "WalkDown", "FireAttackEntrance", SubResource("AnimationNodeStateMachineTransition_bp3as"), "WalkDown", "SwordAttackEntrance", SubResource("AnimationNodeStateMachineTransition_0x60p"), "WalkDown", "Die(First Phase)", SubResource("AnimationNodeStateMachineTransition_jsjex"), "FireAttack", "WalkDown", SubResource("AnimationNodeStateMachineTransition_7iunl"), "SwordAttack", "WalkDown", SubResource("AnimationNodeStateMachineTransition_4k4fd")]
+graph_offset = Vector2(84, -37)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1dcf5"]
+radius = 1095.263
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7ui0j"]
+radius = 27.730848
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4b7fl"]
+radius = 265.1886
+
+[node name="Slimorai" type="CharacterBody2D" node_paths=PackedStringArray("Animator")]
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("1_1dcf5")
+Animator = NodePath("AnimationTree")
+SlimeSword = ExtResource("2_cg21a")
+Fireball = ExtResource("3_uxyj0")
+Slime1 = ExtResource("4_4b7fl")
+Slime2 = ExtResource("5_luxn6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_f4j44")
+hframes = 3
+vframes = 11
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_fpgmj")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_cb4ml")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../Sprite2D/AnimationPlayer")
+
+[node name="PlayerFinder" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 7
+
+[node name="PlayerDetection" type="CollisionShape2D" parent="PlayerFinder"]
+shape = SubResource("CircleShape2D_1dcf5")
+disabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 7)
+shape = SubResource("CircleShape2D_7ui0j")
+
+[node name="BeginFight" type="Area2D" parent="." groups=["Boss"]]
+collision_layer = 4
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BeginFight"]
+shape = SubResource("CircleShape2D_4b7fl")
+
+[connection signal="body_entered" from="PlayerFinder" to="." method="OnPlayerEnter"]
+[connection signal="body_entered" from="BeginFight" to="." method="PlayerEntersFight"]

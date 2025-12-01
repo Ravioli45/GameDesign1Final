@@ -1,0 +1,157 @@
+[gd_scene load_steps=20 format=3 uid="uid://drjj5mvp37hrc"]
+
+[ext_resource type="Script" uid="uid://cr33uxlp248am" path="res://Scripts/FireSlime.cs" id="1_6pww6"]
+[ext_resource type="Texture2D" uid="uid://dl4bfnd8sxth5" path="res://Sprites/Bosses/FireSlimeSpriteSheet.png" id="2_0lgai"]
+[ext_resource type="PackedScene" uid="uid://bgxtvtocvd6np" path="res://Scenes/Enemies/EnemyProjectiles/fireball.tscn" id="2_83s51"]
+
+[sub_resource type="Animation" id="Animation_dfuyx"]
+resource_name = "Attack"
+length = 0.33333668
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [5, 6]
+}
+
+[sub_resource type="Animation" id="Animation_fg2um"]
+resource_name = "Die"
+length = 0.93333673
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.26666668, 0.4, 0.53333336, 0.6666667, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [6, 7, 8, 9, 10, 11, 12]
+}
+
+[sub_resource type="Animation" id="Animation_oklpl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_83s51"]
+resource_name = "Walk"
+length = 0.5333367
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.26666668, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ig8kt"]
+_data = {
+&"Attack": SubResource("Animation_dfuyx"),
+&"Die": SubResource("Animation_fg2um"),
+&"RESET": SubResource("Animation_oklpl"),
+&"Walk": SubResource("Animation_83s51")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7723o"]
+radius = 15.0
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_d2lbo"]
+animation = &"Attack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_618gn"]
+animation = &"Die"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cfpks"]
+animation = &"Walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2qpx4"]
+advance_mode = 2
+advance_expression = "IsAttacking()"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mdtca"]
+advance_mode = 2
+advance_expression = "IsWalking()"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_f7gy8"]
+advance_mode = 2
+advance_expression = "IsDie()"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jgyhp"]
+advance_mode = 2
+advance_expression = "IsDie()"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3fh32"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_316uq"]
+states/Attack/node = SubResource("AnimationNodeAnimation_d2lbo")
+states/Attack/position = Vector2(605, 89)
+states/Die/node = SubResource("AnimationNodeAnimation_618gn")
+states/Die/position = Vector2(496, 178)
+states/Walk/node = SubResource("AnimationNodeAnimation_cfpks")
+states/Walk/position = Vector2(317, 89)
+transitions = ["Walk", "Attack", SubResource("AnimationNodeStateMachineTransition_2qpx4"), "Attack", "Walk", SubResource("AnimationNodeStateMachineTransition_mdtca"), "Walk", "Die", SubResource("AnimationNodeStateMachineTransition_f7gy8"), "Attack", "Die", SubResource("AnimationNodeStateMachineTransition_jgyhp"), "Start", "Walk", SubResource("AnimationNodeStateMachineTransition_3fh32")]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_efpfm"]
+radius = 973.2718
+
+[node name="FireSlime" type="CharacterBody2D" node_paths=PackedStringArray("Animator")]
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("1_6pww6")
+Animator = NodePath("AnimationTree")
+Fireball = ExtResource("2_83s51")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_0lgai")
+hframes = 3
+vframes = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+libraries = {
+&"": SubResource("AnimationLibrary_ig8kt")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
+shape = SubResource("CircleShape2D_7723o")
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+root_node = NodePath("../Sprite2D")
+tree_root = SubResource("AnimationNodeStateMachine_316uq")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../Sprite2D/AnimationPlayer")
+
+[node name="PlayerDetection" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection" groups=["Boss"]]
+shape = SubResource("CircleShape2D_efpfm")
+
+[connection signal="body_entered" from="PlayerDetection" to="." method="OnPlayerEnter"]

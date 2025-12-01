@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://dkkmc7f6645jl"]
+[gd_scene load_steps=77 format=3 uid="uid://dkkmc7f6645jl"]
 
 [ext_resource type="Texture2D" uid="uid://s0b4hi5khcac" path="res://Sprites/Player/EugioAnimationsSpriteSheet.png" id="1_d5ap3"]
 [ext_resource type="Script" uid="uid://bnf1o6r6l4xpl" path="res://Scripts/Player.cs" id="1_s7fr4"]
@@ -816,6 +816,26 @@ bg_color = Color(0.27058825, 0.27058825, 0.27058825, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nhd7b"]
 bg_color = Color(0.9098039, 0.09411765, 0.101960786, 1)
 
+[sub_resource type="Curve" id="Curve_vgfpp"]
+_data = [Vector2(0.17441863, 0.8089888), 0.0, 0.0, 0, 0, Vector2(0.8255815, 0.3370787), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_sumag"]
+offsets = PackedFloat32Array(0, 0.36301368)
+colors = PackedColorArray(0.16470589, 0.8509804, 0.9098039, 1, 1, 1, 0.050980393, 1)
+
+[sub_resource type="Curve" id="Curve_nhd7b"]
+_limits = [-200.0, 200.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.2093023, -146.06741), 0.0, 0.0, 0, 0, Vector2(0.49418604, 146.06743), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_sumag"]
+_data = [Vector2(0.046511635, 0.764045), 0.0, 0.0, 0, 0, Vector2(0.28488374, 0.20224726), 0.0, 0.0, 0, 0, Vector2(0.755814, 0.55056185), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_nhd7b"]
+colors = PackedColorArray(0.9490196, 0.94509804, 0.16862746, 0.7607843, 0.09803922, 1, 1, 0.44705883)
+
 [node name="Eugio" type="CharacterBody2D" node_paths=PackedStringArray("ultHitbox", "animator")]
 collision_layer = 2
 collision_mask = 5
@@ -880,11 +900,13 @@ monitoring = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="UltHitbox"]
 shape = SubResource("CircleShape2D_vgfpp")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." node_paths=PackedStringArray("Gold", "meter", "HP")]
+[node name="CanvasLayer" type="CanvasLayer" parent="." node_paths=PackedStringArray("Gold", "meter", "HP", "Level", "HPLabel")]
 script = ExtResource("5_bot5f")
 Gold = NodePath("Control/Gold")
 meter = NodePath("Control/Meter")
 HP = NodePath("Control/HP")
+Level = NodePath("Control/Level")
+HPLabel = NodePath("Control/HP Label")
 
 [node name="Control" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -1004,4 +1026,51 @@ theme_override_fonts/font = ExtResource("6_w2hfu")
 theme_override_font_sizes/font_size = 46
 text = "10:00"
 
+[node name="HP Label" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 121.0
+offset_top = 13.0
+offset_right = 231.0
+offset_bottom = 36.0
+text = "100/100"
+horizontal_alignment = 1
+
+[node name="Ult Particles" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 2000
+lifetime = 0.28
+emission_shape = 1
+emission_sphere_radius = 16.83
+gravity = Vector2(0, -600)
+radial_accel_min = -82.47
+radial_accel_max = -82.47
+damping_min = 76.289
+damping_max = 76.289
+scale_amount_min = 0.0
+scale_amount_max = 2.5
+scale_amount_curve = SubResource("Curve_vgfpp")
+color_ramp = SubResource("Gradient_sumag")
+
+[node name="Enhanced Form" type="CPUParticles2D" parent="."]
+position = Vector2(0, 14.88)
+emitting = false
+amount = 100
+lifetime = 0.2
+speed_scale = 0.66
+emission_shape = 2
+emission_sphere_radius = 5.29
+gravity = Vector2(0, -500)
+angular_velocity_min = -150.0
+angular_velocity_max = 520.0
+radial_accel_min = -25.0
+radial_accel_max = 25.0
+radial_accel_curve = SubResource("Curve_nhd7b")
+damping_max = 4.0
+scale_amount_max = 5.0
+scale_amount_curve = SubResource("Curve_sumag")
+color_ramp = SubResource("Gradient_nhd7b")
+hue_variation_min = 0.73
+hue_variation_max = 0.73
+
 [connection signal="body_entered" from="WeapnHitbox" to="." method="OnEnemyHit"]
+[connection signal="body_entered" from="UltHitbox" to="." method="OnUltHit"]

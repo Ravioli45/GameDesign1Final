@@ -86,7 +86,12 @@ public partial class Slimothy : Enemy
                 }
             }
         }
-        
+        if (is_element_applied) elementGauge = Math.Max(elementGauge-1, 0);
+		if (elementGauge <= 0) {
+			is_element_applied = false;
+			//GD.Print(is_element_applied);
+		}
+		//else if(elementGauge % 10 == 0) GD.Print($"{elementGauge}, {is_element_applied}");
     }
 
     private bool IsChasing()

@@ -1,0 +1,157 @@
+[gd_scene load_steps=20 format=3 uid="uid://t5jk8qp8imqm"]
+
+[ext_resource type="Script" uid="uid://dd3dlwxslxy0v" path="res://Scripts/SwordSlime.cs" id="1_ri6p5"]
+[ext_resource type="Texture2D" uid="uid://bj21s4qo2p67k" path="res://Sprites/Bosses/SwordSlimeSpritesheet.png" id="2_1w8eq"]
+[ext_resource type="PackedScene" uid="uid://cc8qxqdq6lple" path="res://Scenes/Enemies/EnemyProjectiles/slime_sword.tscn" id="2_crs2f"]
+
+[sub_resource type="Animation" id="Animation_rdso6"]
+resource_name = "Attack"
+length = 0.40000334
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_5wwt4"]
+resource_name = "Die"
+length = 0.96667004
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.26666668, 0.4, 0.53333336, 0.6666667, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [6, 7, 8, 9, 10, 11, 12]
+}
+
+[sub_resource type="Animation" id="Animation_crs2f"]
+resource_name = "Jump"
+length = 0.5333367
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.26666668, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_7ttii"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dejed"]
+_data = {
+&"Attack": SubResource("Animation_rdso6"),
+&"Die": SubResource("Animation_5wwt4"),
+&"Jump": SubResource("Animation_crs2f"),
+&"RESET": SubResource("Animation_7ttii")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_slm7x"]
+animation = &"Attack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wf0e3"]
+animation = &"Die"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ikcbm"]
+animation = &"Jump"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8vywk"]
+advance_mode = 2
+advance_expression = "IsAttacking()"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6a4lc"]
+advance_mode = 2
+advance_expression = "IsWalking()"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qwmoq"]
+advance_mode = 2
+advance_expression = "IsDie()"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dlwyp"]
+advance_mode = 2
+advance_expression = "IsDie()"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1w8eq"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_y4i2f"]
+states/Attack/node = SubResource("AnimationNodeAnimation_slm7x")
+states/Attack/position = Vector2(485, 88)
+states/Die/node = SubResource("AnimationNodeAnimation_wf0e3")
+states/Die/position = Vector2(507, 169)
+states/Jump/node = SubResource("AnimationNodeAnimation_ikcbm")
+states/Jump/position = Vector2(342, 88)
+transitions = ["Jump", "Attack", SubResource("AnimationNodeStateMachineTransition_8vywk"), "Attack", "Jump", SubResource("AnimationNodeStateMachineTransition_6a4lc"), "Attack", "Die", SubResource("AnimationNodeStateMachineTransition_qwmoq"), "Jump", "Die", SubResource("AnimationNodeStateMachineTransition_dlwyp"), "Start", "Jump", SubResource("AnimationNodeStateMachineTransition_1w8eq")]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yox14"]
+radius = 308.75394
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ri6p5"]
+radius = 16.03122
+
+[node name="SwordSlime" type="CharacterBody2D" node_paths=PackedStringArray("Animator")]
+collision_layer = 4
+collision_mask = 7
+motion_mode = 1
+script = ExtResource("1_ri6p5")
+Animator = NodePath("AnimationTree")
+SlimeSword = ExtResource("2_crs2f")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_1w8eq")
+hframes = 3
+vframes = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+libraries = {
+&"": SubResource("AnimationLibrary_dejed")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+root_node = NodePath("../Sprite2D")
+tree_root = SubResource("AnimationNodeStateMachine_y4i2f")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../Sprite2D/AnimationPlayer")
+
+[node name="PlayerDetection" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
+shape = SubResource("CircleShape2D_yox14")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ri6p5")
+
+[connection signal="body_entered" from="PlayerDetection" to="." method="OnPlayerEnter"]

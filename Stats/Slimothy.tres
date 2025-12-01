@@ -4,5 +4,7 @@
 
 [resource]
 script = ExtResource("1_dl2lf")
+maxHealth = 15
+attack = 10
 speed = 80
 metadata/_custom_type_script = "uid://bs01eembtmnk6"

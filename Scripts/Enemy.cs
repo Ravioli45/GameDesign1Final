@@ -8,6 +8,7 @@ public abstract partial class Enemy : Entity
 	[Export] PackedScene exp;
 	[Export] PackedScene gold;
 	[Export] public bool is_element_applied;
+	public int elementGauge = 0;
 	[Export] public int amount_gold_drop;
 
 	protected int currentHealth = -1;
@@ -26,17 +27,21 @@ public abstract partial class Enemy : Entity
 		if (Element && is_element_applied)
 		{
 			base_damage *= 2;
+			elementGauge = Math.Min(elementGauge + 500, 1000);
 		}
 		else if (Element && !is_element_applied)
 		{
 			this.is_element_applied = true;
+			elementGauge = Math.Min(elementGauge + 500, 1000);
 		}
 
 		currentHealth -= base_damage;
 
 		if (currentHealth <= 0)
 		{
-			//GD.Print("enemy died: " + base_damage);
+			GD.Print("enemy died: " + base_damage);
+			
+			Die();
 		}
 	}
 	public void Die()
@@ -47,14 +52,17 @@ public abstract partial class Enemy : Entity
 		{
 			Node2D Instance = exp.Instantiate<Node2D>();
 			Instance.Position = new Vector2(this.Position.X + GD.RandRange(-5, 5), this.Position.Y + GD.RandRange(-5, 5));
+			this.GetTree().Root.CallDeferred("add_child",Instance);
 		}
 
 		for (int i = 0; i < amount_gold_drop; i++)
 		{
 			Node2D Instance = gold.Instantiate<Node2D>();
 			Instance.Position = new Vector2(this.Position.X + GD.RandRange(-5, 5), this.Position.Y + GD.RandRange(-5, 5));
+			this.GetTree().Root.CallDeferred("add_child",Instance);
 		}
 
 		//ADD DIE SOUND EFFECT HERE
+		CallDeferred("queue_free");
     }
 }
