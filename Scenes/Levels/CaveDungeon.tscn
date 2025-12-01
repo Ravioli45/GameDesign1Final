@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://b45ld0tvrrwjn"]
+[gd_scene load_steps=10 format=4 uid="uid://brkqllw72agge"]
 
 [ext_resource type="TileSet" uid="uid://cnq0y817te7wg" path="res://TileSets/CaveDungeonTileSet.tres" id="1_abpd3"]
 [ext_resource type="PackedScene" uid="uid://barvle7hdybcv" path="res://Scenes/Enemies/wizard_skeleton.tscn" id="4_kswaa"]
