@@ -40,7 +40,7 @@ public partial class Alistar : Entity
     public bool is_element_applied = false;
     public int elementGauge = 0;
    
-    public override void TakeDamage(int base_damage, bool Element)
+    public override void TakeDamage(int base_damage, bool Element, Vector2 directionHit)
     {
         if (Element && is_element_applied)
 		{
@@ -60,6 +60,8 @@ public partial class Alistar : Entity
 			//GD.Print("Alistar died: " + base_damage);
 			//Die();
 		}
+        this.Velocity = 150*directionHit*-1;
+		MoveAndSlide();
     }
 	public void PlayerEntersFight(Node2D body)
     {
@@ -183,7 +185,7 @@ public partial class Alistar : Entity
                 if (collision.GetCollider() is Player p)
                 {
                     
-                    p.TakeDamage(ChargeDamage,false);
+                    p.TakeDamage(ChargeDamage,false,StaticDirection);
                     InAttack = false;
 					State = BossState.Idle;
                     
@@ -209,7 +211,7 @@ public partial class Alistar : Entity
            
             //Stall to hit ground first
             await ToSignal(GetTree().CreateTimer(1f), "timeout");
-            if (InMeleeRange) PlayerNode.TakeDamage(Damage, false);
+            if (InMeleeRange) PlayerNode.TakeDamage(Damage, false, Direction);
             MeleeAttacking = false;
 
             MeleeCooldown = true;

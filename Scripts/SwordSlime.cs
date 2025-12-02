@@ -35,7 +35,7 @@ public partial class SwordSlime : Entity
         }
     }
 
-	public override void TakeDamage(int base_damage, bool Element)
+	public override void TakeDamage(int base_damage, bool Element, Vector2 directionHit)
     {
         if (Element && is_element_applied)
 		{
@@ -55,6 +55,8 @@ public partial class SwordSlime : Entity
 			//GD.Print("SwordSlime died: " + base_damage);
 			//Die();
 		}
+		this.Velocity = 300*directionHit*-1;
+		MoveAndSlide();
     }
 
 	public void ShootSwords(Vector2 direction)
@@ -108,7 +110,7 @@ public partial class SwordSlime : Entity
     {
         MeleeAttacking = true;
 		InAttack = true;
-        target.TakeDamage(1, false);
+        target.TakeDamage(1, false, Direction);
         // Knockback stuff could go here
         // Here we prevent multi-hit by making the Attack CD 1 second
         MeleeCooldown = true;

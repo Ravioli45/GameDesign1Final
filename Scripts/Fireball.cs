@@ -21,7 +21,7 @@ public partial class Fireball : CharacterBody2D
                 var collision = GetSlideCollision(i);
                 if (collision.GetCollider() is Player p)
                 {
-                    p.TakeDamage(damage,false);
+                    p.TakeDamage(damage,false, new Vector2(0,0));
 					this.CallDeferred("queue_free");
                     break;
                 }

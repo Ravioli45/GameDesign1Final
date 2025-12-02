@@ -34,7 +34,7 @@ public partial class FireSlime : Entity
         }
     }
 
-	public override void TakeDamage(int base_damage, bool Element)
+	public override void TakeDamage(int base_damage, bool Element, Vector2 directionHit)
     {
        if (Element && is_element_applied)
 		{
@@ -54,6 +54,9 @@ public partial class FireSlime : Entity
 			//GD.Print("FireSlime died: " + base_damage);
 			//Die();
 		}
+
+		this.Velocity = 300*directionHit*-1;
+		MoveAndSlide();
     }
 
 	public void ShootFire(Vector2 direction)
@@ -121,7 +124,7 @@ public partial class FireSlime : Entity
     {
         MeleeAttacking = true;
 		InAttack = true;
-        target.TakeDamage(1, false);
+        target.TakeDamage(1, false, Direction);
         // Knockback stuff could go here
         // Here we prevent multi-hit by making the Attack CD 1 second
         MeleeCooldown = true;
