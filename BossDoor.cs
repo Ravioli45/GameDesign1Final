@@ -21,7 +21,7 @@ public partial class BossDoor : Node2D
    public void OnBossDies(Node2D body)
     {
             counter++;
-            if(!(body is Slimorai) && !(body is FireSlime) && !(body is SwordSlime )||counter == 3){
+            if(!(body is Slimorai) && !(body is FireSlime) && !(body is SwordSlime ) && !(body is Player)||counter == 3){
             GD.Print("Boss Dies");
 			Bars.SetDeferred("enabled", false);
             PlayerDetection.SetDeferred("disabled", true);

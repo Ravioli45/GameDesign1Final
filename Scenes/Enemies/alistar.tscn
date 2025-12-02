@@ -416,8 +416,8 @@ radius = 672.4411
 [sub_resource type="CircleShape2D" id="CircleShape2D_ln3ea"]
 radius = 284.00177
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_x1gx5"]
-size = Vector2(64, 64)
+[sub_resource type="CircleShape2D" id="CircleShape2D_53ids"]
+radius = 41.303753
 
 [node name="Alistar" type="CharacterBody2D" node_paths=PackedStringArray("Animator")]
 collision_layer = 4
@@ -495,8 +495,8 @@ collision_layer = 0
 collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Melee Area"]
-position = Vector2(0, 5)
-shape = SubResource("RectangleShape2D_x1gx5")
+position = Vector2(-1, 5)
+shape = SubResource("CircleShape2D_53ids")
 
 [connection signal="body_entered" from="PlayerDetectionHandeler" to="." method="OnDetectionEnter"]
 [connection signal="body_entered" from="Begin Fight" to="." method="PlayerEntersFight"]

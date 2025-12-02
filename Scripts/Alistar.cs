@@ -209,6 +209,7 @@ public partial class Alistar : Entity
            
             //Stall to hit ground first
             await ToSignal(GetTree().CreateTimer(1f), "timeout");
+            if (InMeleeRange) PlayerNode.TakeDamage(Damage, false);
             MeleeAttacking = false;
 
             MeleeCooldown = true;
