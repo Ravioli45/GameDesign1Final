@@ -9,7 +9,7 @@ public partial class HpOrb : Node2D
         if(body is Player)
         {
            
-            GameManager.Instance.playerStats.health = Math.Min(GameManager.Instance.playerStats.health+10, 100);
+            GameManager.Instance.playerStats.health = Math.Min(GameManager.Instance.playerStats.health+10, GameManager.Instance.playerStats.maxHealth);
 			CallDeferred("queue_free");
         }
     }
