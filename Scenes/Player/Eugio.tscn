@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=3 uid="uid://dkkmc7f6645jl"]
+[gd_scene load_steps=78 format=3 uid="uid://dkkmc7f6645jl"]
 
 [ext_resource type="Texture2D" uid="uid://s0b4hi5khcac" path="res://Sprites/Player/EugioAnimationsSpriteSheet.png" id="1_d5ap3"]
 [ext_resource type="Script" uid="uid://bnf1o6r6l4xpl" path="res://Scripts/Player.cs" id="1_s7fr4"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://btw76x4kjh7lx" path="res://Sprites/Weapons/Electrosword.png" id="3_s7fr4"]
 [ext_resource type="Script" uid="uid://bek1nkgohw6sj" path="res://Scripts/PlayerHUD.cs" id="5_bot5f"]
 [ext_resource type="Texture2D" uid="uid://c3bb7l6rivefs" path="res://Sprites/UI/HealthAndMeterUI.png" id="6_b4x1i"]
+[ext_resource type="PackedScene" uid="uid://c6udc7fi8oc43" path="res://Scenes/PauseMenu.tscn" id="6_sumag"]
 [ext_resource type="Texture2D" uid="uid://w36y4f1h856v" path="res://Sprites/UI/HUDbackgroundpng.png" id="6_vgfpp"]
 [ext_resource type="FontFile" uid="uid://cbi7tso5e4xbl" path="res://Sprites/UI/DigitalJots.ttf" id="6_w2hfu"]
 [ext_resource type="Texture2D" uid="uid://cwv8pfb2avsme" path="res://Sprites/UI/GoldUI.png" id="8_ajo84"]
@@ -907,6 +908,9 @@ meter = NodePath("Control/Meter")
 HP = NodePath("Control/HP")
 Level = NodePath("Control/Level")
 HPLabel = NodePath("Control/HP Label")
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("6_sumag")]
+visible = false
 
 [node name="Control" type="Control" parent="CanvasLayer"]
 layout_mode = 3
