@@ -27,11 +27,11 @@ public partial class Alistar : Entity
 	private int AttackSelection = -1;
 	private BossState State = BossState.Idle;
     private bool InAttack = false;
-    private int Damage = 20;
-    private int ChargeDamage = 50;
+    [Export] private int Damage = 20;
+    [Export] private int ChargeDamage = 50;
     public bool fightStarted = false;
 
-    private int HP = 150;
+    [Export] private int HP = 150;
     private bool InMeleeRange = false;
     private bool MeleeAttacking = false;
 
@@ -50,11 +50,13 @@ public partial class Alistar : Entity
 		{
 			base_damage *= 2;
 			elementGauge = Math.Min(elementGauge + 500, 1000);
+            Modulate = new Color(1, 1, (float)(0.2 * Math.Round(Math.Cos(elementGauge/10)) + 0.5));
 		}
 		else if (Element && !is_element_applied)
 		{
 			this.is_element_applied = true;
 			elementGauge = Math.Min(elementGauge + 500, 1000);
+            Modulate = new Color(1, 1, (float)(0.2 * Math.Round(Math.Cos(elementGauge/10)) + 0.5));
 		}
 
 		HP -= base_damage;
@@ -297,7 +299,8 @@ public partial class Alistar : Entity
                     State = BossState.Idle;
                 }
 
-            if (!MeleeAttacking && !MeleeCooldown) {
+
+            if (!MeleeAttacking && !MeleeCooldown && !endAttack) {
                 Direction = (PlayerNode.GlobalPosition - this.GlobalPosition).Normalized();
                 Animator.Set("parameters/Chasing/blend_position", Direction);
                 Velocity = 75 * Direction;
@@ -323,12 +326,14 @@ public partial class Alistar : Entity
         }
 
         }
-        if (is_element_applied) elementGauge = Math.Max(elementGauge-1, 0);
-		if (elementGauge <= 0) {
-			is_element_applied = false;
-			//GD.Print(is_element_applied);
+        if (is_element_applied) {
+			elementGauge = Math.Max(elementGauge-1, 0);
+			Modulate = new Color(1, 1, (float)(0.2 * Math.Round(Math.Cos(elementGauge/10)) + 0.5));
+			if (elementGauge <= 0) {
+				is_element_applied = false;
+				Modulate = new Color(1, 1, 1);
+			}
 		}
-		//else if(elementGauge % 10 == 0) GD.Print($"{elementGauge}, {is_element_applied}");
 	}
 
 

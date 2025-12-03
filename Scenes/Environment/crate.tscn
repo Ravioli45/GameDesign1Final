@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bq6ffjs6l54m0"]
 
 [ext_resource type="Script" uid="uid://cckpnp3qjx80f" path="res://Scripts/Breakable.cs" id="1_a4jlg"]
-[ext_resource type="Texture2D" uid="uid://b8vrh03vbtjg" path="res://Sprites/Breakables/Crate.png" id="2_k0cn2"]
+[ext_resource type="Texture2D" uid="uid://b8vrh03vbtjg" path="res://Sprites/Environment/Crate.png" id="2_k0cn2"]
 [ext_resource type="PackedScene" uid="uid://c08l6sf5mmga4" path="res://Scenes/Environment/gold.tscn" id="2_llvst"]
 [ext_resource type="PackedScene" uid="uid://ds8s7fo0umh46" path="res://Scenes/Environment/hp_orb.tscn" id="3_llvst"]
 

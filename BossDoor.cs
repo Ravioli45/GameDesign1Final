@@ -7,6 +7,7 @@ public partial class BossDoor : Node2D
 	[Export] CollisionShape2D BossDetection;
     [Export] CollisionShape2D PlayerDetection;
 	[Export] TileMapLayer Bars;
+    [Export] Node2D Teleporter;
 
     private int counter = 0;
 
@@ -20,14 +21,14 @@ public partial class BossDoor : Node2D
 
    public void OnBossDies(Node2D body)
     {
-            counter++;
+            
+            if ((body is Slimorai) || (body is FireSlime) || (body is SwordSlime )) counter++;
             if(!(body is Slimorai) && !(body is FireSlime) && !(body is SwordSlime ) && !(body is Player)||counter == 3){
-            GD.Print("Boss Dies");
-			Bars.SetDeferred("enabled", false);
-            PlayerDetection.SetDeferred("disabled", true);
-        }
-        
-        
+                GD.Print("Boss Dies");
+                Bars.SetDeferred("enabled", false);
+                PlayerDetection.SetDeferred("disabled", true);
+                Teleporter.Visible = true;
+            }
     }
 	public void OnPlayerEnter(Node2D body)
     {
