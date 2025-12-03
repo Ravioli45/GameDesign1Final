@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://fysi7xnrtgnv"]
+[gd_scene load_steps=10 format=4 uid="uid://fysi7xnrtgnv"]
 
 [ext_resource type="TileSet" uid="uid://bh2eiv84e3mqs" path="res://TileSets/Dungeon3TileSet.tres" id="1_hs2wt"]
 [ext_resource type="PackedScene" uid="uid://barvle7hdybcv" path="res://Scenes/Enemies/wizard_skeleton.tscn" id="3_kq3e0"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://qtrmx47ad36s" path="res://Scenes/Environment/barrel.tscn" id="6_4kifu"]
 [ext_resource type="PackedScene" uid="uid://dhfwjohlbb0qf" path="res://Scenes/Environment/chest.tscn" id="7_7jfg0"]
 [ext_resource type="PackedScene" uid="uid://bq6ffjs6l54m0" path="res://Scenes/Environment/crate.tscn" id="8_i3efh"]
+[ext_resource type="PackedScene" uid="uid://cy3cwpb6llxj2" path="res://Scenes/Environment/Shop.tscn" id="9_t8omr"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -208,3 +209,6 @@ position = Vector2(1125, 1064)
 
 [node name="Crate13" parent="." instance=ExtResource("8_i3efh")]
 position = Vector2(1121, 977)
+
+[node name="Node2D" parent="." instance=ExtResource("9_t8omr")]
+position = Vector2(-828, 1767)

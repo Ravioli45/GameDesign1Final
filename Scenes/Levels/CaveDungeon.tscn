@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://brkqllw72agge"]
+[gd_scene load_steps=11 format=4 uid="uid://b45ld0tvrrwjn"]
 
 [ext_resource type="TileSet" uid="uid://cnq0y817te7wg" path="res://TileSets/CaveDungeonTileSet.tres" id="1_abpd3"]
 [ext_resource type="PackedScene" uid="uid://barvle7hdybcv" path="res://Scenes/Enemies/wizard_skeleton.tscn" id="4_kswaa"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dnns8xqfoiqws" path="res://Scenes/Environment/BossDoor.tscn" id="8_kswaa"]
 [ext_resource type="PackedScene" uid="uid://bq6ffjs6l54m0" path="res://Scenes/Environment/crate.tscn" id="8_y7ere"]
 [ext_resource type="PackedScene" uid="uid://dhfwjohlbb0qf" path="res://Scenes/Environment/chest.tscn" id="9_pcg05"]
+[ext_resource type="PackedScene" uid="uid://cy3cwpb6llxj2" path="res://Scenes/Environment/Shop.tscn" id="10_y7ere"]
 
 [node name="Dungeon2" type="Node2D"]
 
@@ -208,3 +209,6 @@ position = Vector2(-517, -722)
 
 [node name="Barrel7" parent="." instance=ExtResource("7_kswaa")]
 position = Vector2(-39, -714)
+
+[node name="Node2D" parent="." instance=ExtResource("10_y7ere")]
+position = Vector2(748, -782)
