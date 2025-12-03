@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://olxai03s7puj"]
+[gd_scene load_steps=16 format=3 uid="uid://olxai03s7puj"]
 
 [ext_resource type="Script" uid="uid://o6gr1vfvavqe" path="res://Scripts/AudioManager.cs" id="1_sm2tf"]
 [ext_resource type="AudioStream" uid="uid://digmk8vdlausx" path="res://Audio/Three Red Hearts - Out of Time.ogg" id="2_0hehx"]
@@ -7,11 +7,14 @@
 [ext_resource type="AudioStream" uid="uid://c6042prsyelac" path="res://Audio/Three Red Hearts - Box Jump.ogg" id="3_mjqhu"]
 [ext_resource type="AudioStream" uid="uid://dwrs0lit8lp4v" path="res://Audio/Three Red Hearts - Sanctuary.ogg" id="4_pn88s"]
 [ext_resource type="AudioStream" uid="uid://dlypw4bqiluwd" path="res://Audio/FGHTImpt_HIT-Strong Smack_HY_PC-003.wav" id="6_mjqhu"]
-[ext_resource type="AudioStream" uid="uid://dldwqjsreelpb" path="res://Audio/DSGNMisc_SKILL RELEASE-Fire Sphere_HY_PC-004.wav" id="7_tnn7g"]
 [ext_resource type="AudioStream" uid="uid://db5cnwl02d5wg" path="res://Audio/DSGNImpt_EXPLOSION-Smaller Flare_HY_PC-001.wav" id="8_lwpe1"]
+[ext_resource type="AudioStream" uid="uid://cmhkwcvldynen" path="res://Audio/DSGNMisc_SKILL RELEASE-Fire Sphere_HY_PC-001.wav" id="8_pn88s"]
 [ext_resource type="AudioStream" uid="uid://dhd24a1xdgffu" path="res://Audio/FGHTImpt_HIT-Strong Punch_HY_PC-001.wav" id="9_lwpe1"]
 [ext_resource type="AudioStream" uid="uid://c15l7r3wj2j8v" path="res://Audio/UIClick_INTERFACE-Metallic Click_HY_PC-001.wav" id="10_5nrbi"]
 [ext_resource type="AudioStream" uid="uid://bkhbfp8vebvih" path="res://Audio/DSGNMisc_MELEE-Sword Slash_HY_PC-004.wav" id="11_pn88s"]
+[ext_resource type="AudioStream" uid="uid://clvl4nf3mfftl" path="res://Audio/DSGNTonl_USABLE-Scifi Select_HY_PC-006.wav" id="13_fasow"]
+[ext_resource type="AudioStream" uid="uid://bxgrej6food3w" path="res://Audio/DSGNTonl_USABLE-Coin Zap_HY_PC-004.wav" id="14_1bal0"]
+[ext_resource type="AudioStream" uid="uid://b27s38unoymds" path="res://Audio/DSGNImpt_EXPLOSION-Cruncher_HY_PC-001.wav" id="15_vhwx7"]
 
 [node name="AudioManager" type="Node"]
 script = ExtResource("1_sm2tf")
@@ -22,10 +25,13 @@ bgm_list = Dictionary[StringName, AudioStream]({
 })
 streams = 8
 sfx_list = Dictionary[StringName, AudioStream]({
+&"box_break": ExtResource("15_vhwx7"),
 &"button_click": ExtResource("10_5nrbi"),
+&"coin_pickup": ExtResource("14_1bal0"),
 &"enemy_die": ExtResource("9_lwpe1"),
+&"exp_pickup": ExtResource("13_fasow"),
 &"fireball_die": ExtResource("8_lwpe1"),
-&"fireball_spawn": ExtResource("7_tnn7g"),
+&"fireball_spawn": ExtResource("8_pn88s"),
 &"hit": ExtResource("6_mjqhu"),
 &"player_attack": ExtResource("2_qixve"),
 &"player_dash": ExtResource("2_4tj6f"),

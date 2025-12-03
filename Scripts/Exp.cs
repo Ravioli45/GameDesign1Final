@@ -7,6 +7,7 @@ public partial class Exp : Node2D
     {
         if(body is Player)
         {
+            AudioManager.Instance.PlaySFX("exp_pickup");
             GameManager.Instance.playerStats.exp++;
 			CallDeferred("queue_free");
         }

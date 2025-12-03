@@ -9,7 +9,7 @@ public partial class Fireball : CharacterBody2D
 	public override void _Ready()
     {
 		sprite.Play("default");
-        
+        AudioManager.Instance.PlaySFX("fireball_spawn");
     }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -21,6 +21,7 @@ public partial class Fireball : CharacterBody2D
                 var collision = GetSlideCollision(i);
                 if (collision.GetCollider() is Player p)
                 {
+                    AudioManager.Instance.PlaySFX("fireball_die");
                     p.TakeDamage(damage,false);
 					this.CallDeferred("queue_free");
                     break;
@@ -29,6 +30,7 @@ public partial class Fireball : CharacterBody2D
 
         	if (GetSlideCollisionCount()>0)
         	{
+                AudioManager.Instance.PlaySFX("fireball_die");
             	this.CallDeferred("queue_free");
         	}
 			

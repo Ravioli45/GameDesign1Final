@@ -231,6 +231,7 @@ public partial class Player : Entity
     public override void TakeDamage(int base_damage, bool Element)
     {
         //base.TakeDamage(base_damage, Element);
+        AudioManager.Instance.PlaySFX("hit");
         stats.health -= base_damage;
         DepleteMeter();
     }
