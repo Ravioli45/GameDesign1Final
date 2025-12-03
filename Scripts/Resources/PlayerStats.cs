@@ -9,7 +9,33 @@ public partial class PlayerStats : Resource
     [Export] public int attack { get; set; } = 1;
     [Export] public int speed { get; set; } = 100;
 
-    [Export] public int exp { get; set; } = 0;
+    [Export] public int level { get; set; } = 1;
+    private int _exp;
+    [Export]
+    public int exp
+    {
+        get => _exp;
+        set
+        {
+            _exp = value;
+            if (value >= expToNextLevel)
+            {
+                GD.Print("level up");
+                level++;
+                maxHealth += 20;
+                health += 20;
+                attack += 3;
+
+                expToNextLevel += 20;
+                _exp = 0;
+            }
+            else
+            {
+                _exp = value;
+            }
+            GD.Print($"exp: {_exp}");
+        }
+    }
     [Export] public int expToNextLevel { get; set; } = 20;
     [Export] public int gold { get; set; } = 0;
     [Export] public float critRate { get; set; } = 0;
@@ -17,9 +43,9 @@ public partial class PlayerStats : Resource
     [Export] public int meterCharge { get; set; } = 0;
     [Export] public int maxMeter { get; set; } = 10;
 
-    public PlayerStats() : this(1, 1, 1, 100, 0, 20, 0, 0, 0, 0, 10) { }
+    public PlayerStats() : this(1, 1, 1, 100, 1, 0, 20, 0, 0, 0, 0, 10) { }
 
-    public PlayerStats(int _health, int _maxHealth, int _attack, int _speed,
+    public PlayerStats(int _health, int _maxHealth, int _attack, int _speed, int _level,
         int _exp, int _expToNextLevel, int _gold, float _critRate, float _critDamage, int _meterCharge, int _maxMeter)
     {
         health = _health;
@@ -27,6 +53,7 @@ public partial class PlayerStats : Resource
         attack = _attack;
         speed = _speed;
         //currentHealth = _currentHealth;
+        level = _level;
         exp = _exp;
         expToNextLevel = _expToNextLevel;
         gold = _gold;

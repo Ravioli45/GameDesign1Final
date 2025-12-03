@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=3 uid="uid://dkkmc7f6645jl"]
+[gd_scene load_steps=79 format=3 uid="uid://dkkmc7f6645jl"]
 
 [ext_resource type="Texture2D" uid="uid://s0b4hi5khcac" path="res://Sprites/Player/EugioAnimationsSpriteSheet.png" id="1_d5ap3"]
 [ext_resource type="Script" uid="uid://bnf1o6r6l4xpl" path="res://Scripts/Player.cs" id="1_s7fr4"]
@@ -816,6 +816,22 @@ bg_color = Color(0.27058825, 0.27058825, 0.27058825, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nhd7b"]
 bg_color = Color(0.9098039, 0.09411765, 0.101960786, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vgfpp"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.27058825, 0.27058825, 0.27058825, 1)
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lamgo"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.21599999, 0.4, 0.25586668, 1)
+corner_detail = 6
+
 [sub_resource type="Curve" id="Curve_vgfpp"]
 _data = [Vector2(0.17441863, 0.8089888), 0.0, 0.0, 0, 0, Vector2(0.8255815, 0.3370787), 0.0, 0.0, 0, 0]
 point_count = 2
@@ -900,12 +916,13 @@ monitoring = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="UltHitbox"]
 shape = SubResource("CircleShape2D_vgfpp")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." node_paths=PackedStringArray("Gold", "meter", "HP", "Level", "HPLabel")]
+[node name="CanvasLayer" type="CanvasLayer" parent="." node_paths=PackedStringArray("Gold", "meter", "HP", "Level", "EXP", "HPLabel")]
 script = ExtResource("5_bot5f")
 Gold = NodePath("Control/Gold")
 meter = NodePath("Control/Meter")
 HP = NodePath("Control/HP")
 Level = NodePath("Control/Level")
+EXP = NodePath("Control/EXPBar")
 HPLabel = NodePath("Control/HP Label")
 
 [node name="Control" type="Control" parent="CanvasLayer"]
@@ -978,6 +995,22 @@ layout_mode = 0
 offset_right = 320.0
 offset_bottom = 94.0
 texture = ExtResource("6_b4x1i")
+
+[node name="EXPBar" type="ProgressBar" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.009548611
+anchor_top = 0.015432099
+anchor_right = 0.05399306
+anchor_bottom = 0.08983951
+offset_right = -0.20000458
+offset_bottom = -0.21600342
+theme_override_styles/background = SubResource("StyleBoxFlat_vgfpp")
+theme_override_styles/fill = SubResource("StyleBoxFlat_lamgo")
+max_value = 20.0
+fill_mode = 3
+show_percentage = false
+metadata/_edit_use_anchors_ = true
 
 [node name="Level" type="Label" parent="CanvasLayer/Control"]
 modulate = Color(0.73300546, 0.7330054, 0.7330054, 1)
