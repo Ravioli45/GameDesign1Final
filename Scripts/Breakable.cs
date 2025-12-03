@@ -27,6 +27,7 @@ public partial class Breakable : StaticBody2D
 			this.GetTree().Root.CallDeferred("add_child",Instance);
 		}*/
         GD.Print("Health Orbs can't spawn yet");
+        AudioManager.Instance.PlaySFX("box_break");
         CallDeferred("queue_free");
     }
 }

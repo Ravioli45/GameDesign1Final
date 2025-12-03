@@ -7,6 +7,7 @@ public partial class Gold : Node2D
     {
         if(body is Player)
         {
+            AudioManager.Instance.PlaySFX("coin_pickup");
             GameManager.Instance.playerStats.gold++;
 			CallDeferred("queue_free");
         }

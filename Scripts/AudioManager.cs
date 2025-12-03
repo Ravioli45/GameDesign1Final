@@ -31,6 +31,7 @@ public partial class AudioManager : Node
         for (int i = 0; i < streams; i++)
         {
             AudioStreamPlayer player = new();
+            player.Name = $"SFX {i}";
 
             AddChild(player);
             available.Add(player);
@@ -38,6 +39,7 @@ public partial class AudioManager : Node
         }
 
         BGMPlayer = new AudioStreamPlayer();
+        BGMPlayer.Name = "BGM";
         BGMPlayer.Bus = "BGM";
         AddChild(BGMPlayer);
 

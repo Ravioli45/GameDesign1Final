@@ -40,8 +40,19 @@ public abstract partial class Enemy : Entity
 		if (currentHealth <= 0)
 		{
 			GD.Print("enemy died: " + base_damage);
-			
+			AudioManager.Instance.PlaySFX("enemy_die");
 			Die();
+		}
+		else
+		{
+			if (Element)
+			{
+				AudioManager.Instance.PlaySFX("elemental_hit");
+			}
+			else
+			{
+				AudioManager.Instance.PlaySFX("hit");
+			}
 		}
 	}
 	public void Die()
