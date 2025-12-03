@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://fysi7xnrtgnv" path="res://Scenes/Levels/Dungeon3.tscn" id="10_eef0s"]
 [ext_resource type="PackedScene" uid="uid://dkkmc7f6645jl" path="res://Scenes/Player/Eugio.tscn" id="10_pcg05"]
 [ext_resource type="PackedScene" uid="uid://bfm3ndhs6vyap" path="res://Scenes/follow_camera.tscn" id="11_sh2mu"]
+[ext_resource type="PackedScene" uid="uid://cy3cwpb6llxj2" path="res://Scenes/Environment/Shop.tscn" id="10_y7ere"]
 
 [node name="Dungeon2" type="Node2D"]
 
@@ -223,3 +224,6 @@ position = Vector2(-517, -722)
 
 [node name="Barrel7" parent="." instance=ExtResource("7_kswaa")]
 position = Vector2(-39, -714)
+
+[node name="Node2D" parent="." instance=ExtResource("10_y7ere")]
+position = Vector2(748, -782)

@@ -1,0 +1,111 @@
+[gd_scene load_steps=20 format=3 uid="uid://cy3cwpb6llxj2"]
+
+[ext_resource type="Script" uid="uid://cspeswcwm773x" path="res://Scripts/Shop.cs" id="1_5q5je"]
+[ext_resource type="Resource" uid="uid://dap0gdaxncjv2" path="res://Stats/Items/SpeedBoots.tres" id="2_ydyxf"]
+[ext_resource type="Resource" uid="uid://bed12agnmc4xk" path="res://Stats/Items/AttackSword.tres" id="3_pgqxq"]
+[ext_resource type="Resource" uid="uid://cgnb7fcnda77r" path="res://Stats/Items/CritRateRing.tres" id="4_8cmwv"]
+[ext_resource type="Resource" uid="uid://bixjxgnhf0law" path="res://Stats/Items/HealthBurger.tres" id="5_dvu14"]
+[ext_resource type="Resource" uid="uid://cr8r1pjqx330h" path="res://Stats/Items/CritDamageEarrings.tres" id="6_bs6kr"]
+[ext_resource type="Texture2D" uid="uid://ct6j6husx0hnh" path="res://Sprites/Dungeon/Rug.png" id="7_q6wy6"]
+[ext_resource type="Texture2D" uid="uid://be1jtoicy70xj" path="res://Sprites/Dungeon/tinglob.png" id="8_folrp"]
+[ext_resource type="PackedScene" uid="uid://n07yq52n2wcl" path="res://Scenes/item.tscn" id="9_iwrfy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iqrdv"]
+atlas = ExtResource("8_folrp")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mrdxa"]
+atlas = ExtResource("8_folrp")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_utj8a"]
+atlas = ExtResource("8_folrp")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fpfg7"]
+atlas = ExtResource("8_folrp")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nvlhq"]
+atlas = ExtResource("8_folrp")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nyqyf"]
+atlas = ExtResource("8_folrp")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0h3dq"]
+atlas = ExtResource("8_folrp")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4lt5s"]
+atlas = ExtResource("8_folrp")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4mg0d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iqrdv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mrdxa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_utj8a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fpfg7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nvlhq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nyqyf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0h3dq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4lt5s")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lstgx"]
+size = Vector2(30, 31)
+
+[node name="Node2D" type="Node2D" node_paths=PackedStringArray("item1", "item2", "item3", "Tinglorb")]
+script = ExtResource("1_5q5je")
+items = Array[Object]([ExtResource("2_ydyxf"), ExtResource("3_pgqxq"), ExtResource("4_8cmwv"), ExtResource("5_dvu14"), ExtResource("6_bs6kr")])
+item1 = NodePath("Item")
+item2 = NodePath("Item2")
+item3 = NodePath("Item3")
+Tinglorb = NodePath("StaticBody2D/AnimatedSprite2D")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Rug" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(3, 26.5)
+scale = Vector2(1, 0.84375006)
+texture = ExtResource("7_q6wy6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="StaticBody2D"]
+position = Vector2(-1, -2)
+sprite_frames = SubResource("SpriteFrames_4mg0d")
+frame_progress = 0.043307114
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-2, -1)
+shape = SubResource("RectangleShape2D_lstgx")
+
+[node name="Item" parent="." instance=ExtResource("9_iwrfy")]
+position = Vector2(-28, 17)
+
+[node name="Item2" parent="." instance=ExtResource("9_iwrfy")]
+position = Vector2(2, 17)
+
+[node name="Item3" parent="." instance=ExtResource("9_iwrfy")]
+position = Vector2(32, 17)

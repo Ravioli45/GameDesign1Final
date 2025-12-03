@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dnns8xqfoiqws" path="res://Scenes/Environment/BossDoor.tscn" id="9_7jfg0"]
 [ext_resource type="PackedScene" uid="uid://bfm3ndhs6vyap" path="res://Scenes/follow_camera.tscn" id="10_7jfg0"]
 [ext_resource type="PackedScene" uid="uid://cavn7osr2g46c" path="res://Scenes/Environment/teleporter.tscn" id="10_i3efh"]
+[ext_resource type="PackedScene" uid="uid://cy3cwpb6llxj2" path="res://Scenes/Environment/Shop.tscn" id="9_t8omr"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -226,3 +227,6 @@ position = Vector2(-826, 1797)
 
 [node name="FollowCamera" parent="." node_paths=PackedStringArray("target") instance=ExtResource("10_7jfg0")]
 target = NodePath("../Eugio")
+
+[node name="Node2D" parent="." instance=ExtResource("9_t8omr")]
+position = Vector2(-828, 1767)

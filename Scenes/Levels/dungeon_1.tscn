@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://brkqllw72agge" path="res://Scenes/Levels/CaveDungeon.tscn" id="9_ii61t"]
 [ext_resource type="PackedScene" uid="uid://dhfwjohlbb0qf" path="res://Scenes/Environment/chest.tscn" id="11_bc562"]
 [ext_resource type="PackedScene" uid="uid://bq6ffjs6l54m0" path="res://Scenes/Environment/crate.tscn" id="12_21mms"]
+[ext_resource type="PackedScene" uid="uid://cy3cwpb6llxj2" path="res://Scenes/Environment/Shop.tscn" id="13_21mms"]
 
 [node name="Dungeon1" type="Node2D"]
 
@@ -300,3 +301,6 @@ position = Vector2(1007, -2136)
 
 [node name="Crate16" parent="." instance=ExtResource("12_21mms")]
 position = Vector2(1029, -2136)
+
+[node name="Node2D" parent="." instance=ExtResource("13_21mms")]
+position = Vector2(796, -929)
