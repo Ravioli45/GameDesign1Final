@@ -77,10 +77,10 @@ public partial class Player : Entity
         {
             if (stats.meterCharge == stats.maxMeter)
             {
-                
+
                 if (enhancedState)
                 {
-                    
+
                     Vector2 mouse_pos = GetGlobalMousePosition();
 
                     // set blend space parameter
@@ -96,6 +96,7 @@ public partial class Player : Entity
                     SetCollisionMaskValue(3, false);
                     state = PlayerState.Ulting;
                     GD.Print("Ultimate Activated");
+                    AudioManager.Instance.PlaySFX("ult_dash");
                 }
 
                 else
@@ -103,11 +104,12 @@ public partial class Player : Entity
                     enhancedState = true;
                     stats.meterCharge = 0;
                     GD.Print("Enhanced Form Activated");
+                    AudioManager.Instance.PlaySFX("enhance_state");
                     // Turn on particle effects and maybe SFX here
-                    
+
                     Enhancedparticles.Emitting = true;
-		            Enhancedparticles.Visible = true;
-		            Enhancedparticles.Restart();
+                    Enhancedparticles.Visible = true;
+                    Enhancedparticles.Restart();
                 }
             }
         }

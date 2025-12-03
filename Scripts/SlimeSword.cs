@@ -9,6 +9,7 @@ public partial class SlimeSword : CharacterBody2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		AudioManager.Instance.PlaySFX("sword_throw");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -22,6 +23,7 @@ public partial class SlimeSword : CharacterBody2D
                 if (collision.GetCollider() is Player p)
                 {
                     p.TakeDamage(damage,false);
+					AudioManager.Instance.PlaySFX("fireball_die");
 					this.CallDeferred("queue_free");
                     break;
                 }
@@ -29,6 +31,7 @@ public partial class SlimeSword : CharacterBody2D
 
         	if (GetSlideCollisionCount()>0)
         	{
+				AudioManager.Instance.PlaySFX("fireball_die");
             	this.CallDeferred("queue_free");
         	}
     }

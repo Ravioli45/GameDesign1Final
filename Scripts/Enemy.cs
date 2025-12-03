@@ -45,7 +45,14 @@ public abstract partial class Enemy : Entity
 		}
 		else
 		{
-			AudioManager.Instance.PlaySFX("hit");
+			if (Element)
+			{
+				AudioManager.Instance.PlaySFX("elemental_hit");
+			}
+			else
+			{
+				AudioManager.Instance.PlaySFX("hit");
+			}
 		}
 	}
 	public void Die()
