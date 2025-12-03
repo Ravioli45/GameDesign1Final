@@ -22,7 +22,7 @@ public partial class Fireball : CharacterBody2D
                 if (collision.GetCollider() is Player p)
                 {
                     AudioManager.Instance.PlaySFX("fireball_die");
-                    p.TakeDamage(damage,false);
+                    p.TakeDamage(damage,false, new Vector2(0,0));
 					this.CallDeferred("queue_free");
                     break;
                 }

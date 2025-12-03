@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dhfwjohlbb0qf"]
+[gd_scene load_steps=6 format=3 uid="uid://dhfwjohlbb0qf"]
 
 [ext_resource type="Script" uid="uid://cckpnp3qjx80f" path="res://Scripts/Breakable.cs" id="1_i8ls8"]
 [ext_resource type="PackedScene" uid="uid://c08l6sf5mmga4" path="res://Scenes/Environment/gold.tscn" id="2_xvrve"]
 [ext_resource type="Texture2D" uid="uid://clu7r3thbr58s" path="res://Sprites/Breakables/Chest.png" id="3_aceba"]
+[ext_resource type="PackedScene" uid="uid://ds8s7fo0umh46" path="res://Scenes/Environment/hp_orb.tscn" id="3_xvrve"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r3wym"]
 size = Vector2(16, 13)
@@ -12,6 +13,7 @@ collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_i8ls8")
 gold = ExtResource("2_xvrve")
+healthOrb = ExtResource("3_xvrve")
 minGold = 3
 maxGold = 12
 minHealthOrb = 1

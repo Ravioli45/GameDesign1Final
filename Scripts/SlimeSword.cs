@@ -22,7 +22,7 @@ public partial class SlimeSword : CharacterBody2D
                 var collision = GetSlideCollision(i);
                 if (collision.GetCollider() is Player p)
                 {
-                    p.TakeDamage(damage,false);
+                    p.TakeDamage(damage,false, new Vector2(0,0));
 					AudioManager.Instance.PlaySFX("fireball_die");
 					this.CallDeferred("queue_free");
                     break;

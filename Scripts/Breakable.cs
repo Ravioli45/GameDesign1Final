@@ -20,13 +20,13 @@ public partial class Breakable : StaticBody2D
 			Instance.Position = new Vector2(this.Position.X + GD.RandRange(-7, 7), this.Position.Y + GD.RandRange(-7, 7));
 			this.GetTree().Root.CallDeferred("add_child",Instance);
 		}
-        /*for (int i = 0; i < amount_health_orb_drop; i++)
+        for (int i = 0; i < amount_health_orb_drop; i++)
 		{
 			Node2D Instance = healthOrb.Instantiate<Node2D>();
 			Instance.Position = new Vector2(this.Position.X + GD.RandRange(-7, 7), this.Position.Y + GD.RandRange(-7, 7));
 			this.GetTree().Root.CallDeferred("add_child",Instance);
-		}*/
-        GD.Print("Health Orbs can't spawn yet");
+		}
+       
         AudioManager.Instance.PlaySFX("box_break");
         CallDeferred("queue_free");
     }

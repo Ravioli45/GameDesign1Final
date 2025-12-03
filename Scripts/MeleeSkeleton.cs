@@ -99,7 +99,7 @@ public partial class MeleeSkeleton : Enemy
 			if(to_hit_lag <= 0 && !player_got_away && !has_attacked)
             {
 				//Swing and Hits
-				player.TakeDamage(stats.attack,false);
+				player.TakeDamage(stats.attack,false, direction);
 				hit_timer = 30;
 				has_attacked = true;
                 //Proc Damage and add hitlag has_attacked = true

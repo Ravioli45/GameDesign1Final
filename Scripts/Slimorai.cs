@@ -49,7 +49,7 @@ public partial class Slimorai : Entity
         }
     }
 
-	public override void TakeDamage(int base_damage, bool Element)
+	public override void TakeDamage(int base_damage, bool Element, Vector2 directionHit)
     {
         if (Element && is_element_applied)
 		{
@@ -69,6 +69,8 @@ public partial class Slimorai : Entity
 			//GD.Print("Slimorai died: " + base_damage);
 			//Die();
 		}
+		this.Velocity = 150*directionHit*-1;
+		MoveAndSlide();
     }
 
 	public void ShootFire(Vector2 direction)
@@ -164,7 +166,7 @@ public partial class Slimorai : Entity
     {
         MeleeAttacking = true;
 		InAttack = true;
-        target.TakeDamage(1, false);
+        target.TakeDamage(1, false, Direction);
         // Knockback stuff could go here
         // Here we prevent multi-hit by making the Attack CD 1 second
         MeleeCooldown = true;

@@ -22,7 +22,7 @@ public abstract partial class Enemy : Entity
     }
 
 
-	public override void TakeDamage(int base_damage, bool Element)
+	public override void TakeDamage(int base_damage, bool Element, Vector2 directionHit)
 	{
 		if (Element && is_element_applied)
 		{
@@ -54,6 +54,9 @@ public abstract partial class Enemy : Entity
 				AudioManager.Instance.PlaySFX("hit");
 			}
 		}
+
+		this.Velocity = 1000*directionHit;
+		MoveAndSlide();
 	}
 	public void Die()
     {

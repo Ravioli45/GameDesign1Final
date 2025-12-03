@@ -209,11 +209,12 @@ public partial class Player : Entity
     // OnBodyEnter from weapon hitbox
     public void OnEnemyHit(Node2D body)
     {
+        Vector2 mouse_pos = GetGlobalMousePosition();
         if (body is Entity enemy)
         {
             // enemy.TakeDamage(stats.attack, false);
             // enhancedState's value coincides with the expected value for the Element bool
-            enemy.TakeDamage(stats.attack, enhancedState);
+            enemy.TakeDamage(stats.attack, enhancedState, (mouse_pos - GlobalPosition).Normalized());
             ChargeMeter();
         }
         else if (body is Breakable breakable) breakable.Break();
@@ -221,21 +222,24 @@ public partial class Player : Entity
 
     public void OnUltHit(Node2D body)
     {
+        Vector2 mouse_pos = GetGlobalMousePosition();
         if (body is Entity enemy)
         {
             // Modify the damage value as needed
             //GD.Print($"Ult hit for {stats.attack*4} Damage");
-            enemy.TakeDamage(stats.attack * 2, true);
+            enemy.TakeDamage(stats.attack * 2, true, (mouse_pos - GlobalPosition).Normalized());
         }
         else if (body is Breakable breakable) breakable.Break();
     }
 
-    public override void TakeDamage(int base_damage, bool Element)
+    public override void TakeDamage(int base_damage, bool Element, Vector2 directionHit)
     {
         //base.TakeDamage(base_damage, Element);
         AudioManager.Instance.PlaySFX("hit");
         stats.health -= base_damage;
         DepleteMeter();
+        Velocity = 300*directionHit;
+        MoveAndSlide();
     }
 
     public void ChargeMeter ()
