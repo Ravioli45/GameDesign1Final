@@ -5,6 +5,7 @@
 [ext_resource type="Resource" uid="uid://lg2mjc1prkbl" path="res://Stats/Slimothy.tres" id="2_7m1v5"]
 [ext_resource type="PackedScene" uid="uid://bb754k3dffdh3" path="res://Scenes/Environment/EXP.tscn" id="2_baw47"]
 [ext_resource type="PackedScene" uid="uid://c08l6sf5mmga4" path="res://Scenes/Environment/gold.tscn" id="3_cg531"]
+[ext_resource type="PackedScene" uid="uid://bipqesl0k0ahl" path="res://Scenes/damage_numbers.tscn" id="2_i4t41"]
 
 [sub_resource type="Animation" id="Animation_cg531"]
 resource_name = "Idle"
@@ -225,6 +226,7 @@ script = ExtResource("1_5d0k5")
 exp = ExtResource("2_baw47")
 gold = ExtResource("3_cg531")
 amount_gold_drop = 2
+damageNumbers = ExtResource("2_i4t41")
 stats = ExtResource("2_7m1v5")
 animator = NodePath("AnimationTree")
 

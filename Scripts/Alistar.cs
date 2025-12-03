@@ -18,6 +18,7 @@ public partial class Alistar : Entity
 {
     [Export] AnimationTree Animator;
     [Export] PackedScene Rock;
+    [Export] PackedScene damageNumbers;
 
 	private Player PlayerNode;
 	private Vector2 Direction = new Vector2(0,0);
@@ -42,6 +43,9 @@ public partial class Alistar : Entity
    
     public override void TakeDamage(int base_damage, bool Element, Vector2 directionHit)
     {
+        DamageNumbers Instance = damageNumbers.Instantiate<DamageNumbers>();
+		Instance.GlobalPosition = this.GlobalPosition + new Vector2(10, -10);
+		Instance.elementAttack = Element;
         if (Element && is_element_applied)
 		{
 			base_damage *= 2;
@@ -62,6 +66,8 @@ public partial class Alistar : Entity
 		}
         this.Velocity = 150*directionHit*-1;
 		MoveAndSlide();
+        Instance.Text = " " + base_damage.ToString();
+		GetTree().Root.AddChild(Instance);
     }
 	public void PlayerEntersFight(Node2D body)
     {

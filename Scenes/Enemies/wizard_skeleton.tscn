@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://bl3pyr20m2baq" path="res://Stats/WizardSkeleton.tres" id="3_oxe42"]
 [ext_resource type="PackedScene" uid="uid://bb754k3dffdh3" path="res://Scenes/Environment/EXP.tscn" id="3_r725t"]
 [ext_resource type="PackedScene" uid="uid://c08l6sf5mmga4" path="res://Scenes/Environment/gold.tscn" id="4_7bmd7"]
+[ext_resource type="PackedScene" uid="uid://bipqesl0k0ahl" path="res://Scenes/damage_numbers.tscn" id="3_y4be6"]
 
 [sub_resource type="Animation" id="Animation_y4be6"]
 resource_name = "Attack"
@@ -193,6 +194,7 @@ Fireball = ExtResource("2_5o0dk")
 exp = ExtResource("3_r725t")
 gold = ExtResource("4_7bmd7")
 amount_gold_drop = 3
+damageNumbers = ExtResource("3_y4be6")
 stats = ExtResource("3_oxe42")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

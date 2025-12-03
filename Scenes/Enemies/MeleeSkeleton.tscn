@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dstemgqnhs4qq" path="res://Sprites/Enemy/SwordSkeleton/SwordSkeletonSpritesheet.png" id="1_kkyfk"]
 [ext_resource type="Script" uid="uid://5qplh0ro2xd4" path="res://Scripts/MeleeSkeleton.cs" id="1_vghw6"]
 [ext_resource type="PackedScene" uid="uid://bb754k3dffdh3" path="res://Scenes/Environment/EXP.tscn" id="2_erl3l"]
+[ext_resource type="PackedScene" uid="uid://bipqesl0k0ahl" path="res://Scenes/damage_numbers.tscn" id="2_7cw1n"]
 [ext_resource type="Resource" uid="uid://bts3nmua1qxh3" path="res://Stats/MeleeSkeleton.tres" id="2_x1yov"]
 [ext_resource type="PackedScene" uid="uid://c08l6sf5mmga4" path="res://Scenes/Environment/gold.tscn" id="3_qfvbq"]
 
@@ -482,6 +483,7 @@ script = ExtResource("1_vghw6")
 exp = ExtResource("2_erl3l")
 gold = ExtResource("3_qfvbq")
 amount_gold_drop = 1
+damageNumbers = ExtResource("2_7cw1n")
 stats = ExtResource("2_x1yov")
 animator = NodePath("AnimationTree")
 
