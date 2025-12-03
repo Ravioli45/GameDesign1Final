@@ -10,7 +10,7 @@ public partial class Slimorai : Entity
 	[Export] PackedScene Slime1;
 	[Export] PackedScene Slime2;
 
-	private int HP = 75;
+	[Export] private int HP = 75;
 	private Player PlayerNode;
 	private Vector2 Direction = new Vector2(0,0);
 	private BossState State = BossState.Idle;
@@ -55,11 +55,13 @@ public partial class Slimorai : Entity
 		{
 			base_damage *= 2;
 			elementGauge = Math.Min(elementGauge + 500, 1000);
+			Modulate = new Color(1, 1, (float)(0.2 * Math.Round(Math.Cos(elementGauge/10)) + 0.5));
 		}
 		else if (Element && !is_element_applied)
 		{
 			this.is_element_applied = true;
 			elementGauge = Math.Min(elementGauge + 500, 1000);
+			Modulate = new Color(1, 1, (float)(0.2 * Math.Round(Math.Cos(elementGauge/10)) + 0.5));
 		}
 
 		HP -= base_damage;
@@ -281,12 +283,14 @@ public partial class Slimorai : Entity
 
 		
     }
-	if (is_element_applied) elementGauge = Math.Max(elementGauge-1, 0);
-		if (elementGauge <= 0) {
-			is_element_applied = false;
-			//GD.Print(is_element_applied);
+		if (is_element_applied) {
+			elementGauge = Math.Max(elementGauge-1, 0);
+			Modulate = new Color(1, 1, (float)(0.2 * Math.Round(Math.Cos(elementGauge/10)) + 0.5));
+			if (elementGauge <= 0) {
+				is_element_applied = false;
+				Modulate = new Color(1, 1, 1);
+			}
 		}
-		//else if(elementGauge % 10 == 0) GD.Print($"{elementGauge}, {is_element_applied}");
 	}
 
 	public bool IsWalking()

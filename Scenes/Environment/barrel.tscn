@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://qtrmx47ad36s"]
 
 [ext_resource type="Script" uid="uid://cckpnp3qjx80f" path="res://Scripts/Breakable.cs" id="1_1ofwc"]
-[ext_resource type="Texture2D" uid="uid://cl5en1rehqn0x" path="res://Sprites/Breakables/Barrel.png" id="2_1u5h1"]
+[ext_resource type="Texture2D" uid="uid://cl5en1rehqn0x" path="res://Sprites/Environment/Barrel.png" id="2_1u5h1"]
 [ext_resource type="PackedScene" uid="uid://c08l6sf5mmga4" path="res://Scenes/Environment/gold.tscn" id="2_mkatg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mkatg"]

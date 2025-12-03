@@ -28,11 +28,13 @@ public abstract partial class Enemy : Entity
 		{
 			base_damage *= 2;
 			elementGauge = Math.Min(elementGauge + 500, 1000);
+			Modulate = new Color(1, 1, (float)(0.2 * Math.Round(Math.Cos(elementGauge/10)) + 0.5));
 		}
 		else if (Element && !is_element_applied)
 		{
 			this.is_element_applied = true;
 			elementGauge = Math.Min(elementGauge + 500, 1000);
+			Modulate = new Color(1, 1, (float)(0.2 * Math.Round(Math.Cos(elementGauge/10)) + 0.5));
 		}
 
 		currentHealth -= base_damage;

@@ -22,7 +22,7 @@ public partial class Player : Entity
     private int dashCountdown = 0;
     private Vector2 dashDirection = new(0, 0);
     [Export] private float dashSpeed = 10;
-    [Export] private int ultFrames = 60;
+    [Export] private int ultFrames = 90;
     private int ultCountdown = 0;
     private Vector2 ultDirection = new(0, 0);
     [Export] private float ultSpeed = 700;
@@ -30,7 +30,7 @@ public partial class Player : Entity
     [Export] protected PlayerStats stats;
     protected PlayerState state = PlayerState.Idle;
 
-    [Export] private bool enhancedState = false;
+    [Export] public bool enhancedState = false;
     [Export] private Area2D ultHitbox;
 
     
@@ -90,7 +90,6 @@ public partial class Player : Entity
                     animator.Set("parameters/Dash/blend_position", ultDirection);
                     animator.Set("parameters/Idle/blend_position", ultDirection);
                     animator.Set("parameters/Running/blend_position", ultDirection);
-                    // animator.Set("parameters/Ulting/blend_position", ultDirection);
 
                     SetCollisionLayerValue(2, false);
                     SetCollisionMaskValue(3, false);
@@ -166,7 +165,6 @@ public partial class Player : Entity
 
                 if (ultCountdown <= 0)
                 {
-                   
                     Velocity = new Vector2(0, 0);
                     SetCollisionLayerValue(2, true);
                     SetCollisionMaskValue(3, true);
@@ -180,10 +178,21 @@ public partial class Player : Entity
                     Enhancedparticles.Visible = false;
 		            Enhancedparticles.Emitting = false;
                 }
-                // Startup lag and endlag
-                else if (ultCountdown > 30 || ultCountdown < 10)
+                else if (ultCountdown <= 60 && ultCountdown >=40)
                 {
-                    
+                    Velocity = ultDirection * ultSpeed;
+                    ultHitbox.Monitoring = true;
+                    ultHitbox.Visible = true; // For debug purposes
+                }
+                else if (ultCountdown <= 30 && ultCountdown >=10)
+                {
+                    Velocity = -ultDirection * ultSpeed;
+                    ultHitbox.Monitoring = true;
+                    ultHitbox.Visible = true; // For debug purposes
+                }
+                // Startup lag and endlag
+                else
+                {
 		            particles.Emitting = true;
 		            particles.Visible = true;
 		            particles.Restart();
@@ -192,11 +201,12 @@ public partial class Player : Entity
                     ultHitbox.Monitoring = false;
                     ultHitbox.Visible = false; // For debug purposes
                 }
-                else
+                if (ultCountdown == 30)
                 {
-                    Velocity = ultDirection * ultSpeed;
-                    ultHitbox.Monitoring = true;
-                    ultHitbox.Visible = true; // For debug purposes
+                    // Turns around for second Ult dash
+                    animator.Set("parameters/Dash/blend_position", -ultDirection);
+                    animator.Set("parameters/Idle/blend_position", -ultDirection);
+                    animator.Set("parameters/Running/blend_position", -ultDirection);
                 }
                 break;
         }
@@ -209,10 +219,9 @@ public partial class Player : Entity
     {
         if (body is Entity enemy)
         {
-            // enemy.TakeDamage(stats.attack, false);
             // enhancedState's value coincides with the expected value for the Element bool
             enemy.TakeDamage(stats.attack, enhancedState);
-            ChargeMeter();
+            ChargeMeter(1);
         }
         else if (body is Breakable breakable) breakable.Break();
     }
@@ -221,8 +230,6 @@ public partial class Player : Entity
     {
         if (body is Entity enemy)
         {
-            // Modify the damage value as needed
-            //GD.Print($"Ult hit for {stats.attack*4} Damage");
             enemy.TakeDamage(stats.attack * 2, true);
         }
         else if (body is Breakable breakable) breakable.Break();
@@ -232,19 +239,19 @@ public partial class Player : Entity
     {
         //base.TakeDamage(base_damage, Element);
         stats.health -= base_damage;
-        DepleteMeter();
+        DepleteMeter(1);
     }
 
-    public void ChargeMeter ()
+    public void ChargeMeter (int chargeAmount)
     {
-        stats.meterCharge = Math.Min(stats.meterCharge + 1, stats.maxMeter);
+        stats.meterCharge = Math.Min(stats.meterCharge + chargeAmount, stats.maxMeter);
         // Add functionality to interact with HUD if needed, including potential special effects for when meter is full
         GD.Print($"Charge increased to: {stats.meterCharge}");
     }
 
-    public void DepleteMeter()
+    public void DepleteMeter(int chargeAmount)
     {
-        stats.meterCharge = Math.Max(stats.meterCharge - 1, 0);
+        stats.meterCharge = Math.Max(stats.meterCharge - chargeAmount, 0);
         // Add functionality to interact with HUD if needed
         GD.Print($"Charge decreased to: {stats.meterCharge}");
     }
