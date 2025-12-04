@@ -20,7 +20,7 @@ public partial class PlayerStats : Resource
             _exp = value;
             if (value >= expToNextLevel)
             {
-                GD.Print("level up");
+                //GD.Print("level up");
                 level++;
                 maxHealth += 20;
                 health += 20;
@@ -33,7 +33,7 @@ public partial class PlayerStats : Resource
             {
                 _exp = value;
             }
-            GD.Print($"exp: {_exp}");
+            //GD.Print($"exp: {_exp}");
         }
     }
     [Export] public int expToNextLevel { get; set; } = 20;

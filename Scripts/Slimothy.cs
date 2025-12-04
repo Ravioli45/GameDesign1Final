@@ -40,7 +40,7 @@ public partial class Slimothy : Enemy
 
     public async void CollideHit(Player target)
     {
-        GD.Print("ATTACK");
+        //GD.Print("ATTACK");
         target.TakeDamage(stats.attack, false, Direction);
         // Knockback stuff could go here
         // Here we prevent multi-hit by making the Attack CD 1 second

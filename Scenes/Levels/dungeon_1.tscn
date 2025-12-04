@@ -196,6 +196,9 @@ position = Vector2(32, -3168)
 NextLevel = ExtResource("9_ii61t")
 BGMName = "dungeon2"
 
+[node name="Node2D" parent="." instance=ExtResource("13_21mms")]
+position = Vector2(796, -929)
+
 [node name="Eugio" parent="." instance=ExtResource("3_rfu0i")]
 position = Vector2(37, -22)
 
@@ -301,6 +304,3 @@ position = Vector2(1007, -2136)
 
 [node name="Crate16" parent="." instance=ExtResource("12_21mms")]
 position = Vector2(1029, -2136)
-
-[node name="Node2D" parent="." instance=ExtResource("13_21mms")]
-position = Vector2(796, -929)

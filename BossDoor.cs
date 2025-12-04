@@ -15,7 +15,7 @@ public partial class BossDoor : Node2D
     {
         if (body.IsInGroup("Boss"))
         {
-            GD.Print("Boss Found");
+            //GD.Print("Boss Found");
         }
     }
 
@@ -24,7 +24,7 @@ public partial class BossDoor : Node2D
             
             if ((body is Slimorai) || (body is FireSlime) || (body is SwordSlime )) counter++;
             if(!(body is Slimorai) && !(body is FireSlime) && !(body is SwordSlime ) && !(body is Player)||counter == 3){
-                GD.Print("Boss Dies");
+                //GD.Print("Boss Dies");
                 Bars.SetDeferred("enabled", false);
                 PlayerDetection.SetDeferred("disabled", true);
                 Teleporter.Visible = true;
@@ -34,7 +34,7 @@ public partial class BossDoor : Node2D
     {
         if(body is Player p || body is FireSlime)
         {
-			GD.Print("Player Entered");
+			//GD.Print("Player Entered");
 			
 			Bars.SetDeferred("enabled", true);
             BossDetection.SetDeferred("disabled", false);

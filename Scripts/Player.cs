@@ -94,7 +94,7 @@ public partial class Player : Entity
                     SetCollisionLayerValue(2, false);
                     SetCollisionMaskValue(3, false);
                     state = PlayerState.Ulting;
-                    GD.Print("Ultimate Activated");
+                    //GD.Print("Ultimate Activated");
                     AudioManager.Instance.PlaySFX("ult_dash");
                 }
 
@@ -102,7 +102,7 @@ public partial class Player : Entity
                 {
                     enhancedState = true;
                     stats.meterCharge = 0;
-                    GD.Print("Enhanced Form Activated");
+                    //("Enhanced Form Activated");
                     AudioManager.Instance.PlaySFX("enhance_state");
                     // Turn on particle effects and maybe SFX here
 
@@ -174,7 +174,7 @@ public partial class Player : Entity
                     enhancedState = false;
                     stats.meterCharge = 0;
                     // Turn off particle effects here
-                    GD.Print("Ult over");
+                    //GD.Print("Ult over");
                     particles.Visible = false;
 		            particles.Emitting = false;
                     Enhancedparticles.Visible = false;
@@ -253,7 +253,7 @@ public partial class Player : Entity
         stats.health -= base_damage;
         if (stats.health <= 0)
         {
-            GD.Print("you died :(");
+            //GD.Print("you died :(");
             //GameManager.Instance.GameOver();
             GameManager.Instance.CallDeferred("GameOver");
         }
@@ -266,14 +266,14 @@ public partial class Player : Entity
     {
         stats.meterCharge = Math.Min(stats.meterCharge + chargeAmount, stats.maxMeter);
         // Add functionality to interact with HUD if needed, including potential special effects for when meter is full
-        GD.Print($"Charge increased to: {stats.meterCharge}");
+        //GD.Print($"Charge increased to: {stats.meterCharge}");
     }
 
     public void DepleteMeter(int chargeAmount)
     {
         stats.meterCharge = Math.Max(stats.meterCharge - chargeAmount, 0);
         // Add functionality to interact with HUD if needed
-        GD.Print($"Charge decreased to: {stats.meterCharge}");
+        //GD.Print($"Charge decreased to: {stats.meterCharge}");
     }
 
     public bool IsIdle()

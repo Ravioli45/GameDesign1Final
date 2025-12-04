@@ -225,11 +225,11 @@ position = Vector2(1808, 1968)
 NextLevel = ExtResource("11_qluh5")
 BGMName = "victory"
 
+[node name="Node2D" parent="." instance=ExtResource("9_t8omr")]
+position = Vector2(-828, 1767)
+
 [node name="Eugio" parent="." instance=ExtResource("9_4kifu")]
 position = Vector2(-826, 1797)
 
 [node name="FollowCamera" parent="." node_paths=PackedStringArray("target") instance=ExtResource("10_7jfg0")]
 target = NodePath("../Eugio")
-
-[node name="Node2D" parent="." instance=ExtResource("9_t8omr")]
-position = Vector2(-828, 1767)

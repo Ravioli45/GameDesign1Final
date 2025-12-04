@@ -18,7 +18,7 @@ public partial class WizardSkeleton : Enemy
 	{
 		if (body is Player p)
 		{
-			GD.Print("Entered The Spell Circle");
+			//GD.Print("Entered The Spell Circle");
             PlayerNode = p;
 			Direction = (p.GlobalPosition - this.GlobalPosition).Normalized();
 			State = EnemyState.Attack;
@@ -74,7 +74,7 @@ public partial class WizardSkeleton : Enemy
 		particles.Emitting = false;
         inAttackCD = false;
 
-        GD.Print("ITS WIZARD TIME MOTHERFUCKERS");
+        //GD.Print("ITS WIZARD TIME MOTHERFUCKERS");
         // CREATE FIRE BALL AND SET ITS VELOCITY = 200 * target.Direction
 		CharacterBody2D instance = Fireball.Instantiate<CharacterBody2D>();
         instance.Position = this.Position;
