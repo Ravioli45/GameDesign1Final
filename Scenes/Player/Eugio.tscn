@@ -970,7 +970,6 @@ offset_bottom = 78.0
 theme_override_styles/background = SubResource("StyleBoxFlat_ajo84")
 theme_override_styles/fill = SubResource("StyleBoxTexture_vgfpp")
 max_value = 10.0
-value = 9.08
 show_percentage = false
 
 [node name="HP" type="ProgressBar" parent="CanvasLayer/Control"]
@@ -982,7 +981,7 @@ offset_bottom = 39.0
 theme_override_styles/background = SubResource("StyleBoxFlat_sumag")
 theme_override_styles/fill = SubResource("StyleBoxFlat_nhd7b")
 max_value = 20.0
-value = 11.01
+value = 20.0
 show_percentage = false
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control"]
