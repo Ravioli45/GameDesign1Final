@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://olxai03s7puj"]
+[gd_scene load_steps=34 format=3 uid="uid://olxai03s7puj"]
 
 [ext_resource type="Script" uid="uid://o6gr1vfvavqe" path="res://Scripts/AudioManager.cs" id="1_sm2tf"]
 [ext_resource type="AudioStream" uid="uid://digmk8vdlausx" path="res://Audio/Three Red Hearts - Out of Time.ogg" id="2_0hehx"]
@@ -6,25 +6,55 @@
 [ext_resource type="AudioStream" uid="uid://b05c43t3ow4fa" path="res://Audio/WHSH_MOVEMENT-Simple Whoosh_HY_PC-002.wav" id="2_qixve"]
 [ext_resource type="AudioStream" uid="uid://c6042prsyelac" path="res://Audio/Three Red Hearts - Box Jump.ogg" id="3_mjqhu"]
 [ext_resource type="AudioStream" uid="uid://dwrs0lit8lp4v" path="res://Audio/Three Red Hearts - Sanctuary.ogg" id="4_pn88s"]
+[ext_resource type="AudioStream" uid="uid://bcn8xgu5svg1y" path="res://Audio/Three Red Hearts - Go (No Vocal).ogg" id="5_ype7x"]
+[ext_resource type="AudioStream" uid="uid://b15kxq4ut3qab" path="res://Audio/egyptian fortress boss.ogg" id="6_7oln7"]
 [ext_resource type="AudioStream" uid="uid://dlypw4bqiluwd" path="res://Audio/FGHTImpt_HIT-Strong Smack_HY_PC-003.wav" id="6_mjqhu"]
+[ext_resource type="AudioStream" uid="uid://rjycyslxfhcg" path="res://Audio/Three Red Hearts - Deep Blue.ogg" id="7_3rm37"]
 [ext_resource type="AudioStream" uid="uid://db5cnwl02d5wg" path="res://Audio/DSGNImpt_EXPLOSION-Smaller Flare_HY_PC-001.wav" id="8_lwpe1"]
 [ext_resource type="AudioStream" uid="uid://cmhkwcvldynen" path="res://Audio/DSGNMisc_SKILL RELEASE-Fire Sphere_HY_PC-001.wav" id="8_pn88s"]
+[ext_resource type="AudioStream" uid="uid://wb2f1usddkso" path="res://Audio/Three Red Hearts - Pixel War 2.ogg" id="8_ufe2k"]
+[ext_resource type="AudioStream" uid="uid://dy68eo1qj8kbn" path="res://Audio/Three Red Hearts - Three Red Hearts.ogg" id="9_7oln7"]
 [ext_resource type="AudioStream" uid="uid://dhd24a1xdgffu" path="res://Audio/FGHTImpt_HIT-Strong Punch_HY_PC-001.wav" id="9_lwpe1"]
+[ext_resource type="AudioStream" uid="uid://byltgr2pab4s6" path="res://Audio/Kim Lightyear - Leave The World Tonight (Chiptune Edit Loop).mp3" id="10_3rm37"]
 [ext_resource type="AudioStream" uid="uid://c15l7r3wj2j8v" path="res://Audio/UIClick_INTERFACE-Metallic Click_HY_PC-001.wav" id="10_5nrbi"]
 [ext_resource type="AudioStream" uid="uid://bkhbfp8vebvih" path="res://Audio/DSGNMisc_MELEE-Sword Slash_HY_PC-004.wav" id="11_pn88s"]
+[ext_resource type="AudioStream" uid="uid://mrxxfkykmj7h" path="res://Audio/Amore Appassionato.mp3" id="11_ufe2k"]
+[ext_resource type="AudioStream" uid="uid://cnxr13330dep" path="res://Audio/Downburst.mp3" id="12_uj3df"]
+[ext_resource type="AudioStream" uid="uid://dvai36ogddgek" path="res://Audio/Ce vios [O7Gp-7XIexM].mp3" id="13_2gmef"]
 [ext_resource type="AudioStream" uid="uid://clvl4nf3mfftl" path="res://Audio/DSGNTonl_USABLE-Scifi Select_HY_PC-006.wav" id="13_fasow"]
 [ext_resource type="AudioStream" uid="uid://bxgrej6food3w" path="res://Audio/DSGNTonl_USABLE-Coin Zap_HY_PC-004.wav" id="14_1bal0"]
+[ext_resource type="AudioStream" uid="uid://bts8fhh1khj0m" path="res://Audio/Phantoflux.mp3" id="14_x3jwi"]
+[ext_resource type="AudioStream" uid="uid://bvpfsmof02q5y" path="res://Audio/躍動.mp3" id="15_58qpp"]
 [ext_resource type="AudioStream" uid="uid://b27s38unoymds" path="res://Audio/DSGNImpt_EXPLOSION-Cruncher_HY_PC-001.wav" id="15_vhwx7"]
 [ext_resource type="AudioStream" uid="uid://bsu1pqyal5pr7" path="res://Audio/DSGNMisc_SKILL IMPACT-Mecha Purple Laser_HY_PC-001.wav" id="16_bkjj7"]
+[ext_resource type="AudioStream" uid="uid://cmq7240a3db08" path="res://Audio/Flows With Errors.mp3" id="16_h2e5n"]
 [ext_resource type="AudioStream" uid="uid://db0ssg7phhhm4" path="res://Audio/DSGNMisc_SKILL IMPACT-Mecha White Laser_HY_PC-004.wav" id="17_dv115"]
+[ext_resource type="AudioStream" uid="uid://dj3erxkwdacxc" path="res://Audio/[Official] Reverie  Gardens feat. xia [AD_PIANO VIVACE 2].mp3" id="17_u681y"]
+[ext_resource type="AudioStream" uid="uid://crldg85r7i82i" path="res://Audio/Ben Berkenbosch - Lost.mp3" id="18_jcjfy"]
 [ext_resource type="AudioStream" uid="uid://vfesmm74xicx" path="res://Audio/DSGNMisc_HIT-Synth Hit_HY_PC-001.wav" id="18_tesok"]
+[ext_resource type="AudioStream" uid="uid://beqiwxg1i5y1f" path="res://Audio/キャロルの瓦解.mp3" id="19_u681y"]
 
 [node name="AudioManager" type="Node"]
 script = ExtResource("1_sm2tf")
 bgm_list = Dictionary[StringName, AudioStream]({
-&"boss": ExtResource("2_0hehx"),
-&"dungeon1": ExtResource("3_mjqhu"),
-&"main_menu": ExtResource("4_pn88s")
+&"boss1_chiptune": ExtResource("2_0hehx"),
+&"boss1_instrumental": ExtResource("12_uj3df"),
+&"boss2_chiptune": ExtResource("6_7oln7"),
+&"boss2_instrumental": ExtResource("14_x3jwi"),
+&"boss3_chiptune": ExtResource("8_ufe2k"),
+&"boss3_instrumental": ExtResource("19_u681y"),
+&"dungeon1_chiptune": ExtResource("3_mjqhu"),
+&"dungeon1_instrumental": ExtResource("11_ufe2k"),
+&"dungeon2_chiptune": ExtResource("5_ype7x"),
+&"dungeon2_instrumental": ExtResource("13_2gmef"),
+&"dungeon3_chiptune": ExtResource("7_3rm37"),
+&"dungeon3_instrumental": ExtResource("15_58qpp"),
+&"gameover_chiptune": ExtResource("10_3rm37"),
+&"gameover_instrumental": ExtResource("18_jcjfy"),
+&"mainmenu_chiptune": ExtResource("4_pn88s"),
+&"mainmenu_instrumental": ExtResource("16_h2e5n"),
+&"victory_chiptune": ExtResource("9_7oln7"),
+&"victory_instrumental": ExtResource("17_u681y")
 })
 streams = 8
 sfx_list = Dictionary[StringName, AudioStream]({

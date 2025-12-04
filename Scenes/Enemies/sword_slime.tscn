@@ -1,8 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://t5jk8qp8imqm"]
+[gd_scene load_steps=21 format=3 uid="uid://t5jk8qp8imqm"]
 
 [ext_resource type="Script" uid="uid://dd3dlwxslxy0v" path="res://Scripts/SwordSlime.cs" id="1_ri6p5"]
 [ext_resource type="Texture2D" uid="uid://bj21s4qo2p67k" path="res://Sprites/Bosses/SwordSlimeSpritesheet.png" id="2_1w8eq"]
 [ext_resource type="PackedScene" uid="uid://cc8qxqdq6lple" path="res://Scenes/Enemies/EnemyProjectiles/slime_sword.tscn" id="2_crs2f"]
+[ext_resource type="PackedScene" uid="uid://bipqesl0k0ahl" path="res://Scenes/damage_numbers.tscn" id="3_crs2f"]
 
 [sub_resource type="Animation" id="Animation_rdso6"]
 resource_name = "Attack"
@@ -127,6 +128,7 @@ motion_mode = 1
 script = ExtResource("1_ri6p5")
 Animator = NodePath("AnimationTree")
 SlimeSword = ExtResource("2_crs2f")
+damageNumbers = ExtResource("3_crs2f")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_1w8eq")

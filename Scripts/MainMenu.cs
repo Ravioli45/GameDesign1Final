@@ -7,6 +7,8 @@ public partial class MainMenu : Control
     [Export] private PackedScene firstLevel;
     [Export] private Control mainButtons;
     [Export] private Control options;
+    [Export] private Button ChiptuneButton;
+    [Export] private Button InstrumentalButton;
 
     public override void _Ready()
     {
@@ -14,13 +16,15 @@ public partial class MainMenu : Control
 
         mainButtons.Visible = true;
         options.Visible = false;
-        AudioManager.Instance.PlayBGM("main_menu");
+        AudioManager.Instance.PlayBGM($"mainmenu_{GameManager.Instance.musicType}");
+        GameManager.Instance.ResetStats();
+        SetMusicButtons(GameManager.Instance.musicType);
     }
 
     public void OnPlayButtonPress()
     {
         AudioManager.Instance.PlaySFX("button_click");
-        AudioManager.Instance.PlayBGM("dungeon1");
+        AudioManager.Instance.PlayBGM($"dungeon1_{GameManager.Instance.musicType}");
         GetTree().ChangeSceneToPacked(firstLevel);
     }
 
@@ -29,6 +33,35 @@ public partial class MainMenu : Control
         AudioManager.Instance.PlaySFX("button_click");
         mainButtons.Visible = false;
         options.Visible = true;
+    }
+
+    public void SetMusicButtons(string currentMusic)
+    {
+        if (currentMusic == "chiptune")
+        {
+            ChiptuneButton.ButtonPressed = true;
+        }
+        else if (currentMusic == "instrumental")
+        {
+            InstrumentalButton.ButtonPressed = true;
+        }
+        else
+        {
+            throw new Exception("music buttons are broken (oops)");
+        }
+    }
+
+    public void OnChiptuneButtonPress()
+    {
+        AudioManager.Instance.PlaySFX("button_click");
+        GameManager.Instance.musicType = "chiptune";
+        AudioManager.Instance.PlayBGM($"mainmenu_{GameManager.Instance.musicType}");
+    }
+    public void OnInstrumentalButtonPress()
+    {
+        AudioManager.Instance.PlaySFX("button_click");
+        GameManager.Instance.musicType = "instrumental";
+        AudioManager.Instance.PlayBGM($"mainmenu_{GameManager.Instance.musicType}");
     }
 
     public void OnOptionBackButtonPress()

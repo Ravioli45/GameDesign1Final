@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://brkqllw72agge"]
+[gd_scene load_steps=15 format=4 uid="uid://brkqllw72agge"]
 
 [ext_resource type="TileSet" uid="uid://cnq0y817te7wg" path="res://TileSets/CaveDungeonTileSet.tres" id="1_abpd3"]
 [ext_resource type="PackedScene" uid="uid://barvle7hdybcv" path="res://Scenes/Enemies/wizard_skeleton.tscn" id="4_kswaa"]
@@ -12,8 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://dhfwjohlbb0qf" path="res://Scenes/Environment/chest.tscn" id="9_pcg05"]
 [ext_resource type="PackedScene" uid="uid://fysi7xnrtgnv" path="res://Scenes/Levels/Dungeon3.tscn" id="10_eef0s"]
 [ext_resource type="PackedScene" uid="uid://dkkmc7f6645jl" path="res://Scenes/Player/Eugio.tscn" id="10_pcg05"]
-[ext_resource type="PackedScene" uid="uid://bfm3ndhs6vyap" path="res://Scenes/follow_camera.tscn" id="11_sh2mu"]
 [ext_resource type="PackedScene" uid="uid://cy3cwpb6llxj2" path="res://Scenes/Environment/Shop.tscn" id="10_y7ere"]
+[ext_resource type="PackedScene" uid="uid://bfm3ndhs6vyap" path="res://Scenes/follow_camera.tscn" id="11_sh2mu"]
 
 [node name="Dungeon2" type="Node2D"]
 
@@ -174,6 +174,7 @@ position = Vector2(-406, -786)
 
 [node name="Alistar" parent="." instance=ExtResource("7_afcdd")]
 position = Vector2(-117, -1253)
+level = 2
 
 [node name="Boss Door" parent="." node_paths=PackedStringArray("Teleporter") instance=ExtResource("8_kswaa")]
 position = Vector2(-110, -956)
@@ -182,6 +183,7 @@ Teleporter = NodePath("../Teleporter")
 [node name="Teleporter" parent="." instance=ExtResource("9_dlokn")]
 position = Vector2(-112, -1248)
 NextLevel = ExtResource("10_eef0s")
+BGMName = "dungeon3"
 
 [node name="Barrel" parent="." instance=ExtResource("7_kswaa")]
 position = Vector2(-208, -506)

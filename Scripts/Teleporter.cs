@@ -36,8 +36,9 @@ public partial class Teleporter : Sprite2D
         {
             playerNode.DepleteMeter(10);
             playerNode.enhancedState = false;
-            AudioManager.Instance.PlayBGM(BGMName);
-            GetTree().CallDeferred("change_scene_to_packed", NextLevel);
+            //AudioManager.Instance.PlayBGM(BGMName);
+            //GetTree().CallDeferred("change_scene_to_packed", NextLevel);
+            GameManager.Instance.SwitchLevel(NextLevel, BGMName);
         }
     }
 }

@@ -40,36 +40,49 @@ public partial class Alistar : Entity
     private bool endAttack = false;
     public bool is_element_applied = false;
     public int elementGauge = 0;
+    [Export] private int level = 1;
    
     public override void TakeDamage(int base_damage, bool Element, Vector2 directionHit)
     {
         DamageNumbers Instance = damageNumbers.Instantiate<DamageNumbers>();
-		Instance.GlobalPosition = this.GlobalPosition + new Vector2(10, -10);
-		Instance.elementAttack = Element;
+        Instance.GlobalPosition = this.GlobalPosition + new Vector2(10, -10);
+        Instance.elementAttack = Element;
         if (Element && is_element_applied)
-		{
-			base_damage *= 2;
-			elementGauge = Math.Min(elementGauge + 500, 1000);
-            Modulate = new Color(1, 1, (float)(0.2 * Math.Round(Math.Cos(elementGauge/10)) + 0.5));
-		}
-		else if (Element && !is_element_applied)
-		{
-			this.is_element_applied = true;
-			elementGauge = Math.Min(elementGauge + 500, 1000);
-            Modulate = new Color(1, 1, (float)(0.2 * Math.Round(Math.Cos(elementGauge/10)) + 0.5));
-		}
+        {
+            base_damage *= 2;
+            elementGauge = Math.Min(elementGauge + 500, 1000);
+            Modulate = new Color(1, 1, (float)(0.2 * Math.Round(Math.Cos(elementGauge / 10)) + 0.5));
+        }
+        else if (Element && !is_element_applied)
+        {
+            this.is_element_applied = true;
+            elementGauge = Math.Min(elementGauge + 500, 1000);
+            Modulate = new Color(1, 1, (float)(0.2 * Math.Round(Math.Cos(elementGauge / 10)) + 0.5));
+        }
 
-		HP -= base_damage;
+        HP -= base_damage;
 
-		if (HP <= 0)
-		{
-			//GD.Print("Alistar died: " + base_damage);
-			//Die();
-		}
-        this.Velocity = 150*directionHit*-1;
-		MoveAndSlide();
+        if (HP <= 0)
+        {
+            //GD.Print("Alistar died: " + base_damage);
+            //Die();
+            AudioManager.Instance.PlaySFX("enemy_die");
+        }
+        else
+        {
+            if (Element)
+            {
+                AudioManager.Instance.PlaySFX("elemental_hit");
+            }
+            else
+            {
+                AudioManager.Instance.PlaySFX("hit");
+            }
+        }
+        this.Velocity = 150 * directionHit * -1;
+        MoveAndSlide();
         Instance.Text = " " + base_damage.ToString();
-		GetTree().Root.AddChild(Instance);
+        GetTree().Root.AddChild(Instance);
     }
 	public void PlayerEntersFight(Node2D body)
     {
@@ -77,7 +90,8 @@ public partial class Alistar : Entity
         if(body is Player p){
         CollisionShape2D BossPlayerDetection = GetNode<CollisionShape2D>("PlayerDetectionHandeler/PlayerDetection");
         BossPlayerDetection.SetDeferred("disabled",false);
-        
+
+        if (!fightStarted) AudioManager.Instance.PlayBGM($"boss{level}_{GameManager.Instance.musicType}");
         fightStarted = true;
         
         }

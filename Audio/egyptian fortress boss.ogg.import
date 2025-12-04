@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b15kxq4ut3qab"
+path="res://.godot/imported/egyptian fortress boss.ogg-6ed9004c5b1ed9fa89a95754e5f87c2e.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/egyptian fortress boss.ogg"
+dest_files=["res://.godot/imported/egyptian fortress boss.ogg-6ed9004c5b1ed9fa89a95754e5f87c2e.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

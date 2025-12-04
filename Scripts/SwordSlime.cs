@@ -8,6 +8,7 @@ public partial class SwordSlime : Entity
 
 	[Export] AnimationTree Animator;
     [Export] PackedScene SlimeSword;
+	[Export] PackedScene damageNumbers;
 
 	private int HP = 75;
 	private Player PlayerNode;
@@ -37,28 +38,45 @@ public partial class SwordSlime : Entity
 
 	public override void TakeDamage(int base_damage, bool Element, Vector2 directionHit)
     {
-        if (Element && is_element_applied)
+        DamageNumbers Instance = damageNumbers.Instantiate<DamageNumbers>();
+		Instance.GlobalPosition = this.GlobalPosition + new Vector2(10, -10);
+		Instance.elementAttack = Element;
+		if (Element && is_element_applied)
 		{
 			base_damage *= 2;
 			elementGauge = Math.Min(elementGauge + 500, 1000);
-			Modulate = new Color(1, 1, (float)(0.2 * Math.Round(Math.Cos(elementGauge/10)) + 0.5));
+			Modulate = new Color(1, 1, (float)(0.2 * Math.Round(Math.Cos(elementGauge / 10)) + 0.5));
 		}
 		else if (Element && !is_element_applied)
 		{
 			this.is_element_applied = true;
 			elementGauge = Math.Min(elementGauge + 500, 1000);
-			Modulate = new Color(1, 1, (float)(0.2 * Math.Round(Math.Cos(elementGauge/10)) + 0.5));
+			Modulate = new Color(1, 1, (float)(0.2 * Math.Round(Math.Cos(elementGauge / 10)) + 0.5));
 		}
 
 		HP -= base_damage;
 
 		if (HP <= 0)
 		{
-			//GD.Print("SwordSlime died: " + base_damage);
+			//GD.Print("Slimorai died: " + base_damage);
 			//Die();
+			AudioManager.Instance.PlaySFX("enemy_die");
 		}
-		this.Velocity = 300*directionHit*-1;
+		else
+		{
+			if (Element)
+			{
+				AudioManager.Instance.PlaySFX("elemental_hit");
+			}
+			else
+			{
+				AudioManager.Instance.PlaySFX("hit");
+			}
+		}
+		this.Velocity = 150 * directionHit * -1;
 		MoveAndSlide();
+		Instance.Text = " " + base_damage.ToString();
+		GetTree().Root.AddChild(Instance);
     }
 
 	public void ShootSwords(Vector2 direction)

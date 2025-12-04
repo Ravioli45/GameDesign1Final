@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://w36y4f1h856v" path="res://Sprites/UI/HUDbackgroundpng.png" id="6_vgfpp"]
 [ext_resource type="FontFile" uid="uid://cbi7tso5e4xbl" path="res://Sprites/UI/DigitalJots.ttf" id="6_w2hfu"]
 [ext_resource type="Texture2D" uid="uid://cwv8pfb2avsme" path="res://Sprites/UI/GoldUI.png" id="8_ajo84"]
-[ext_resource type="Texture2D" uid="uid://lmoahbv26mbs" path="res://Sprites/UI/TimerUI.png" id="9_ajo84"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_81l3x"]
 size = Vector2(18, 26)
@@ -1037,31 +1036,6 @@ offset_right = 1024.0
 offset_bottom = 38.0
 texture = ExtResource("8_ajo84")
 expand_mode = 1
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -82.0
-offset_right = 78.0
-offset_bottom = 45.0
-grow_horizontal = 2
-texture = ExtResource("9_ajo84")
-
-[node name="Timer" type="Label" parent="CanvasLayer/Control"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -47.0
-offset_top = -8.0
-offset_right = 39.0
-offset_bottom = 32.0
-grow_horizontal = 2
-theme_override_fonts/font = ExtResource("6_w2hfu")
-theme_override_font_sizes/font_size = 46
-text = "10:00"
 
 [node name="HP Label" type="Label" parent="CanvasLayer/Control"]
 layout_mode = 0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://dh1o8ckpk1tg3"]
+[gd_scene load_steps=39 format=3 uid="uid://dh1o8ckpk1tg3"]
 
 [ext_resource type="Script" uid="uid://ds4723k0hlkp6" path="res://Scripts/Slimorai.cs" id="1_1dcf5"]
 [ext_resource type="Texture2D" uid="uid://bcvl0oa6sdkek" path="res://Sprites/Bosses/Slimeurai.png" id="1_f4j44"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bgxtvtocvd6np" path="res://Scenes/Enemies/EnemyProjectiles/fireball.tscn" id="3_uxyj0"]
 [ext_resource type="PackedScene" uid="uid://t5jk8qp8imqm" path="res://Scenes/Enemies/sword_slime.tscn" id="4_4b7fl"]
 [ext_resource type="PackedScene" uid="uid://drjj5mvp37hrc" path="res://Scenes/Enemies/fire_slime.tscn" id="5_luxn6"]
+[ext_resource type="PackedScene" uid="uid://bipqesl0k0ahl" path="res://Scenes/damage_numbers.tscn" id="6_luxn6"]
 
 [sub_resource type="Animation" id="Animation_ln1ax"]
 resource_name = "Die(First Phase)"
@@ -251,6 +252,7 @@ SlimeSword = ExtResource("2_cg21a")
 Fireball = ExtResource("3_uxyj0")
 Slime1 = ExtResource("4_4b7fl")
 Slime2 = ExtResource("5_luxn6")
+damageNumbers = ExtResource("6_luxn6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_f4j44")

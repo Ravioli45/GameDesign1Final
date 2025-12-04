@@ -1,11 +1,37 @@
-[gd_scene load_steps=5 format=3 uid="uid://u1pkt67q28yy"]
+[gd_scene load_steps=8 format=3 uid="uid://u1pkt67q28yy"]
 
 [ext_resource type="Script" uid="uid://b5lgxwo3a8q1m" path="res://Scripts/MainMenu.cs" id="1_1ehe0"]
 [ext_resource type="Texture2D" uid="uid://dfwis3xfayjhh" path="res://Sprites/UI/DungeonBustersTitle.png" id="1_28flt"]
 [ext_resource type="FontFile" uid="uid://cbi7tso5e4xbl" path="res://Sprites/UI/DigitalJots.ttf" id="2_48xlc"]
 [ext_resource type="PackedScene" uid="uid://bbfquc3opfwrm" path="res://Scenes/Levels/dungeon_1.tscn" id="2_ce3w2"]
 
-[node name="MainMenu" type="Control" node_paths=PackedStringArray("mainButtons", "options")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ce3w2"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.60932976, 0.60933024, 0.60932994, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n45e2"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.21568628, 0.21568628, 0.21568628, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_ce3w2"]
+
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("mainButtons", "options", "ChiptuneButton", "InstrumentalButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -16,6 +42,9 @@ script = ExtResource("1_1ehe0")
 firstLevel = ExtResource("2_ce3w2")
 mainButtons = NodePath("MainButtons")
 options = NodePath("Options")
+ChiptuneButton = NodePath("Options/ChipButton")
+InstrumentalButton = NodePath("Options/InstrumentalButton")
+metadata/_edit_lock_ = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -25,8 +54,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_28flt")
+metadata/_edit_lock_ = true
 
 [node name="MainButtons" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -87,7 +118,6 @@ text = "Quit"
 metadata/_edit_use_anchors_ = true
 
 [node name="Options" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -95,6 +125,62 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="Options"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5164931
+anchor_top = 0.5308642
+anchor_right = 0.7627987
+anchor_bottom = 0.6391729
+offset_right = 0.25585938
+offset_bottom = -0.18405151
+theme_override_fonts/font = ExtResource("2_48xlc")
+theme_override_font_sizes/font_size = 66
+text = "Music Type"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ChipButton" type="Button" parent="Options"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.30989584
+anchor_top = 0.66400003
+anchor_right = 0.50600004
+anchor_bottom = 0.772
+offset_top = -0.2720337
+offset_right = 0.08795166
+offset_bottom = -0.25601196
+theme_override_fonts/font = ExtResource("2_48xlc")
+theme_override_font_sizes/font_size = 72
+theme_override_styles/normal = SubResource("StyleBoxFlat_ce3w2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_n45e2")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_ce3w2")
+text = "Chiptune"
+metadata/_edit_use_anchors_ = true
+
+[node name="InstrumentalButton" type="Button" parent="Options"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5286458
+anchor_top = 0.66400003
+anchor_right = 0.81700003
+anchor_bottom = 0.772
+offset_top = -0.2720337
+offset_right = -0.184021
+offset_bottom = -0.25601196
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_48xlc")
+theme_override_font_sizes/font_size = 72
+theme_override_styles/normal = SubResource("StyleBoxFlat_ce3w2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_n45e2")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_ce3w2")
+text = "Instrumental"
+metadata/_edit_use_anchors_ = true
 
 [node name="BackButton" type="Button" parent="Options"]
 layout_mode = 1
@@ -115,4 +201,6 @@ metadata/_edit_use_anchors_ = true
 [connection signal="pressed" from="MainButtons/PlayButton" to="." method="OnPlayButtonPress"]
 [connection signal="pressed" from="MainButtons/OptionsButton" to="." method="OnOptionButtonPress"]
 [connection signal="pressed" from="MainButtons/QuitButton" to="." method="OnPressQuitButton"]
+[connection signal="pressed" from="Options/ChipButton" to="." method="OnChiptuneButtonPress"]
+[connection signal="pressed" from="Options/InstrumentalButton" to="." method="OnInstrumentalButtonPress"]
 [connection signal="pressed" from="Options/BackButton" to="." method="OnOptionBackButtonPress"]

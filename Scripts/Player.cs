@@ -223,7 +223,12 @@ public partial class Player : Entity
         if (body is Entity enemy)
         {
             // enhancedState's value coincides with the expected value for the Element bool
-            enemy.TakeDamage(stats.attack, enhancedState, (mouse_pos - GlobalPosition).Normalized());
+            int damage_from_crit = 0;
+            if (GD.Randf() <= stats.critRate)
+            {
+                damage_from_crit = (int)((float)stats.attack * (1+stats.critDamage)) - stats.attack;
+            }
+            enemy.TakeDamage(stats.attack + damage_from_crit, enhancedState, (mouse_pos - GlobalPosition).Normalized());
             ChargeMeter(1);
         }
         else if (body is Breakable breakable) breakable.Break();
@@ -246,6 +251,12 @@ public partial class Player : Entity
         //base.TakeDamage(base_damage, Element);
         AudioManager.Instance.PlaySFX("hit");
         stats.health -= base_damage;
+        if (stats.health <= 0)
+        {
+            GD.Print("you died :(");
+            //GameManager.Instance.GameOver();
+            GameManager.Instance.CallDeferred("GameOver");
+        }
         DepleteMeter(1);
         Velocity = 300*directionHit;
         MoveAndSlide();

@@ -3,4 +3,5 @@
 [ext_resource type="Script" uid="uid://ckwg6w8lm5spx" path="res://Scripts/FollowCamera.cs" id="1_qm2hi"]
 
 [node name="FollowCamera" type="Camera2D"]
+zoom = Vector2(1.5, 1.5)
 script = ExtResource("1_qm2hi")

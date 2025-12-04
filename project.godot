@@ -24,6 +24,10 @@ buses/default_bus_layout="res://Audio/default_bus_layout.tres"
 AudioManager="*res://Scenes/audio_manager.tscn"
 GameManager="*res://Scenes/game_manager.tscn"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [dotnet]
 
 project/assembly_name="DungeonBuster"

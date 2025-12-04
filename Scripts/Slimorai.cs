@@ -9,6 +9,7 @@ public partial class Slimorai : Entity
 	[Export] PackedScene Fireball;
 	[Export] PackedScene Slime1;
 	[Export] PackedScene Slime2;
+	[Export] PackedScene damageNumbers;
 
 	[Export] private int HP = 75;
 	private Player PlayerNode;
@@ -25,17 +26,18 @@ public partial class Slimorai : Entity
 	// Called when the node enters the scene tree for the first time.
 	public bool is_element_applied = false;
     public int elementGauge = 0;
+	[Export] private int level = 3;
 
 	public void OnPlayerEnter(Node2D body)
-    {
-        if(body is Player p)
-        {
+	{
+		if (body is Player p)
+		{
 			PlayerNode = p;
 			State = BossState.Walking;
-			
-            
-        }
-    }
+
+
+		}
+	}
 	public void PlayerEntersFight(Node2D body)
     {
        
@@ -44,24 +46,28 @@ public partial class Slimorai : Entity
         CollisionShape2D BossPlayerDetection = GetNode<CollisionShape2D>("PlayerFinder/PlayerDetection");
         BossPlayerDetection.SetDeferred("disabled",false);
         
+		if (!fightStarted) AudioManager.Instance.PlayBGM($"boss{level}_{GameManager.Instance.musicType}");
         fightStarted = true;
         
         }
     }
 
 	public override void TakeDamage(int base_damage, bool Element, Vector2 directionHit)
-    {
-        if (Element && is_element_applied)
+	{
+		DamageNumbers Instance = damageNumbers.Instantiate<DamageNumbers>();
+		Instance.GlobalPosition = this.GlobalPosition + new Vector2(10, -10);
+		Instance.elementAttack = Element;
+		if (Element && is_element_applied)
 		{
 			base_damage *= 2;
 			elementGauge = Math.Min(elementGauge + 500, 1000);
-			Modulate = new Color(1, 1, (float)(0.2 * Math.Round(Math.Cos(elementGauge/10)) + 0.5));
+			Modulate = new Color(1, 1, (float)(0.2 * Math.Round(Math.Cos(elementGauge / 10)) + 0.5));
 		}
 		else if (Element && !is_element_applied)
 		{
 			this.is_element_applied = true;
 			elementGauge = Math.Min(elementGauge + 500, 1000);
-			Modulate = new Color(1, 1, (float)(0.2 * Math.Round(Math.Cos(elementGauge/10)) + 0.5));
+			Modulate = new Color(1, 1, (float)(0.2 * Math.Round(Math.Cos(elementGauge / 10)) + 0.5));
 		}
 
 		HP -= base_damage;
@@ -70,9 +76,23 @@ public partial class Slimorai : Entity
 		{
 			//GD.Print("Slimorai died: " + base_damage);
 			//Die();
+			AudioManager.Instance.PlaySFX("enemy_die");
 		}
-		this.Velocity = 150*directionHit*-1;
+		else
+		{
+			if (Element)
+			{
+				AudioManager.Instance.PlaySFX("elemental_hit");
+			}
+			else
+			{
+				AudioManager.Instance.PlaySFX("hit");
+			}
+		}
+		this.Velocity = 150 * directionHit * -1;
 		MoveAndSlide();
+		Instance.Text = " " + base_damage.ToString();
+		GetTree().Root.AddChild(Instance);
     }
 
 	public void ShootFire(Vector2 direction)

@@ -6,3 +6,4 @@
 [node name="GameManager" type="Node"]
 script = ExtResource("1_oj352")
 playerStats = ExtResource("2_e5fcp")
+GameOverScenePath = "uid://1pm0hbl5vfh6"

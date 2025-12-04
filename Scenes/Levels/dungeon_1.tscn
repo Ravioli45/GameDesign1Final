@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://bbfquc3opfwrm"]
+[gd_scene load_steps=16 format=4 uid="uid://bbfquc3opfwrm"]
 
 [ext_resource type="TileSet" uid="uid://b1lna3ersxwte" path="res://TileSets/Dungeon1TileSet.tres" id="1_wa5o0"]
 [ext_resource type="PackedScene" uid="uid://cbfd7l8g4in6v" path="res://Scenes/Environment/mana_particles.tscn" id="2_rfu0i"]
@@ -194,13 +194,13 @@ Teleporter = NodePath("../Teleporter")
 [node name="Teleporter" parent="." instance=ExtResource("8_21mms")]
 position = Vector2(32, -3168)
 NextLevel = ExtResource("9_ii61t")
+BGMName = "dungeon2"
 
 [node name="Eugio" parent="." instance=ExtResource("3_rfu0i")]
 position = Vector2(37, -22)
 
 [node name="FollowCamera" parent="." node_paths=PackedStringArray("target") instance=ExtResource("4_1mnrh")]
 position = Vector2(32, -33)
-zoom = Vector2(1.4, 1.4)
 target = NodePath("../Eugio")
 
 [node name="Barrel" parent="." instance=ExtResource("6_kfaa5")]
