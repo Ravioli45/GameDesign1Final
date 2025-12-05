@@ -16,12 +16,15 @@ public partial class DamageNumbers : RichTextLabel
             AddThemeFontSizeOverride("normal_font_size", 32);
         }
     }
-    public override void _Process(double delta)
+    public override void _PhysicsProcess(double delta)
     {
-        lifetime--;
-        if (lifetime >= 20) Scale += new Vector2(0.1f, 0.1f);
-        GlobalPosition += new Vector2(0, -0.5f);
-        if (lifetime <= 0) QueueFree();
+        if (delta > 0)
+        {
+            lifetime--;
+            if (lifetime >= 20) Scale += new Vector2(0.1f, 0.1f);
+            GlobalPosition += new Vector2(0, -0.5f);
+            if (lifetime <= 0) QueueFree();
+        }
     }
 
 

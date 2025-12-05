@@ -160,7 +160,7 @@ public partial class FireSlime : Entity
     }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
+	public override void _PhysicsProcess(double delta)
     {
 		if(HP <= 0)
         {
@@ -211,7 +211,7 @@ public partial class FireSlime : Entity
 			}
         }
 		if (is_element_applied) {
-			elementGauge = Math.Max(elementGauge-1, 0);
+			elementGauge = (int)Math.Max(elementGauge-1*delta, 0);
 			Modulate = new Color(1, 1, (float)(0.2 * Math.Round(Math.Cos(elementGauge/10)) + 0.5));
 			if (elementGauge <= 0) {
 				is_element_applied = false;

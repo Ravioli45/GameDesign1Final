@@ -123,7 +123,7 @@ public partial class WizardSkeleton : Enemy
         	else Velocity = new Vector2(0,0);
         }
 		if (is_element_applied) {
-			elementGauge = Math.Max(elementGauge-1, 0);
+			elementGauge = (int)Math.Max(elementGauge-1*delta, 0);
 			Modulate = new Color(1, 1, (float)(0.2 * Math.Round(Math.Cos(elementGauge/10)) + 0.5));
 			if (elementGauge <= 0) {
 				is_element_applied = false;
