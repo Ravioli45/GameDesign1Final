@@ -1,11 +1,11 @@
-[gd_scene load_steps=23 format=3 uid="uid://tksauj558360"]
+[gd_scene load_steps=24 format=3 uid="uid://tksauj558360"]
 
 [ext_resource type="Script" uid="uid://le3x4kvq38iy" path="res://Scripts/Slimothy.cs" id="1_5d0k5"]
 [ext_resource type="Texture2D" uid="uid://cbdjnonrohfsb" path="res://Sprites/Enemy/Slimothy/Slimothy.png" id="2_5d0k5"]
 [ext_resource type="Resource" uid="uid://lg2mjc1prkbl" path="res://Stats/Slimothy.tres" id="2_7m1v5"]
 [ext_resource type="PackedScene" uid="uid://bb754k3dffdh3" path="res://Scenes/Environment/EXP.tscn" id="2_baw47"]
-[ext_resource type="PackedScene" uid="uid://c08l6sf5mmga4" path="res://Scenes/Environment/gold.tscn" id="3_cg531"]
 [ext_resource type="PackedScene" uid="uid://bipqesl0k0ahl" path="res://Scenes/damage_numbers.tscn" id="2_i4t41"]
+[ext_resource type="PackedScene" uid="uid://c08l6sf5mmga4" path="res://Scenes/Environment/gold.tscn" id="3_cg531"]
 
 [sub_resource type="Animation" id="Animation_cg531"]
 resource_name = "Idle"
@@ -170,7 +170,7 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_i4t41"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_baw47"]
-radius = 100.0
+radius = 167.00299
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5d0k5"]
 animation = &"MoveRight"

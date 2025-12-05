@@ -41,7 +41,7 @@ public partial class WizardSkeleton : Enemy
 		particles.Visible = true;
 		particles.Restart();
         isTeleporting = true;
-        await ToSignal(GetTree().CreateTimer(2f), "timeout");
+        await ToSignal(GetTree().CreateTimer(1f), "timeout");
         isTeleporting = false;
 		Velocity = new Vector2(GD.RandRange(-1,1), GD.RandRange(-1,1)) * 10000;
 		MoveAndSlide();
@@ -54,7 +54,7 @@ public partial class WizardSkeleton : Enemy
 			
 			State = EnemyState.Attack;
 		}
-        await ToSignal(GetTree().CreateTimer(5f), "timeout");
+        await ToSignal(GetTree().CreateTimer(3f), "timeout");
         inTeleportCD = false;
 		
 		
@@ -69,7 +69,7 @@ public partial class WizardSkeleton : Enemy
 		particles.Emitting = true;
 		particles.Visible = true;
 		particles.Restart();
-		await ToSignal(GetTree().CreateTimer(2), "timeout");
+		await ToSignal(GetTree().CreateTimer(1), "timeout");
 		particles.Visible = false;
 		particles.Emitting = false;
 		inAttackCD = false;

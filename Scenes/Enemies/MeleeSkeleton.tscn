@@ -1,9 +1,9 @@
-[gd_scene load_steps=40 format=3 uid="uid://rwy0bqvjc2y6"]
+[gd_scene load_steps=41 format=3 uid="uid://rwy0bqvjc2y6"]
 
 [ext_resource type="Texture2D" uid="uid://dstemgqnhs4qq" path="res://Sprites/Enemy/SwordSkeleton/SwordSkeletonSpritesheet.png" id="1_kkyfk"]
 [ext_resource type="Script" uid="uid://5qplh0ro2xd4" path="res://Scripts/MeleeSkeleton.cs" id="1_vghw6"]
-[ext_resource type="PackedScene" uid="uid://bb754k3dffdh3" path="res://Scenes/Environment/EXP.tscn" id="2_erl3l"]
 [ext_resource type="PackedScene" uid="uid://bipqesl0k0ahl" path="res://Scenes/damage_numbers.tscn" id="2_7cw1n"]
+[ext_resource type="PackedScene" uid="uid://bb754k3dffdh3" path="res://Scenes/Environment/EXP.tscn" id="2_erl3l"]
 [ext_resource type="Resource" uid="uid://bts3nmua1qxh3" path="res://Stats/MeleeSkeleton.tres" id="2_x1yov"]
 [ext_resource type="PackedScene" uid="uid://c08l6sf5mmga4" path="res://Scenes/Environment/gold.tscn" id="3_qfvbq"]
 
@@ -471,7 +471,7 @@ size = Vector2(39, 23)
 size = Vector2(12, 27)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x1yov"]
-radius = 95.047356
+radius = 225.02
 
 [node name="MeleeSkeleton" type="CharacterBody2D" node_paths=PackedStringArray("animator")]
 light_mask = 3
