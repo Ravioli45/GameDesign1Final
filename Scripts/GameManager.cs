@@ -35,8 +35,14 @@ public partial class GameManager : Node
         GetTree().CallDeferred("change_scene_to_packed", level);
     }
 
+    public void SetDisabled(bool disabled)
+    {
+        playerStats.disabled = disabled;
+    }
+
     public void ResetStats()
     {
+        playerStats.disabled = startingStats.disabled;
         playerStats.health = startingStats.health;
         playerStats.maxHealth = startingStats.maxHealth;
         playerStats.attack = startingStats.attack;

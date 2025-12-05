@@ -4,6 +4,7 @@ using System;
 [GlobalClass]
 public partial class PlayerStats : Resource
 {
+    [Export] public bool disabled { get; set; } = false;
     [Export] public int health { get; set; } = 1;
     [Export] public int maxHealth { get; set; } = 1;
     [Export] public int attack { get; set; } = 1;
@@ -43,11 +44,12 @@ public partial class PlayerStats : Resource
     [Export] public int meterCharge { get; set; } = 0;
     [Export] public int maxMeter { get; set; } = 10;
 
-    public PlayerStats() : this(1, 1, 1, 100, 1, 0, 20, 0, 0, 0, 0, 10) { }
+    public PlayerStats() : this(false, 1, 1, 1, 100, 1, 0, 20, 0, 0, 0, 0, 10) { }
 
-    public PlayerStats(int _health, int _maxHealth, int _attack, int _speed, int _level,
+    public PlayerStats(bool _disabled, int _health, int _maxHealth, int _attack, int _speed, int _level,
         int _exp, int _expToNextLevel, int _gold, float _critRate, float _critDamage, int _meterCharge, int _maxMeter)
     {
+        disabled = _disabled;
         health = _health;
         maxHealth = _maxHealth;
         attack = _attack;

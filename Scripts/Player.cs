@@ -39,6 +39,8 @@ public partial class Player : Entity
     {
         base._PhysicsProcess(delta);
 
+        if (stats.disabled) return;
+
         CpuParticles2D Enhancedparticles = GetNode<CpuParticles2D>("Enhanced Form");
         CpuParticles2D particles = GetNode<CpuParticles2D>("Ult Particles");
 

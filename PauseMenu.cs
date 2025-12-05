@@ -30,15 +30,17 @@ public partial class PauseMenu : Control
            paused = !paused;
         }
 
-		if (!paused)
+        if (!paused)
         {
             Hide();
-			Engine.TimeScale = 1;
+            Engine.TimeScale = 1;
+            GameManager.Instance.SetDisabled(false);
         }
         else
         {
             Show();
-			Engine.TimeScale = 0;
+            Engine.TimeScale = 0;
+            GameManager.Instance.SetDisabled(true);
         }
     }
 }
