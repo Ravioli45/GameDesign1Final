@@ -92,41 +92,44 @@ public partial class Slimorai : Entity
 		this.Velocity = 150 * directionHit * -1;
 		MoveAndSlide();
 		Instance.Text = " " + base_damage.ToString();
-		GetTree().Root.AddChild(Instance);
+		//GetTree().Root.AddChild(Instance);
+		GetParent().AddChild(Instance);
     }
 
 	public void ShootFire(Vector2 direction)
-    {
-		
-		CharacterBody2D instance = Fireball.Instantiate<CharacterBody2D>();
-        instance.Position = this.Position + new Vector2(0,2);
-		Direction = (PlayerNode.GlobalPosition - this.GlobalPosition).Normalized();
-		instance.Rotation = Mathf.Atan2(Direction.Y , Direction.X);
-		
-		instance.Velocity = Direction *200;
+	{
 
-		if(instance is Fireball f)
-        {
-            f.damage = 16;
-        }
-		GetTree().Root.AddChild(instance);
+		CharacterBody2D instance = Fireball.Instantiate<CharacterBody2D>();
+		instance.Position = this.Position + new Vector2(0, 2);
+		Direction = (PlayerNode.GlobalPosition - this.GlobalPosition).Normalized();
+		instance.Rotation = Mathf.Atan2(Direction.Y, Direction.X);
+
+		instance.Velocity = Direction * 200;
+
+		if (instance is Fireball f)
+		{
+			f.damage = 16;
+		}
+		//GetTree().Root.AddChild(instance);
+		GetParent().AddChild(instance);
     }
 
 	public void ShootSwords(Vector2 direction)
-    {
-		
-		CharacterBody2D instance = SlimeSword.Instantiate<CharacterBody2D>();
-        instance.Position = this.Position + new Vector2(0,2);
-		Direction = (PlayerNode.GlobalPosition - this.GlobalPosition).Normalized();
-		instance.Rotation = Mathf.Atan2(Direction.Y , Direction.X);
-		
-		instance.Velocity = Direction *200;
+	{
 
-		if(instance is SlimeSword S)
-        {
-            S.damage = 16;
-        }
-		GetTree().Root.AddChild(instance);
+		CharacterBody2D instance = SlimeSword.Instantiate<CharacterBody2D>();
+		instance.Position = this.Position + new Vector2(0, 2);
+		Direction = (PlayerNode.GlobalPosition - this.GlobalPosition).Normalized();
+		instance.Rotation = Mathf.Atan2(Direction.Y, Direction.X);
+
+		instance.Velocity = Direction * 200;
+
+		if (instance is SlimeSword S)
+		{
+			S.damage = 16;
+		}
+		//GetTree().Root.AddChild(instance);
+		GetParent().AddChild(instance);
     }
 
 	public async void Attack(int  type)
@@ -207,9 +210,11 @@ public partial class Slimorai : Entity
 
 		CharacterBody2D instance2 = Slime2.Instantiate<CharacterBody2D>();
         instance2.Position = this.Position + new Vector2(8,0);
-        
-		GetTree().Root.AddChild(instance1);
-		GetTree().Root.AddChild(instance2);
+
+		//GetTree().Root.AddChild(instance1);
+		//GetTree().Root.AddChild(instance2);
+		GetParent().AddChild(instance1);
+		GetParent().AddChild(instance2);
 		this.CallDeferred("queue_free");
     }
 	public override void _Ready()

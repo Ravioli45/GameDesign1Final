@@ -36,8 +36,8 @@ public partial class FireSlime : Entity
     }
 
 	public override void TakeDamage(int base_damage, bool Element, Vector2 directionHit)
-    {
-       DamageNumbers Instance = damageNumbers.Instantiate<DamageNumbers>();
+	{
+		DamageNumbers Instance = damageNumbers.Instantiate<DamageNumbers>();
 		Instance.GlobalPosition = this.GlobalPosition + new Vector2(10, -10);
 		Instance.elementAttack = Element;
 		if (Element && is_element_applied)
@@ -75,24 +75,26 @@ public partial class FireSlime : Entity
 		this.Velocity = 150 * directionHit * -1;
 		MoveAndSlide();
 		Instance.Text = " " + base_damage.ToString();
-		GetTree().Root.AddChild(Instance);
+		//GetTree().Root.AddChild(Instance);
+		GetParent().AddChild(Instance);
     }
 
 	public void ShootFire(Vector2 direction)
-    {
-		
-		CharacterBody2D instance = Fireball.Instantiate<CharacterBody2D>();
-        instance.Position = this.Position + new Vector2(0,2);
-		Direction = (PlayerNode.GlobalPosition - this.GlobalPosition).Normalized();
-		instance.Rotation = Mathf.Atan2(Direction.Y , Direction.X);
-		
-		instance.Velocity = Direction *200;
+	{
 
-		if(instance is Fireball f)
-        {
-            f.damage = 16;
-        }
-		GetTree().Root.AddChild(instance);
+		CharacterBody2D instance = Fireball.Instantiate<CharacterBody2D>();
+		instance.Position = this.Position + new Vector2(0, 2);
+		Direction = (PlayerNode.GlobalPosition - this.GlobalPosition).Normalized();
+		instance.Rotation = Mathf.Atan2(Direction.Y, Direction.X);
+
+		instance.Velocity = Direction * 200;
+
+		if (instance is Fireball f)
+		{
+			f.damage = 16;
+		}
+		//GetTree().Root.AddChild(instance);
+		GetParent().AddChild(instance);
     }
 
 	public async void Attack(Vector2 Direction)

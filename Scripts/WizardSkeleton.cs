@@ -61,37 +61,38 @@ public partial class WizardSkeleton : Enemy
     }
 
 	public async void FIREBALL(Player target)
-    {
-		
+	{
+
 		inAttackCD = true;
 		await ToSignal(GetTree().CreateTimer(1), "timeout");
 		CpuParticles2D particles = GetNode<CpuParticles2D>("Attack Particles");
 		particles.Emitting = true;
 		particles.Visible = true;
 		particles.Restart();
-        await ToSignal(GetTree().CreateTimer(2), "timeout");
+		await ToSignal(GetTree().CreateTimer(2), "timeout");
 		particles.Visible = false;
 		particles.Emitting = false;
-        inAttackCD = false;
+		inAttackCD = false;
 
-        //GD.Print("ITS WIZARD TIME MOTHERFUCKERS");
-        // CREATE FIRE BALL AND SET ITS VELOCITY = 200 * target.Direction
+		//GD.Print("ITS WIZARD TIME MOTHERFUCKERS");
+		// CREATE FIRE BALL AND SET ITS VELOCITY = 200 * target.Direction
 		CharacterBody2D instance = Fireball.Instantiate<CharacterBody2D>();
-        instance.Position = this.Position;
+		instance.Position = this.Position;
 		Direction = (PlayerNode.GlobalPosition - this.GlobalPosition).Normalized();
-		instance.Rotation = Mathf.Atan2(Direction.Y , Direction.X);
-		
-		instance.Velocity = Direction *200;
+		instance.Rotation = Mathf.Atan2(Direction.Y, Direction.X);
+
+		instance.Velocity = Direction * 200;
 
 		if (instance is Fireball f)
-                {
-                    f.damage = stats.attack;
-                }
-		
-		
-        
+		{
+			f.damage = stats.attack;
+		}
 
-		GetTree().Root.AddChild(instance);
+
+
+
+		//GetTree().Root.AddChild(instance);
+		GetParent().AddChild(instance);
 		
     }
 

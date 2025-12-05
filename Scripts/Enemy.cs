@@ -44,11 +44,12 @@ public abstract partial class Enemy : Entity
 
 		currentHealth -= base_damage;
 		Instance.Text = base_damage.ToString();
-		GetTree().Root.AddChild(Instance);
+		//GetTree().Root.AddChild(Instance);
+		GetParent().AddChild(Instance);
 
 		if (currentHealth <= 0)
 		{
-			GD.Print("enemy died: " + base_damage);
+			//GD.Print("enemy died: " + base_damage);
 			AudioManager.Instance.PlaySFX("enemy_die");
 			Die();
 		}
@@ -75,14 +76,16 @@ public abstract partial class Enemy : Entity
 		{
 			Node2D Instance = exp.Instantiate<Node2D>();
 			Instance.Position = new Vector2(this.Position.X + GD.RandRange(-5, 5), this.Position.Y + GD.RandRange(-5, 5));
-			this.GetTree().Root.CallDeferred("add_child",Instance);
+			//this.GetTree().Root.CallDeferred("add_child",Instance);
+			GetParent().CallDeferred("add_child", Instance);
 		}
 
 		for (int i = 0; i < amount_gold_drop; i++)
 		{
 			Node2D Instance = gold.Instantiate<Node2D>();
 			Instance.Position = new Vector2(this.Position.X + GD.RandRange(-5, 5), this.Position.Y + GD.RandRange(-5, 5));
-			this.GetTree().Root.CallDeferred("add_child",Instance);
+			//this.GetTree().Root.CallDeferred("add_child",Instance);
+			GetParent().CallDeferred("add_child", Instance);
 		}
 
 		//ADD DIE SOUND EFFECT HERE

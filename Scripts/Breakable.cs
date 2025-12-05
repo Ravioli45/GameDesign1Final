@@ -15,16 +15,18 @@ public partial class Breakable : StaticBody2D
         int amount_gold_drop = GD.RandRange(minGold, maxGold);
         int amount_health_orb_drop = GD.RandRange(minHealthOrb, maxHealthOrb);
         for (int i = 0; i < amount_gold_drop; i++)
-		{
-			Node2D Instance = gold.Instantiate<Node2D>();
-			Instance.Position = new Vector2(this.Position.X + GD.RandRange(-7, 7), this.Position.Y + GD.RandRange(-7, 7));
-			this.GetTree().Root.CallDeferred("add_child",Instance);
+        {
+            Node2D Instance = gold.Instantiate<Node2D>();
+            Instance.Position = new Vector2(this.Position.X + GD.RandRange(-7, 7), this.Position.Y + GD.RandRange(-7, 7));
+            //this.GetTree().Root.CallDeferred("add_child",Instance);
+            GetParent().CallDeferred("add_child", Instance);
 		}
         for (int i = 0; i < amount_health_orb_drop; i++)
-		{
-			Node2D Instance = healthOrb.Instantiate<Node2D>();
-			Instance.Position = new Vector2(this.Position.X + GD.RandRange(-7, 7), this.Position.Y + GD.RandRange(-7, 7));
-			this.GetTree().Root.CallDeferred("add_child",Instance);
+        {
+            Node2D Instance = healthOrb.Instantiate<Node2D>();
+            Instance.Position = new Vector2(this.Position.X + GD.RandRange(-7, 7), this.Position.Y + GD.RandRange(-7, 7));
+            //this.GetTree().Root.CallDeferred("add_child",Instance);
+            GetParent().CallDeferred("add_child", Instance);
 		}
        
         AudioManager.Instance.PlaySFX("box_break");

@@ -41,7 +41,7 @@ public partial class Alistar : Entity
     public bool is_element_applied = false;
     public int elementGauge = 0;
     [Export] private int level = 1;
-   
+
     public override void TakeDamage(int base_damage, bool Element, Vector2 directionHit)
     {
         DamageNumbers Instance = damageNumbers.Instantiate<DamageNumbers>();
@@ -82,7 +82,8 @@ public partial class Alistar : Entity
         this.Velocity = 150 * directionHit * -1;
         MoveAndSlide();
         Instance.Text = " " + base_damage.ToString();
-        GetTree().Root.AddChild(Instance);
+        //GetTree().Root.AddChild(Instance);
+        GetParent().AddChild(Instance);
     }
 	public void PlayerEntersFight(Node2D body)
     {
@@ -249,13 +250,14 @@ public partial class Alistar : Entity
     public async void ProjectileAttack(Vector2 StaticDirection)
     {
         //Spawns Projectiles
-        
+
         CharacterBody2D instance = Rock.Instantiate<CharacterBody2D>();
         instance.Position = this.Position;
-        instance.Rotation = Mathf.Atan2(StaticDirection.Y , StaticDirection.X);
-		instance.Velocity = StaticDirection *200;
+        instance.Rotation = Mathf.Atan2(StaticDirection.Y, StaticDirection.X);
+        instance.Velocity = StaticDirection * 200;
         if (instance is Fireball rock) rock.damage = 14;
-        GetTree().Root.AddChild(instance);
+        //GetTree().Root.AddChild(instance);
+        GetParent().AddChild(instance);
     }
 
 

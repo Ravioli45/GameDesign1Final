@@ -6,12 +6,14 @@
 [node name="Text" type="RichTextLabel"]
 z_index = 50
 anchors_preset = -1
-anchor_left = -0.006
-anchor_right = 0.060000002
-anchor_bottom = 0.048
-offset_left = -0.08799982
-offset_right = -0.120010376
-offset_bottom = -0.10400009
+anchor_left = 0.027
+anchor_top = 0.024
+anchor_right = 0.027
+anchor_bottom = 0.024
+offset_left = -38.104
+offset_top = -15.552
+offset_right = 37.895992
+offset_bottom = 15.448
 theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
