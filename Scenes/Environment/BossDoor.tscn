@@ -22,7 +22,7 @@ tile_set = ExtResource("2_j52aj")
 
 [node name="PlayerEntrance" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 7
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerEntrance"]
 position = Vector2(0.5, -11)
@@ -30,7 +30,7 @@ shape = SubResource("RectangleShape2D_4c1x2")
 
 [node name="BossLocater" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 7
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BossLocater"]
 position = Vector2(3, -712.5)

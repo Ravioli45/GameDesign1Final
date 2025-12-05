@@ -168,11 +168,11 @@ position = Vector2(-406, -786)
 
 [node name="Alistar" parent="." instance=ExtResource("7_afcdd")]
 position = Vector2(-117, -1253)
-level = 2
 
 [node name="Boss Door" parent="." node_paths=PackedStringArray("Teleporter") instance=ExtResource("8_kswaa")]
 position = Vector2(-110, -956)
 Teleporter = NodePath("../Teleporter")
+level = 2
 
 [node name="Node2D" parent="." instance=ExtResource("10_y7ere")]
 position = Vector2(748, -782)

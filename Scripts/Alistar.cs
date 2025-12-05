@@ -40,7 +40,6 @@ public partial class Alistar : Entity
     private bool endAttack = false;
     public bool is_element_applied = false;
     public int elementGauge = 0;
-    [Export] private int level = 1;
 
     public override void TakeDamage(int base_damage, bool Element, Vector2 directionHit)
     {
@@ -92,7 +91,7 @@ public partial class Alistar : Entity
         CollisionShape2D BossPlayerDetection = GetNode<CollisionShape2D>("PlayerDetectionHandeler/PlayerDetection");
         BossPlayerDetection.SetDeferred("disabled",false);
 
-        if (!fightStarted) AudioManager.Instance.PlayBGM($"boss{level}_{GameManager.Instance.musicType}");
+        //if (!fightStarted) AudioManager.Instance.PlayBGM($"boss{level}_{GameManager.Instance.musicType}");
         fightStarted = true;
         
         }

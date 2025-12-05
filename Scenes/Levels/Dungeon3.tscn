@@ -219,6 +219,7 @@ position = Vector2(1121, 977)
 position = Vector2(1520, 1968)
 rotation = 1.5707964
 Teleporter = NodePath("../Teleporter")
+level = 3
 
 [node name="Teleporter" parent="." instance=ExtResource("10_i3efh")]
 position = Vector2(1808, 1968)

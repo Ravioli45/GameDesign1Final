@@ -26,7 +26,6 @@ public partial class Slimorai : Entity
 	// Called when the node enters the scene tree for the first time.
 	public bool is_element_applied = false;
     public int elementGauge = 0;
-	[Export] private int level = 3;
 
 	public void OnPlayerEnter(Node2D body)
 	{
@@ -46,7 +45,7 @@ public partial class Slimorai : Entity
         CollisionShape2D BossPlayerDetection = GetNode<CollisionShape2D>("PlayerFinder/PlayerDetection");
         BossPlayerDetection.SetDeferred("disabled",false);
         
-		if (!fightStarted) AudioManager.Instance.PlayBGM($"boss{level}_{GameManager.Instance.musicType}");
+		//if (!fightStarted) AudioManager.Instance.PlayBGM($"boss{level}_{GameManager.Instance.musicType}");
         fightStarted = true;
         
         }

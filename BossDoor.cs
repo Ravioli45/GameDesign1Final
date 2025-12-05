@@ -8,6 +8,8 @@ public partial class BossDoor : Node2D
     [Export] CollisionShape2D PlayerDetection;
 	[Export] TileMapLayer Bars;
     [Export] Node2D Teleporter;
+    [Export] int level = 1;
+    private bool fightStarted = false;
 
     private int counter = 0;
 
@@ -24,20 +26,25 @@ public partial class BossDoor : Node2D
             
             if ((body is Slimorai) || (body is FireSlime) || (body is SwordSlime )) counter++;
             if(!(body is Slimorai) && !(body is FireSlime) && !(body is SwordSlime ) && !(body is Player)||counter == 3){
-                //GD.Print("Boss Dies");
+                GD.Print("Boss Dies");
                 Bars.SetDeferred("enabled", false);
                 PlayerDetection.SetDeferred("disabled", true);
                 Teleporter.Visible = true;
+                AudioManager.Instance.PlayBGM($"dungeon{level}_{GameManager.Instance.musicType}");
             }
     }
 	public void OnPlayerEnter(Node2D body)
     {
         if(body is Player p || body is FireSlime)
         {
-			//GD.Print("Player Entered");
-			
-			Bars.SetDeferred("enabled", true);
-            BossDetection.SetDeferred("disabled", false);
+            //GD.Print("Player Entered");
+
+            if (!fightStarted)
+            {
+                AudioManager.Instance.PlayBGM($"boss{level}_{GameManager.Instance.musicType}");
+                Bars.SetDeferred("enabled", true);
+                BossDetection.SetDeferred("disabled", false);
+            }
         }
     }
 	
