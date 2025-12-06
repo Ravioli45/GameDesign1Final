@@ -88,7 +88,7 @@ public partial class Slimorai : Entity
 				AudioManager.Instance.PlaySFX("hit");
 			}
 		}
-		this.Velocity = 150 * directionHit * -1;
+		this.Velocity = 150 * directionHit;
 		MoveAndSlide();
 		Instance.Text = " " + base_damage.ToString();
 		//GetTree().Root.AddChild(Instance);

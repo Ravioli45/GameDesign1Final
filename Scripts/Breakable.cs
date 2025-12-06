@@ -17,14 +17,14 @@ public partial class Breakable : StaticBody2D
         for (int i = 0; i < amount_gold_drop; i++)
         {
             Node2D Instance = gold.Instantiate<Node2D>();
-            Instance.Position = new Vector2(this.Position.X + GD.RandRange(-7, 7), this.Position.Y + GD.RandRange(-7, 7));
+            Instance.Position = new Vector2(this.Position.X + GD.RandRange(-5, 5), this.Position.Y + GD.RandRange(-5, 5));
             //this.GetTree().Root.CallDeferred("add_child",Instance);
             GetParent().CallDeferred("add_child", Instance);
 		}
         for (int i = 0; i < amount_health_orb_drop; i++)
         {
             Node2D Instance = healthOrb.Instantiate<Node2D>();
-            Instance.Position = new Vector2(this.Position.X + GD.RandRange(-7, 7), this.Position.Y + GD.RandRange(-7, 7));
+            Instance.Position = new Vector2(this.Position.X + GD.RandRange(-5, 5), this.Position.Y + GD.RandRange(-5, 5));
             //this.GetTree().Root.CallDeferred("add_child",Instance);
             GetParent().CallDeferred("add_child", Instance);
 		}

@@ -17,7 +17,7 @@ metadata/_custom_type_script = "uid://bytwjck2p8wpm"
 [resource]
 script = ExtResource("1_i6ii5")
 itemName = "Healthy Burger"
-goldCost = 5
+goldCost = 20
 sprite = ExtResource("2_61pcm")
 statChanges = SubResource("Resource_3i40a")
 metadata/_custom_type_script = "uid://ctjppo767ltfu"

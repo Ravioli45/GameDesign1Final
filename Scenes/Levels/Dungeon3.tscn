@@ -31,6 +31,7 @@ tile_set = ExtResource("1_hs2wt")
 
 [node name="Slimorai" parent="." instance=ExtResource("4_p5gbr")]
 position = Vector2(1805, 1955)
+HP = 600
 
 [node name="WizardSkeleton" parent="." instance=ExtResource("3_kq3e0")]
 position = Vector2(-811, 1443)
@@ -230,7 +231,7 @@ BGMName = "victory"
 position = Vector2(-828, 1767)
 
 [node name="Eugio" parent="." instance=ExtResource("9_4kifu")]
-position = Vector2(-826, 1797)
+position = Vector2(288, 688)
 
 [node name="FollowCamera" parent="." node_paths=PackedStringArray("target") instance=ExtResource("10_7jfg0")]
 target = NodePath("../Eugio")

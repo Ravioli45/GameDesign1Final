@@ -17,7 +17,7 @@ metadata/_custom_type_script = "uid://bytwjck2p8wpm"
 [resource]
 script = ExtResource("1_556vg")
 itemName = "Attack Sword"
-goldCost = 10
+goldCost = 50
 sprite = ExtResource("2_m4okk")
 statChanges = SubResource("Resource_ybq26")
 metadata/_custom_type_script = "uid://ctjppo767ltfu"

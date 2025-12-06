@@ -10,7 +10,7 @@ public partial class FireSlime : Entity
     [Export] PackedScene Fireball;
 	[Export] PackedScene damageNumbers;
 
-	private int HP = 75;
+	private int HP = 300;
 	private Player PlayerNode;
 	private Vector2 Direction = new Vector2(0,0);
 	private BossState State = BossState.Idle;
@@ -72,7 +72,7 @@ public partial class FireSlime : Entity
 				AudioManager.Instance.PlaySFX("hit");
 			}
 		}
-		this.Velocity = 150 * directionHit * -1;
+		this.Velocity = 150 * directionHit;
 		MoveAndSlide();
 		Instance.Text = " " + base_damage.ToString();
 		//GetTree().Root.AddChild(Instance);

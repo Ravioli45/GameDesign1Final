@@ -17,7 +17,7 @@ metadata/_custom_type_script = "uid://bytwjck2p8wpm"
 [resource]
 script = ExtResource("1_gj33e")
 itemName = "Boots of Running Fast"
-goldCost = 5
+goldCost = 50
 sprite = ExtResource("2_cns2y")
 statChanges = SubResource("Resource_vainm")
 metadata/_custom_type_script = "uid://ctjppo767ltfu"

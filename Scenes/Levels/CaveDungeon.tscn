@@ -168,6 +168,7 @@ position = Vector2(-406, -786)
 
 [node name="Alistar" parent="." instance=ExtResource("7_afcdd")]
 position = Vector2(-117, -1253)
+HP = 600
 
 [node name="Boss Door" parent="." node_paths=PackedStringArray("Teleporter") instance=ExtResource("8_kswaa")]
 position = Vector2(-110, -956)

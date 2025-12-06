@@ -18,7 +18,7 @@ metadata/_custom_type_script = "uid://bytwjck2p8wpm"
 [resource]
 script = ExtResource("1_lr4rw")
 itemName = "Crit Damage Earrings"
-goldCost = 10
+goldCost = 50
 sprite = ExtResource("2_cyyss")
 statChanges = SubResource("Resource_rtpv3")
 metadata/_custom_type_script = "uid://ctjppo767ltfu"
